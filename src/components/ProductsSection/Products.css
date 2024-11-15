@@ -1,0 +1,140 @@
+/* General section styling */
+.product-section {
+  background-color: #f9fafb;
+  padding: 80px 24px;
+  color: black;
+}
+
+.product-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.product-section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #000000;
+}
+
+.product-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 768px) {
+  .product-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Product Card Styling */
+.product-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.product-card.appear {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Top part (icon + title) */
+.product-card-top {
+  background-color: rgb(255, 255, 255);
+  padding: 30px;
+  display: flex;
+  border-radius: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-top .product-card-icon {
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 20px;
+  opacity: 1;
+  color: #2772ed;
+  margin-bottom: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-top .product-card-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+/* Bottom part (description) */
+.product-card-bottom {
+  background-color: white;  /* Light gradient for description */
+  padding-bottom: 30px;
+  flex: 2;
+  border-radius: 8px;
+  position: relative;
+}
+
+.product-card-description {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+/* Learn More Button Styling */
+.product-learn-more {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;  /* Positioned to the left-bottom corner */
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  margin-top: 10px;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-learn-more .arrow {
+  margin-left: 6px; 
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Show Learn More text on hover */
+.product-card:hover .product-learn-more {
+  opacity: 1;
+  transform: translateY(-5px);
+}
+
+/* Right arrow moves slightly on hover */
+.product-card:hover .product-learn-more .arrow {
+  transform: translateX(4px);
+}
+
+/* Hover effect for product card */
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
