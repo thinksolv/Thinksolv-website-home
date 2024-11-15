@@ -4,7 +4,7 @@
   import './Hero.css';
 
   const HeroSection = () => {
-    const [expanded, setExpanded] = useState(false);
+    const [expanded] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState({ products: false, services: false });
 
     const toggleDropdown = (menu) => {

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { FaWordpress, FaFilePdf, FaFileAlt } from "react-icons/fa";
 import { PiArrowsInSimpleBold } from "react-icons/pi";
 import { FiArrowRight } from "react-icons/fi";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';  // Import router components
+import { BrowserRouter as Route, Routes, useNavigate } from 'react-router-dom';  // Import router components
 import './Products.css';
 
 const Products = () => {
