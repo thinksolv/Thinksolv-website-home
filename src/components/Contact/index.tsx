@@ -24,13 +24,13 @@ const Contact = () => {
           <div className="absolute left-0 top-0 -z-1 h-2/3 w-full rounded-lg bg-gradient-to-t from-transparent to-[#dee7ff47] dark:bg-gradient-to-t dark:to-[#252A42]"></div>
           <div className="absolute bottom-[-255px] left-0 -z-1 h-full w-full">
             <Image
-              src="./images/shape/shape-dotted-light.svg"
+              src="/shape-dotted-light.svg"
               alt="Dotted"
               className="dark:hidden"
               fill
             />
             <Image
-              src="./images/shape/shape-dotted-dark.svg"
+              src="/shape-dotted-dark.svg"
               alt="Dotted"
               className="hidden dark:block"
               fill
@@ -133,12 +133,9 @@ const Contact = () => {
                     </label>
                   </div>
 
-                  <button
-                    aria-label="send message"
-                    className="bg-primary inline-flex items-center gap-2.5 rounded-full bg-black px-6 py-3 font-medium text-white duration-300 ease-in-out hover:bg-primary dark:bg-primary"
-                  >
-                    Send Message
-                    <svg
+                  <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
+                  Send Message
+                    {/* <svg
                       className="fill-white"
                       width="14"
                       height="14"
@@ -150,7 +147,7 @@ const Contact = () => {
                         d="M10.4767 6.16664L6.00668 1.69664L7.18501 0.518311L13.6667 6.99998L7.18501 13.4816L6.00668 12.3033L10.4767 7.83331H0.333344V6.16664H10.4767Z"
                         fill=""
                       />
-                    </svg>
+                    </svg> */}
                   </button>
                 </div>
               </form>

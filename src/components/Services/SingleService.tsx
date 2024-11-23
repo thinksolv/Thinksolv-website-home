@@ -1,70 +1,101 @@
 'use client';
-import React, { useEffect, useRef } from "react";
+
+import React, { useEffect, useId, useRef, useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
+import { useOutsideClick } from "@/hooks/use-outside-click";
 import { Service } from "@/types/service";
-import gsap from "gsap";
-import { useTheme } from "next-themes"; // import the useTheme hook
 
 const SingleService = ({ service }: { service: Service }) => {
-  const { image, title, description, url } = service;
+  const [active, setActive] = useState<Service | null>(null);
+  const id = useId();
+  const ref = useRef<HTMLDivElement>(null);
 
-  // Create references for the elements to animate
-  const serviceRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLDivElement>(null);
-
-  // Get the current theme
-  const { theme } = useTheme();
-
+  // Close modal on outside click or "Escape" key press
+  useOutsideClick(ref, () => setActive(null));
   useEffect(() => {
-    if (serviceRef.current) {
-      gsap.from(serviceRef.current, {
-        opacity: 0,
-        y: -10,
-        duration: 0.5,
-      });
-    }
-
-    if (buttonRef.current) {
-      gsap.from(buttonRef.current, {
-        opacity: 0,
-        x: -20,
-        duration: 1,
-        delay: 0.1,
-      });
-    }
-  }, []); // This ensures animations run on initial render
+      const onKeyDown = (event: KeyboardEvent) => {
+          if (event.key === "Escape") setActive(null);
+      };
+      window.addEventListener("keydown", onKeyDown);
+      return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
-    <div
-      ref={serviceRef}
-      className={`before:bg-white dark:bg-black shadow-lg rounded-xl overflow-hidden transition-all transform hover:scale-105 hover:shadow-2xl ${
-        theme === "dark" ? "bg-blacksection text-white" : "bg-white text-black"
-      }`} // Apply different classes for dark/light mode
-    >
-      <img src={image} alt={title} className="w-full h-64 object-cover rounded-t-xl transition-all transform hover:scale-110" />
-      <div className="p-6">
-        <h3 className="text-2xl font-semibold">{title}</h3>
-        <p className="mt-3">{description}</p>
+      <>
+          {/* Backdrop for active modal */}
+          <AnimatePresence>
+              {active && (
+                  <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed inset-0 bg-black/40 z-10"
+                  />
+              )}
+          </AnimatePresence>
 
-        {/* Learn More Button */}
-        <a
-          href={url} target="_blank" // Dynamically set the URL
-          className="group mt-7.5 inline-flex items-center gap-2.5 text-primary hover:text-black dark:text-white dark:hover:text-primary"
-        >
-          <span className="duration-300 group-hover:pr-2">Explore</span>
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 14 14"
-            xmlns="http://www.w3.org/2000/svg"
+          {/* Expanded Card Modal */}
+          <AnimatePresence>
+              {active && (
+                  <div className="fixed inset-0 grid place-items-center z-[100]">
+                      <motion.div
+                          layoutId={`card-${active.title}-${id}`}
+                          ref={ref}
+                          className="w-full max-w-[600px] bg-white dark:white rounded-3xl overflow-hidden shadow-lg"
+                      >
+                          <Image
+                              priority
+                              width={600}
+                              height={550}
+                              src={active.image}
+                              alt={active.title}
+                              className="h-70 object-cover rounded-t-3lg"
+                          />
+                          <div className="p-6 bg-black dark-bg-white text-white">
+                              <h3 className="text-2xl font-semibold text-white dark:text-white">
+                                  {active.title}
+                              </h3>
+                              <p className="text-white dark:text-white mt-4">
+                                  {active.description}
+                              </p>
+                              <a
+                                  href={active.url}
+                                  target="_blank"
+                                  className="inline-block mt-6 "
+                                  rel="noopener noreferrer"
+                              >
+                                  <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
+                                    Explore
+                                  </button>
+                              </a>
+                          </div>
+                      </motion.div>
+                  </div>
+              )}
+          </AnimatePresence>
+
+          {/* Single Service Card */}
+          <motion.div
+              layoutId={`card-${service.title}-${id}`}
+              onClick={() => setActive(service)}
+              className="cursor-pointer bg-black dark:bg-black rounded-xl shadow-md hover:shadow-lg p-4"
           >
-            <path
-              d="M10.4767 6.16701L6.00668 1.69701L7.18501 0.518677L13.6667 7.00034L7.18501 13.482L6.00668 12.3037L10.4767 7.83368H0.333344V6.16701H10.4767Z"
-              fill="currentColor"
-            />
-          </svg>
-        </a>
-      </div>
-    </div>
+              <Image
+                  width={400}
+                  height={400}
+                  src={service.image}
+                  alt={service.title}
+                  className="h-65 object-cover rounded-sm"
+              />
+              <h3 className="text-lg font-medium text-white dark:text-white mt-4">
+                  {service.title}
+              </h3>
+              <p className="text-white dark:text-white mt-2">
+                  {service.description}
+              </p>
+          </motion.div>
+      </>
   );
 };
 

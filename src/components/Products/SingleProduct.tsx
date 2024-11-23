@@ -52,7 +52,7 @@ const SingleProduct = ({ feature }: { feature: Feature }) => {
             rel="noopener noreferrer"
             className="group mt-7.5 inline-flex items-center gap-2.5 text-white hover:text-primary dark:text-white dark:hover:text-primary"
           >
-            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300 hover:text-black hover:bg-white">
+            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300 hover:text-black hoverbg-white">
             Know More
           </button>
             {/* <svg

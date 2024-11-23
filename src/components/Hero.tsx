@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import BlurIn from "@/components/ui/blur-in";
+import { Cover } from "@/components/ui/cover";
 import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 const Hero: React.FC = () => {
@@ -18,9 +18,10 @@ const Hero: React.FC = () => {
         <div className="grid grid-cols-1 gap-y-4 lg:items-center lg:grid-cols-2 xl:grid-cols-2">
           <div className="text-center xl:col-span-1 lg:text-left md:px-16 lg:px-0 xl:pr-20">
             <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200">
-              Building Solutions <BlurIn word="Thoughtfully" className="text-4xl font-bold text-black dark:text-white"/>
+              Building Solutions 
+              <Cover>Thoughtfully</Cover>
             </h1>
-
+        
             <a
               href="#services"
               title=""
