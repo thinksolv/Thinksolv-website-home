@@ -57,7 +57,7 @@ interface NeonGradientCardProps {
   borderRadius?: number;
 
   /**
-   * @default "{ firstColor: '#ff00aa', secondColor: '#00FFF1' }"
+   * @default "{ firstColor: '#3b82f6', secondColor: '#10b981' }"
    * @type string
    * @description
    * The colors of the neon gradient
@@ -73,9 +73,11 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
   borderSize = 2,
   borderRadius = 20,
   neonColors = {
-    firstColor: "#ff00aa",
-    secondColor: "#00FFF1",
+    firstColor: "#10b981", // Fresh Green
+    secondColor: "#facc15", // Yellow
   },
+  
+  
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -124,7 +126,7 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
       }
       className={cn(
         "relative z-10 size-full rounded-[var(--border-radius)]",
-        className,
+        className
       )}
       {...props}
     >
@@ -139,7 +141,7 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
           "after:h-[var(--pseudo-element-height)] after:w-[var(--pseudo-element-width)] after:rounded-[var(--border-radius)] after:blur-[var(--after-blur)] after:content-['']",
           "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-[length:100%_200%] after:opacity-80",
           "after:animate-background-position-spin",
-          "dark:bg-neutral-900",
+          "dark:bg-neutral-900"
         )}
       >
         {children}

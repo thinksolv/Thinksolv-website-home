@@ -210,7 +210,15 @@ const config = {
 				to: {
 				  "backgroundPosition": "-200% 0"
 				}
-			}
+			},
+			meteor: {
+				"0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+				"70%": { opacity: "1" },
+				"100%": {
+				  transform: "rotate(215deg) translateX(-500px)",
+				  opacity: "0",
+				},
+			},
   		},
   		animation: {
 			line1: "line 3s linear infinite",
@@ -219,11 +227,13 @@ const config = {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
 			shimmer: "shimmer 2s linear infinite",
+			"meteor-effect": "meteor 5s linear infinite",
   			'background-position-spin': 'background-position-spin 3000ms infinite alternate'
   		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
+  
 } satisfies Config
 
 export default config

@@ -49,23 +49,23 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section className="faq-section">
-      <h2 className="faq-title">Frequently Asked Questions</h2>
+    <section className="faq-section bg-gray-100 dark:bg-gray-900 text-black dark:text-white">
+      <h2 className="faq-title text-gray-900 dark:text-white">Frequently Asked Questions</h2>
       <div className="faq-container">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className={`faq-item ${activeIndex === index ? "active" : ""}`}
+            className={`faq-item ${activeIndex === index ? "active" : ""} bg-white dark:bg-black`}
             onClick={() => handleClick(index)}
             ref={(el) => (itemRefs.current[index] = el)}
           >
-            <div className="faq-question">
+            <div className="faq-question text-gray-900 dark:text-white">
               {faq.question}
               <span className={`icon ${activeIndex === index ? "rotate" : ""}`}>
                 &#9656; {/* Right arrow icon */}
               </span>
             </div>
-            <div className="faq-answer">
+            <div className="faq-answer text-black dark:text-white">
               <p>{faq.answer}</p>
             </div>
           </div>
@@ -75,13 +75,12 @@ const FAQ = () => {
       <style jsx>{`
         .faq-section {
           padding: 60px 24px;
-          background-color: #f9fafb;
+          transition: background-color 0.3s, color 0.3s;
         }
 
         .faq-title {
           text-align: center;
           font-size: 2.5rem;
-          color: #111827;
           font-weight: bold;
           margin-bottom: 40px;
         }
@@ -92,12 +91,11 @@ const FAQ = () => {
         }
 
         .faq-item {
-          background: #fff;
           border-radius: 8px;
           margin-bottom: 16px;
           padding: 20px;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
           cursor: pointer;
           overflow: hidden;
         }
@@ -110,7 +108,6 @@ const FAQ = () => {
         .faq-question {
           font-size: 1.25rem;
           font-weight: 500;
-          color: #374151;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -119,12 +116,12 @@ const FAQ = () => {
         }
 
         .faq-item:hover .faq-question {
-          color: #1d4ed8;
+          color: #2563eb;
         }
 
         .icon {
           font-size: 2rem;
-          color: #1d4ed8;
+          color: #2563eb;
           transition: transform 0.3s;
         }
 
@@ -147,10 +144,9 @@ const FAQ = () => {
 
         .faq-answer p {
           font-size: 1rem;
-          color: #4b5563;
           line-height: 1.6;
           padding-left: 24px;
-          border-left: 4px solid #1d4ed8;
+          border-left: 4px solid #2563eb;
           animation: fadeIn 0.3s ease;
         }
 
@@ -164,6 +160,8 @@ const FAQ = () => {
             transform: translateY(0);
           }
         }
+
+        
       `}</style>
     </section>
   );
