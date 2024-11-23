@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { Cover } from './ui/cover';
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
+import ShinyButton from "@/components/ui/shiny-button";
 
 const Hero: React.FC = () => {
   return (
@@ -19,17 +21,19 @@ const Hero: React.FC = () => {
             <h1 className="text-4xl font-bold leading-tight text-gray-900 sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj">
               Building Solutions <Cover>Thoughtfully</Cover>
             </h1>
-            <p className="mt-2 text-lg text-gray-600 sm:mt-6 font-inter">
+            {/* <p className="mt-2 text-lg text-gray-600 sm:mt-6 font-inter">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vehicula massa in enim luctus. Rutrum arcu.
-            </p>
+            </p> */}
 
             <a
-              href="#"
+              href="#services"
               title=""
-              className="inline-flex px-8 py-4 mt-8 text-lg font-bold text-white transition-all duration-200 bg-gray-900 border border-transparent rounded sm:mt-10 font-pj hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+              className="inline-flex px-8 py-4 mt-8 text-lg font-bold text-black "
               role="button"
             >
-              Try our free editor
+               <button className="inline-flex h-14 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-white transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+                Learn More
+                </button>
             </a>
 
             {/* <div className="mt-8 sm:mt-16">
@@ -57,15 +61,32 @@ const Hero: React.FC = () => {
             </div> */}
           </div>
 
-          <div className="xl:col-span-1">
-            <Image
-              className="mx-auto"
-              src="/Google_Cloud_Partner_vr.png"
-              width={300}
-              height={250}
-              alt=""
-            />
-          </div>
+          
+
+          <div className="flex">
+  {/* Left side taking 70% of width */}
+  <div className="w-[15%]">
+    {/* Left side content */}
+  </div>
+
+  {/* Right side taking 30% of width */}
+  <div className="w-[60%] flex justify-end">
+    <NeonGradientCard className="max-w-sm items-center justify-center text-center">
+      <span className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#ff2975] from-35% to-[#00FFF1] bg-clip-text text-center text-6xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+        <Image
+          className="mx-auto"
+          src="/Google_Cloud_Partner_vr.png"
+          width={300}
+          height={250}
+          alt=""
+        />
+      </span>
+    </NeonGradientCard>
+  </div>
+</div>
+
+
+
         </div>
       </div>
     </section>
