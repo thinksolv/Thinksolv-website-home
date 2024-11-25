@@ -1,7 +1,7 @@
 import React from "react";
 import { Feature } from "@/types/feature";
 import { motion } from "framer-motion";
-import { Meteors } from "@/components/ui/meteors"; // Import the Meteors component
+//import { Meteors } from "@/components/ui/meteors"; // Import the Meteors component
 
 const SingleProduct = ({ feature }: { feature: Feature }) => {
   const { icon: Icon, title, description, url } = feature;
@@ -16,9 +16,9 @@ const SingleProduct = ({ feature }: { feature: Feature }) => {
       whileInView="visible"
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="animate_top z-40 rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-black dark:hover:bg-hoverdark xl:p-12.5 relative overflow-hidden"
+      className="animate_top z-40 rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-hoverdark dark:hover:bg-hoverdark xl:p-12.5 relative overflow-hidden"
     >
-      <Meteors number={30} /> {/* Add the Meteors component with fewer meteors */}
+      {/* <Meteors number={30} /> Add the Meteors component with fewer meteors */}
       <div className="relative z-10"> {/* Wrap content in a relative z-10 div */}
         <div className="relative flex h-16 w-16 items-center justify-center rounded-[4px] bg-black text-white dark:bg-white dark:text-black">
           <Icon className="text-3xl" />

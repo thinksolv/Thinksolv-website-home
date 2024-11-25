@@ -42,7 +42,7 @@ const SingleService = ({ service }: { service: Service }) => {
                       <motion.div
                           layoutId={`card-${active.title}-${id}`}
                           ref={ref}
-                          className="w-full max-w-[550px] bg-white dark:white rounded-3xl overflow-hidden shadow-lg"
+                          className="w-full max-w-[550px] bg-white dark:bg-hoverdark rounded-3xl overflow-hidden shadow-lg"
                       >
                           <Image
                               priority
@@ -52,7 +52,7 @@ const SingleService = ({ service }: { service: Service }) => {
                               alt={active.title}
                               className="h-70 rounded-t-3lg"
                           />
-                          <div className="p-6 bg-black dark-bg-white text-white">
+                          <div className="p-6 bg-black dark:bg-hoverdark text-white">
                               <h3 className="text-2xl font-semibold text-white dark:text-white">
                                   {active.title}
                               </h3>
@@ -79,14 +79,14 @@ const SingleService = ({ service }: { service: Service }) => {
           <motion.div
               layoutId={`card-${service.title}-${id}`}
               onClick={() => setActive(service)}
-              className="cursor-pointer bg-white dark:bg-black rounded-xl shadow-md hover:shadow-lg p-4"
+              className="cursor-pointer bg-white dark:bg-hoverdark rounded-xl shadow-md hover:shadow-lg p-4"
           >
               <Image
                   width={400}
                   height={400}
                   src={service.image}
                   alt={service.title}
-                  className="h-65 rounded-sm border-black"
+                  className="h-55 rounded-sm border-black"
               />
               <h3 className="text-lg font-medium text-black dark:text-white mt-4">
                   {service.title}
