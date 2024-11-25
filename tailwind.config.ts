@@ -18,6 +18,11 @@ const config = {
   		}
   	},
   	extend: {
+		backgroundImage: {
+			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+			'gradient-conic':
+			  'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+		  },
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
@@ -62,8 +67,6 @@ const config = {
 			  titlebg2: "#FFEAC2",
 			  titlebgdark: "#46496A",
 			  btndark: "#292E45",
-			  white: "#FFFFFF",
-			  black: "#181C31",
 			  blackho: "#2C3149",
 			  blacksection: "#1C2136",
 			  primary: "#0063EC",
@@ -175,6 +178,10 @@ const config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
+			move: {
+				"0%": { transform: "translateX(-200px)" },
+				"100%": { transform: "translateX(200px)" },
+			  },
 			line: {
 				"0%, 100%": { transform: "translateY(100%)" },
 				"50%": { transform: "translateY(0)" },
@@ -224,6 +231,7 @@ const config = {
 			line1: "line 3s linear infinite",
 			line2: "line 6s linear infinite",
 			line3: "line 9s linear infinite",
+			move: "move 5s linear infinite",
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
 			shimmer: "shimmer 2s linear infinite",

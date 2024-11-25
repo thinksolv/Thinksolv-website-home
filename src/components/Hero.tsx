@@ -5,7 +5,7 @@ import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative py-12 sm:py-16 lg:pb-40 bg-white dark:bg-gray-900 transition-colors duration-200">
+    <section className="relative py-12 sm:py-16 lg:pb-40 bg-white dark:bg-black transition-colors duration-200">
       <div className="absolute bottom-0 right-0 overflow-hidden">
         <img
           className="w-full h-auto origin-bottom-right transform scale-150 lg:w-auto lg:mx-auto lg:object-cover lg:scale-75 opacity-50 dark:opacity-10 transition-opacity duration-200"
