@@ -16,17 +16,17 @@ const SingleProduct = ({ feature }: { feature: Feature }) => {
       whileInView="visible"
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="animate_top z-40 rounded-lg border border-white bg-black p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark xl:p-12.5 relative overflow-hidden"
+      className="animate_top z-40 rounded-lg border border-white bg-white p-7.5 shadow-solid-3 transition-all hover:shadow-solid-4 dark:border-strokedark dark:bg-black dark:hover:bg-hoverdark xl:p-12.5 relative overflow-hidden"
     >
       <Meteors number={30} /> {/* Add the Meteors component with fewer meteors */}
       <div className="relative z-10"> {/* Wrap content in a relative z-10 div */}
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-[4px] bg-white text-black">
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-[4px] bg-black text-white dark:bg-white dark:text-black">
           <Icon className="text-3xl" />
         </div>
-        <h3 className="mb-5 mt-7.5 text-xl font-semibold text-white dark:text-white xl:text-itemtitle">
+        <h3 className="mb-5 mt-7.5 text-xl font-semibold text-black dark:text-white xl:text-itemtitle">
           {title}
         </h3>
-        <p className="text-white">{description}</p>
+        <p className="text-black dark:text-white">{description}</p>
 
         {/* Know More Button */}
         <motion.div
@@ -52,7 +52,7 @@ const SingleProduct = ({ feature }: { feature: Feature }) => {
             rel="noopener noreferrer"
             className="group mt-7.5 inline-flex items-center gap-2.5 text-white hover:text-primary dark:text-white dark:hover:text-primary"
           >
-            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-gray-300 hover:text-black hoverbg-white">
+            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-black hover:text-black dark:text-white hover:bg-white dark:hover:text-black">
             Know More
           </button>
             {/* <svg
