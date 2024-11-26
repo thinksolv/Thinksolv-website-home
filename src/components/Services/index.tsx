@@ -6,7 +6,7 @@ import SectionHeader from "../Common/SectionHeader";
 const Services = () => {
   return (
     <section id="services" className="py-16 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <SectionHeader
           headerInfo={{
@@ -17,7 +17,7 @@ const Services = () => {
           }}
         />
 
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {servicesData.map((service) => (
             <SingleService key={service.id} service={service} />
           ))}

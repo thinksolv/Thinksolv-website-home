@@ -39,14 +39,14 @@ const Hero: React.FC = () => {
               {/* Left side content */}
             </div>
 
-            <div className="w-[60%] flex justify-end">
+            <div className="w-[55%] flex justify-end">
               <NeonGradientCard className="max-w-sm items-center justify-center text-center">
                 <span className="pointer-events-none z-10 h-full whitespace-pre-wrap bg-gradient-to-br from-[#3b82f6] from-35% to-[#10b981] bg-clip-text text-center text-6xl font-bold leading-none tracking-tighter text-transparent dark:drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
                   <Image
                     className="mx-auto"
                     src="/Google_Cloud_Partner_vr.png"
                     width={300}
-                    height={250}
+                    height={200}
                     alt="Google Cloud Partner"
                   />
                 </span>

@@ -26,7 +26,7 @@ const servicesData: Service[] = [
     id: 4,
     title: "Cloud Integration",
     description: "Seamlessly integrate your systems with cloud services for enhanced collaboration.",
-    image: "/cloud-integration.avif", // Your image path here
+    image: "/cloud.jpg", // Your image path here
     url: "/services/cloud-integration",
   },
   // {
@@ -40,7 +40,7 @@ const servicesData: Service[] = [
     id: 6,
     title: "Business Intelligence",
     description: "Leverage data analytics to make informed decisions and optimize operations.",
-    image: "/business.webp", // Your image path here
+    image: "/Business.jpg", // Your image path here
     url: "/services/business-intelligence",
   },
 ];

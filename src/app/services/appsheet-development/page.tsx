@@ -124,7 +124,7 @@ export default function Page() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background pt-24 pb-16">
+    <section className="relative overflow-hidden bg-background pt-24 pb-15">
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
