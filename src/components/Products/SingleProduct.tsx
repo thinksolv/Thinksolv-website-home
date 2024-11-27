@@ -52,9 +52,9 @@ const SingleProduct = ({ feature }: { feature: Feature }) => {
             rel="noopener noreferrer"
             className="group mt-7.5 inline-flex items-center gap-2.5 text-white hover:text-primary dark:text-white dark:hover:text-primary"
           >
-            <button className="border px-4 py-1 rounded-lg  border-gray-500 text-black hover:text-black dark:text-white hover:bg-white dark:hover:text-black">
-            Know More
-          </button>
+            <button className="text-center px-3 py-1 font-bold  rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
+               Know More
+              </button>
             {/* <svg
               width="14"
               height="14"
