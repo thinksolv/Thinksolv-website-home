@@ -8,35 +8,36 @@ const steps = [
   {
     icon: FileText,
     title: "Document Upload",
-    description: "Upload your documents in various formats (PDF, DOCX, images). Our platform supports a wide range of input types to ensure compatibility and ease of use, allowing you to quickly integrate existing files into the workflow.",
+    description: "Upload documents in various formats like PDFs, DOCX, or images for seamless integration.",
   },
   {
     icon: Cpu,
     title: "AI Processing",
-    description: "Our advanced AI algorithms analyze and extract key information. This step leverages natural language processing (NLP), optical character recognition (OCR), and machine learning models to ensure accuracy and contextual relevance.",
+    description: "Analyze documents using AI techniques like NLP, OCR, and machine learning for accurate extraction.",
   },
   {
     icon: Database,
     title: "Data Structuring",
-    description: "Extracted data is organized into a structured format. The system categorizes, labels, and formats the information, making it ready for further analysis or integration with other tools and platforms.",
+    description: "Organize extracted data into structured formats for easy analysis and integration.",
   },
   {
     icon: ChartBar,
     title: "Insights Generation",
-    description: "AI generates valuable insights from the processed data. By identifying patterns, trends, and anomalies, this step provides actionable intelligence that helps drive data-driven decisions.",
+    description: "Generate actionable insights by identifying patterns and trends in the data.",
   },
   {
     icon: CheckCircle,
     title: "Results Delivery",
-    description: "Access your structured data and insights through our interface. The final output is presented in a user-friendly dashboard or exported in a format of your choice, ensuring seamless integration into your workflows.",
+    description: "Access and export results through a user-friendly dashboard or in desired formats.",
   },
 ];
+
 
 const Working = () => {
   return (
     <>
 
-    <section className="py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <section className="py-16 bg-white dark:bg-black">
     <SectionHeader
           headerInfo={{
             title: "How It Works",
@@ -56,10 +57,10 @@ const Working = () => {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className="flex justify-center"
             >
-              <Card className="w-full max-w-sm bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+              <Card className="w-full max-w-sm bg-white bg-card shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="p-3 bg-primary rounded-full text-white">
+                    <div className="p-3 bg-black rounded-full text-white">
                       <step.icon className="w-6 h-6" />
                     </div>
                     <h3 className="ml-4 text-xl font-semibold text-gray-800 dark:text-white">{step.title}</h3>

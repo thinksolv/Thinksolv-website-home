@@ -30,8 +30,8 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
   size = 200, // Default size for the circular card
   borderSize = 2,
   neonColors = {
-    firstColor: "#3b82f6", // Electric Blue
-    secondColor: "#3b82f6", // Green
+    firstColor: "#E91C24", // Electric Blue
+    secondColor: "#E91C24", // Green
   },
   ...props
 }) => {
@@ -68,7 +68,7 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
           "after:h-[var(--pseudo-element-size)] after:w-[var(--pseudo-element-size)] after:rounded-full after:blur-[var(--after-blur)] after:content-['']",
           "after:bg-[linear-gradient(0deg,var(--neon-first-color),var(--neon-second-color))] after:bg-[length:100%_200%] after:opacity-80",
           "after:animate-background-position-spin",
-          "dark:bg-neutral-900"
+          "dark:bg-black"
         )}
       >
         {children}

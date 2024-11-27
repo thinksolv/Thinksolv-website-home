@@ -1,10 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import { Menu, MenuItem, HoveredLink } from "../components/ui/navbar-menu";
 import { Sun, Moon, MenuIcon, XIcon } from "lucide-react";
 import {
   NavigationMenu,
@@ -32,7 +29,7 @@ const Header: React.FC = () => {
   );
 
   return (
-    <header className="relative z-50 bg-white dark:bg-gray-900 py-3">
+    <header className="relative z-50 bg-white dark:bg-black py-3">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo and Company Name */}
@@ -52,7 +49,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex items-center">
+          <NavigationMenu className="hidden md:flex items-center ">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Services</NavigationMenuTrigger>
@@ -154,7 +151,7 @@ const Header: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggler />
             <a href="/support">
-              <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
+              <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
                 Contact Us
               </button>
             </a>
