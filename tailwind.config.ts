@@ -8,6 +8,7 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
+	
   prefix: "",
   theme: {
   	container: {
@@ -239,7 +240,9 @@ const config = {
   			'background-position-spin': 'background-position-spin 3000ms infinite alternate'
   		}
   	}
+	
   },
+  
   plugins: [require("tailwindcss-animate")],
   
 } satisfies Config
