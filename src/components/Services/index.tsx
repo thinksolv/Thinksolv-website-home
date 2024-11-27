@@ -11,7 +11,7 @@ const Services = () => {
         <SectionHeader
           headerInfo={{
             title: "Our Services",
-            subtitle: "Empowering Your Business with Cutting-Edge Solutions",
+            subtitle: "Empowering Business with Cutting-Edge Solutions",
             description:
               "We provide a range of innovative services designed to streamline your business processes and enhance productivity.",
           }}

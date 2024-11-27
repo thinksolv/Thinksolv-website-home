@@ -9,12 +9,14 @@ import AnimatedTestimonialsDemo from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BrandsSection from '@/components/Brands';
 
 export default function Home() {
   return (
       <>
       <Header />
       <Hero />
+      <BrandsSection />
       <About />
       <Product />
       {/* <Features /> */}

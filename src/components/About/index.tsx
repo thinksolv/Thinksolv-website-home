@@ -8,6 +8,7 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
+      <section id='about'>
       <div className="relative overflow-hidden bg-gray-50 dark:bg-black  py-10 sm:py-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +48,7 @@ const About = () => {
           </div>
         </motion.div>
       </div>
-
+    </section>
       {/* Solutions Section */}
       <div className="relative bg-gray-50 dark:bg-black py-20 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -126,6 +127,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    
   );
 }
 export default About;

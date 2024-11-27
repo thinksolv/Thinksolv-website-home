@@ -73,11 +73,9 @@ const NeonGradientCard: React.FC<NeonGradientCardProps> = ({
   borderSize = 2,
   borderRadius = 20,
   neonColors = {
-    firstColor: "#14b8a6", // Teal
-    secondColor: "#38bdf8", // Light Blue
+    firstColor: "#3b82f6", // Electric Blue
+    secondColor: "#3b82f6", // Electric Blue
   },
-  
-  
   ...props
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
