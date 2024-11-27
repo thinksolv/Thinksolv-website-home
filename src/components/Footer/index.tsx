@@ -28,22 +28,20 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="animate_top w-1/2 lg:w-1/4"
               >
-                <a href="/" className="relative">
-                  <Image
-                    width={200}
-                    height={80}
-                    src="/Thinksolv Logo.png"
-                    alt="Logo"
-                    className="dark:hidden"
-                  />
-                  <Image
-                    width={200}
-                    height={80}
-                    src="/Thinksolv Logo.png"
-                    alt="Logo"
-                    className="hidden dark:block"
-                  />
-                </a>
+                <div className="flex items-center space-x-3">
+            <a href="/" title="Thinksolv Technologies" className="flex items-center">
+              <Image
+                src="/Favi.png"
+                alt="Thinksolv Logo"
+                width={60}
+                height={55}
+                className="rounded px-2"
+              />
+              <span className="text-2xl font-bold text-black dark:text-white mt-1">
+               thinksol<span className="text-red-500">v.</span>
+              </span>
+            </a>
+          </div>
 
                 <p className="mb-10 mt-5">
                   Building Solutions Thoughtfully
@@ -86,7 +84,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Home
@@ -110,7 +108,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/blog"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Blog

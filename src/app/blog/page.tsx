@@ -15,6 +15,7 @@ const BlogPage = async () => {
   return (
     <>
     <Header />
+    <div className="pt-10">
     <SectionHeader
           headerInfo={{
             title: "Blog Page",
@@ -35,6 +36,7 @@ const BlogPage = async () => {
       </section>
       {/* <!-- ===== Blog Grid End ===== --> */}
       <Footer />
+    </div>  
     </>
   );
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import HeroSection from './Hero';
 import Header from '@/components/Header';
 import { motion } from "framer-motion";
-import IDP from '../document-ai/IDP Section'
+import Working from './How It Works';
 import AnimatedTestimonialsDemo from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -16,7 +16,7 @@ export default function Landing() {
     <div>
       <Header />
       <HeroSection />
-      <IDP />
+      <Working />
       <Benefits />
       <AnimatedTestimonialsDemo />
       <Contact />

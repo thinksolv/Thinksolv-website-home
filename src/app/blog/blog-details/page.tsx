@@ -6,18 +6,20 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Blog Details Page - Solid SaaS Boilerplate",
-  description: "This is Blog details page for Solid Pro",
+  title: "Blog Details Page - Thinksolv",
+  description: "This is Blog details page for Thinksolv Technologies",
   // other metadata
 };
 
 const SingleBlogPage = async () => {
   return (
     <>
-    <Header />
+      <Header />
       <section className="pb-10 pt-35 lg:pb-25 lg:pt-45 xl:pb-30 xl:pt-20">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
-          <div className="flex flex-col-reverse gap-7.5 lg:flex-row xl:gap-12.5">
+          {/* Swapping the order of content */}
+          <div className="flex flex-col gap-7.5 lg:flex-row-reverse xl:gap-12.5">
+            {/* Right side content (now moved to the left visually) */}
             <div className="md:w-1/2 lg:w-[32%]">
               <div className="animate_top mb-10 rounded-md border border-stroke bg-white p-3.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection">
                 <form
@@ -77,6 +79,7 @@ const SingleBlogPage = async () => {
               <RelatedPost />
             </div>
 
+            {/* Left side content (now moved to the right visually) */}
             <div className="lg:w-2/3">
               <div className="animate_top rounded-md border border-stroke bg-white p-7.5 shadow-solid-13 dark:border-strokedark dark:bg-blacksection md:p-10">
                 <div className="mb-10 w-full overflow-hidden ">
@@ -168,7 +171,7 @@ const SingleBlogPage = async () => {
           </div>
         </div>
       </section>
-     <Footer /> 
+      <Footer />
     </>
   );
 };

@@ -15,7 +15,7 @@ const brands = [
 
 const BrandsSection = () => {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 p-8 bg-white">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 p-8 bg-white dark:bg-black">
       {brands.map((brand, index) => (
         <motion.div
           key={index}
