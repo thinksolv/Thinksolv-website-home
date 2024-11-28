@@ -8,6 +8,7 @@ const About = () => {
   return (
     <div>
       {/* Hero Section */}
+      <section id='about'>
       <div className="relative overflow-hidden bg-gray-50 dark:bg-black  py-10 sm:py-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +48,7 @@ const About = () => {
           </div>
         </motion.div>
       </div>
-
+    </section>
       {/* Solutions Section */}
       <div className="relative bg-gray-50 dark:bg-black py-20 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -117,7 +118,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="mt-10"
               >
-                <a href="#support"><button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
+                <a href="/support"><button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-gray-900 dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
                 Get Started
               </button></a>
               </motion.div>
@@ -126,6 +127,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    
   );
 }
 export default About;

@@ -1,3 +1,5 @@
+import React from "react";
+import SectionHeader from "./Common/SectionHeader";
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 const  AnimatedTestimonialsDemo = () => {
@@ -38,7 +40,20 @@ const  AnimatedTestimonialsDemo = () => {
       src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];  
-  return <AnimatedTestimonials testimonials={testimonials}/>;
+  return (
+    <>
+      <div className="animate_top mx-auto text-center">
+            <SectionHeader
+              headerInfo={{
+                title: `Reviews`,
+                subtitle: `Praise From Our Happy Clients`,
+                description: `Our clients trust us for our innovative solutions and thoughtful approach.`,
+              }}
+            />
+          </div>
+      <AnimatedTestimonials testimonials={testimonials}/>
+    </>  
+  );
 }
 
 export default AnimatedTestimonialsDemo;

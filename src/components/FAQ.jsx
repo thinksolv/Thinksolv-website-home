@@ -49,7 +49,7 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section className="faq-section bg-gray-100 dark:bg-gray-900 text-black dark:text-white">
+    <section className="faq-section bg-white dark:bg-gray-900 text-black dark:text-white">
       <h2 className="faq-title text-gray-900 dark:text-white">Frequently Asked Questions</h2>
       <div className="faq-container">
         {faqs.map((faq, index) => (

@@ -5,7 +5,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-black">
+      <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-black mt-15">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Top --> */}
           <div className="py-20 lg:py-20">
@@ -28,22 +28,20 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="animate_top w-1/2 lg:w-1/4"
               >
-                <a href="/" className="relative">
-                  <Image
-                    width={200}
-                    height={80}
-                    src="/Thinksolv Logo.png"
-                    alt="Logo"
-                    className="dark:hidden"
-                  />
-                  <Image
-                    width={200}
-                    height={80}
-                    src="/Thinksolv Logo.png"
-                    alt="Logo"
-                    className="hidden dark:block"
-                  />
-                </a>
+                <div className="flex items-center space-x-3">
+            <a href="/" title="Thinksolv Technologies" className="flex items-center">
+              <Image
+                src="/Favi.png"
+                alt="Thinksolv Logo"
+                width={60}
+                height={55}
+                className="rounded px-2"
+              />
+              <span className="text-2xl font-bold text-black dark:text-white mt-1">
+               thinksol<span className="text-red-500">v.</span>
+              </span>
+            </a>
+          </div>
 
                 <p className="mb-10 mt-5">
                   Building Solutions Thoughtfully
@@ -60,7 +58,7 @@ const Footer = () => {
                 </a> */}
               </motion.div>
 
-              <div className="flex w-full flex-col gap- md:flex-row md:justify-between md:gap-0 lg:w-2/3 xl:w-9/12">
+              <div className="grid gap-8 w-full lg:flex lg:justify-between lg:gap-0 lg:w-2/3 xl:w-9/12 md:grid-cols-2">
                 <motion.div
                   variants={{
                     hidden: {
@@ -86,7 +84,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Home
@@ -110,7 +108,7 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#"
+                        href="/blog"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Blog
@@ -144,25 +142,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_pdf/302636103705"
-                        target="_blank"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Docs to PDF
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_wordpress_pro/346830534164"
-                        target="_blank"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Docs to WP Pro
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026"
+                        href="https://www.mergedocs.pro"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
@@ -171,7 +151,34 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402"
+                        href="https://www.docstopdf.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to PDF
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.docstomarkdown.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to Markdown Pro 
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.docstowp.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to WP Pro
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.bulkconverter.pro"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
@@ -180,11 +187,11 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                        href="https://www.pdftodocs.com"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Docs to Markdown Pro 
+                        PDF to Docs
                       </a>
                     </li>
                   </ul>
@@ -214,23 +221,23 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/services/document-ai"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Document AI
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="#"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Workflow Automations
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <a
-                        href="#"
+                        href="/services/appsheet-development"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         AppSheet Development
@@ -371,7 +378,7 @@ const Footer = () => {
               className="animate_top"
             >
               <p>
-                &copy; {new Date().getFullYear()} Owned and Maintained By Thinksolv Technologies. All rights reserved
+                &copy; {new Date().getFullYear()} Owned and Maintained By Thinksolv Technologies Private Limited. All rights reserved.
               </p>
             </motion.div>
 

@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
-import HeroSection from './Hero';
+import HeroSection from './HeroSection';
 import Header from '@/components/Header';
 import { motion } from "framer-motion";
-import IDP from '../document-ai/IDP Section'
+import Working from './Use cases';
 import AnimatedTestimonialsDemo from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
@@ -16,7 +16,7 @@ export default function Landing() {
     <div>
       <Header />
       <HeroSection />
-      <IDP />
+      <Working />
       <Benefits />
       <AnimatedTestimonialsDemo />
       <Contact />
@@ -50,7 +50,7 @@ const benefits = [
 
 function Benefits() {
   return (
-    <section className="py-24 bg-muted/50">
+    <section className="py-24 bg-white dark:bg-black">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +67,7 @@ function Benefits() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -77,8 +77,8 @@ function Benefits() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="p-6 rounded-xl bg-card border h-full hover:shadow-lg transition-all">
-                <div className="text-4xl font-bold text-black mb-4 dark:text-white">
+              <div className="group relative p-6 rounded-xl bg-card border border-black h-full shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+                <div className="text-4xl font-bold text-black mb-4 dark:text-white group-hover:text-blue-600">
                   {benefit.metrics}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">

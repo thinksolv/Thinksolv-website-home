@@ -15,7 +15,7 @@ const Product = () => {
             description: "A team of passionate professionals delivering cutting-edge products designed to elevate your business and streamline operations.",
           }}
         />
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
           {featuresData.map((feature) => (
             <SingleProduct key={feature.id} feature={feature} />
           ))}

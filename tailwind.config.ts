@@ -18,6 +18,7 @@ const config = {
   			'2xl': '1400px'
   		}
   	},
+	scrollBehavior: ['responsive'],
   	extend: {
 		backgroundImage: {
 			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
