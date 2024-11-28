@@ -13,7 +13,7 @@ const Hero =()=> {
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h1 className="animate-fade-up text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
             Transform Documents into
-            <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent"> Intelligent Insights</span>
+            <span className="bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 bg-clip-text text-transparent"> Intelligent Insights</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-black dark:text-white animate-fade-up animation-delay-100">
             Harness the power of AI to automatically process, analyze, and extract valuable information from your documents. Save time and reduce errors with our intelligent document processing solution.

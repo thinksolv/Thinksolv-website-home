@@ -57,10 +57,10 @@ const Working = () => {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               className="flex justify-center"
             >
-              <Card className="w-full max-w-sm bg-white bg-card shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
+              <Card className=" group relative w-full max-w-sm bg-white bg-card shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                 <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="p-3 bg-black rounded-full text-white">
+                  <div className=" flex items-center mb-4">
+                    <div className="p-3 bg-black rounded-full text-white group-hover:bg-blue-600 group-hover:text-white">
                       <step.icon className="w-6 h-6" />
                     </div>
                     <h3 className="ml-4 text-xl font-semibold text-gray-800 dark:text-white">{step.title}</h3>

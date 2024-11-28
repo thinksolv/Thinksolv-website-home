@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnimatedGradient from '../document-ai/Hero/AnimatedGradient';
 import AnimatedTestimonialsDemo from "@/components/Testimonials";
 import { Database, Workflow, Zap, Bot, LineChart, Shield, Smartphone, Users, Wand2, CheckCircle2, ClipboardCheck, Code, FileSearch, Rocket } from "lucide-react";
 
@@ -111,6 +112,7 @@ const steps = [
 export default function Page() {
   return (
     <main className="min-h-screen bg-background">
+      
       <Header />  
       <Hero />
       <Features />
@@ -124,7 +126,9 @@ export default function Page() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-background pt-24 pb-15">
+    <section className="relative overflow-hidden bg-background ">
+      <div className="relative isolate pt-14 pb-20 dark:bg-black">
+      <AnimatedGradient />
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -144,9 +148,13 @@ function Hero() {
         >
           <motion.h1 
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-black dark:text-white"
-          >
-            Transform Your Business with AppSheet Automation
+            >
+              <div className="max-w-3xl mx-auto text-center mb-10">
+            <h1 className="animate-fade-up text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
+            Elevate Your Business with
+            <span className="bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 bg-clip-text text-transparent"> AppSheet Automation!</span>
+          </h1>
+          </div>
           </motion.h1>
           <motion.p 
             variants={itemVariants}
@@ -210,6 +218,7 @@ function Hero() {
           ))}
         </motion.div>
       </div>
+    </div>  
     </section>
   );
 }

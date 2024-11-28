@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -12,10 +13,10 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import MobileNav from "./MobileNav";
 
 const Header: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
   const { theme, setTheme } = useTheme();
 
   const ThemeToggler = () => (
@@ -43,13 +44,13 @@ const Header: React.FC = () => {
                 className="rounded px-2"
               />
               <span className="text-2xl font-bold text-black dark:text-white mt-1">
-               thinksol<span className="text-red-500">v.</span>
+                thinksol<span className="text-red-500">v.</span>
               </span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden md:flex items-center ">
+          <NavigationMenu className="hidden md:flex items-center">
             <NavigationMenuList>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Services</NavigationMenuTrigger>
@@ -78,7 +79,7 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/web-dev" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="/services/appsheet-development" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Appsheet Development
                         </a>
                       </NavigationMenuLink>
@@ -148,22 +149,26 @@ const Header: React.FC = () => {
           </NavigationMenu>
 
           {/* Right Section */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
             <ThemeToggler />
-            <a href="/support">
+            <a href="/support" className="hidden md:block">
               <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
                 Contact Us
               </button>
             </a>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <button onClick={() => setExpanded(!expanded)} className="text-gray-500 dark:text-gray-400 focus:outline-none">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
+              aria-label="Toggle mobile menu"
+            >
               {expanded ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
           </div>
         </div>
+
+        {/* Mobile Navigation */}
+        <MobileNav expanded={expanded} setExpanded={setExpanded} />
       </div>
     </header>
   );

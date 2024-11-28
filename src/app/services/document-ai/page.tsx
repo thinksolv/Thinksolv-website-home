@@ -67,7 +67,7 @@ function Benefits() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -77,8 +77,8 @@ function Benefits() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="p-6 rounded-xl bg-card border h-full hover:shadow-lg transition-all">
-                <div className="text-4xl font-bold text-black mb-4 dark:text-white">
+              <div className="group relative p-6 rounded-xl bg-card border h-full hover:shadow-lg transition-all">
+                <div className="text-4xl font-bold text-black mb-4 dark:text-white group-hover:text-blue-600">
                   {benefit.metrics}
                 </div>
                 <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
