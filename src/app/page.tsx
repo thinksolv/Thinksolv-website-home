@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "@/components/Hero";
+import MainHero from "@/components/Hero";
 import Header from "@/components/Header";
 // import Features from "@/components/Features";
 import Services from "@/components/Services";
@@ -15,7 +15,7 @@ export default function Home() {
   return (
       <>
       <Header />
-      <Hero />
+      <MainHero />
       {/* <BrandsSection /> */}
       <About />
       <Product />

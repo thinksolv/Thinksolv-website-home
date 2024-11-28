@@ -3,7 +3,7 @@ import { Container } from '@/components/ui/container';
 import AnimatedGradient from './AnimatedGradient';
 import { FeatureCard } from './FeatureCard';
 
-const Hero =()=> {
+const HeroSection =()=> {
   return (
     
     <div className="relative isolate pt-14 pb-20 dark:bg-black">
@@ -55,4 +55,4 @@ const Hero =()=> {
   );
 }
 
-export default Hero;
+export default HeroSection;

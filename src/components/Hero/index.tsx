@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Cover } from "@/components/ui/cover";
 import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
-const Hero: React.FC = () => {
+const MainHero: React.FC = () => {
   return (
     <section className="relative py-12 sm:py-16 lg:pb-40 bg-white dark:bg-black transition-colors duration-200">
       {/* Background pattern */}
@@ -18,9 +18,10 @@ const Hero: React.FC = () => {
       <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-y-12 lg:items-center lg:grid-cols-2 xl:grid-cols-2 mt-20">
           {/* Hero text */}
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200">
-              Building Solutions <Cover>Thoughtfully</Cover>
+          <div className="text-center lg:text-left ">
+            <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200 ">
+            Building Solutions {' '}
+            <span className="">Thoughfully</span>
             </h1>
 
             <a
@@ -72,4 +73,4 @@ const Hero: React.FC = () => {
   );
 };
 
-export default Hero;
+export default MainHero;

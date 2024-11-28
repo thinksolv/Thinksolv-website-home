@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AnimatedGradient from '../document-ai/Hero/AnimatedGradient';
+import AnimatedGradient from '../document-ai/HeroSection/AnimatedGradient';
 import AnimatedTestimonialsDemo from "@/components/Testimonials";
 import { Database, Workflow, Zap, Bot, LineChart, Shield, Smartphone, Users, Wand2, CheckCircle2, ClipboardCheck, Code, FileSearch, Rocket } from "lucide-react";
 
@@ -12,8 +12,8 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.3
+      staggerChildren: 0.3,
+      delayChildren: 0.02
     }
   }
 };

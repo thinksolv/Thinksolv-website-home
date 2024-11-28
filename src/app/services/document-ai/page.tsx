@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import HeroSection from './Hero';
+import HeroSection from './HeroSection';
 import Header from '@/components/Header';
 import { motion } from "framer-motion";
 import Working from './How It Works';
@@ -77,7 +77,7 @@ function Benefits() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="group relative p-6 rounded-xl bg-card border h-full hover:shadow-lg transition-all">
+              <div className="group relative p-6 rounded-xl bg-card border border-black h-full shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                 <div className="text-4xl font-bold text-black mb-4 dark:text-white group-hover:text-blue-600">
                   {benefit.metrics}
                 </div>
