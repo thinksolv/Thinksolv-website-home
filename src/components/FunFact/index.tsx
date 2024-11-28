@@ -112,7 +112,7 @@ const FunFact = () => {
               </h3>
               <p className="text-lg lg:text-para2">Downloads</p>
             </motion.div>
-            <motion.div
+            {/* <motion.div
               variants={{
                 hidden: {
                   opacity: 0,
@@ -134,7 +134,7 @@ const FunFact = () => {
                 865
               </h3>
               <p className="text-lg lg:text-para2">Winning Award</p>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
       </section>
