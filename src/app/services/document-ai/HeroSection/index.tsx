@@ -1,4 +1,4 @@
-import { FileSearch, Brain, Zap } from 'lucide-react';
+import { FileSearch, Brain, Zap, Cpu, Database, BarChartIcon as ChartBar, } from 'lucide-react';
 import { Container } from '@/components/ui/container';
 import AnimatedGradient from './AnimatedGradient';
 import { FeatureCard } from './FeatureCard';
@@ -13,14 +13,14 @@ const HeroSection =()=> {
         <div className="max-w-2xl mx-auto text-center mb-16">
           <h1 className="animate-fade-up text-5xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
             Transform Documents into
-            <span className="bg-gradient-to-r from-blue-400 via-blue-600 to-blue-800 bg-clip-text text-transparent"> Intelligent Insights</span>
+            <span className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-600 bg-clip-text text-transparent"> Intelligent Insights</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-black dark:text-white animate-fade-up animation-delay-100">
             Harness the power of AI to automatically process, analyze, and extract valuable information from your documents. Save time and reduce errors with our intelligent document processing solution.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6 animate-fade-up animation-delay-200">
           <a
-              href="#about"
+              href="#usecases"
               className="inline-flex px-4 py-2 text-lg"
             >
               <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
@@ -48,6 +48,21 @@ const HeroSection =()=> {
             icon={Zap}
             title="Lightning Fast"
             description="Process thousands of documents in minutes with our optimized cloud infrastructure."
+          />
+          <FeatureCard
+            icon={ChartBar}
+            title="Insights Generation"
+            description="Generate actionable insights by identifying patterns and trends in the data."
+          />
+          <FeatureCard
+            icon={Cpu}
+            title="AI Processing"
+            description="Analyze documents using AI techniques like NLP, OCR, and machine learning for accurate extraction."
+          />
+          <FeatureCard
+            icon={Database}
+            title="Data Structuring"
+            description="Organize extracted data into structured formats for easy analysis and integration."
           />
         </div>
       </Container>

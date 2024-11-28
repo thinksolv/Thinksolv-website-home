@@ -3,7 +3,7 @@ import React from 'react';
 import HeroSection from './HeroSection';
 import Header from '@/components/Header';
 import { motion } from "framer-motion";
-import Working from './How It Works';
+import Working from './Use cases';
 import AnimatedTestimonialsDemo from '@/components/Testimonials';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';

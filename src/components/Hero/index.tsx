@@ -21,7 +21,7 @@ const MainHero: React.FC = () => {
           <div className="text-center lg:text-left ">
             <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200 ">
             Building Solutions {' '}
-            <span className="">Thoughfully</span>
+            <span className="">Thoughtfully</span>
             </h1>
 
             <a
@@ -38,20 +38,20 @@ const MainHero: React.FC = () => {
           <div className="flex flex-row items-center justify-center space-x-10">
             {/* First partner logo */}
             <NeonGradientCard
-              size={220} // Set circular size
+              size={320} // Set circular size
               className="flex items-center justify-center"
             >
               <Image
                 className="object-cover rounded-full"
                 src="/Google_Cloud_Partner_vr.png"
-                width={200}
+                width={300}
                 height={200}
                 alt="Google Cloud Partner"
               />
             </NeonGradientCard>
 
             {/* Second partner logo */}
-            <NeonGradientCard
+            {/* <NeonGradientCard
               size={220} // Set circular size
               className="flex items-center justify-center"
             >
@@ -64,7 +64,7 @@ const MainHero: React.FC = () => {
                   alt="Shopify Partner"
                 />
               </div>
-            </NeonGradientCard>
+            </NeonGradientCard> */}
 
           </div>
         </div>
