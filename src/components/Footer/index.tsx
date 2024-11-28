@@ -378,7 +378,7 @@ const Footer = () => {
               className="animate_top"
             >
               <p>
-                &copy; {new Date().getFullYear()} Owned and Maintained By Thinksolv Technologies. All rights reserved
+                &copy; {new Date().getFullYear()} Owned and Maintained By Thinksolv Technologies Private Limited. All rights reserved.
               </p>
             </motion.div>
 

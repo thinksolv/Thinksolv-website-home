@@ -7,20 +7,20 @@ import { Service } from "@/types/service";
 
 const SingleService = ({ service }: { service: Service }) => {
   return (
-    <motion.div
-      className="group relative flex flex-col rounded-lg bg-white dark:bg-black shadow-md hover:shadow-lg transition-all"
+<motion.div
+      className="group relative flex flex-col rounded-lg bg-white dark:bg-black shadow-md hover:shadow-lg transition-all max-w-xs mx-auto"
     >
       {/* Image Section */}
       <Image
-        width={400}
-        height={400}
+        width={350} // Adjusted width for smaller cards
+        height={350} // Adjusted height for smaller cards
         src={service.image}
         alt={service.title}
-        className="h-50  rounded-t-xl"
+        className="h-40 rounded-t-xl"
       />
 
       {/* Text Section */}
-      <div className="p-4 flex flex-col justify-between flex-grow dark:bg-hoverdark rounded-lg">
+      <div className="p-4  justify-between flex-grow dark:bg-hoverdark rounded-lg">
         <div>
           <h3 className="text-xl font-semibold text-black dark:text-white">
             {service.title}

@@ -16,12 +16,14 @@ const Services = () => {
               "We provide a range of innovative services designed to streamline your business processes and enhance productivity.",
           }}
         />
-
-        <div className="mt-10 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((service) => (
-            <SingleService key={service.id} service={service} />
-          ))}
-        </div>
+ 
+ <div className="container  px-4 py-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-4  justify-center">
+        {servicesData.map((service, index) => (
+          <SingleService key={index} service={service} />
+        ))}
+      </div>
+    </div>
       </div>
     </section>
   );
