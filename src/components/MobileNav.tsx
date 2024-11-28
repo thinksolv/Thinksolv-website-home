@@ -13,17 +13,17 @@ const MobileNav: React.FC<MobileNavProps> = ({ expanded, setExpanded }) => {
   const menuItems = {
     Services: [
       { title: "Document AI", href: "/services/document-ai" },
-      { title: "Business Intelligence", href: "/seo" },
-      { title: "Workflow Automations", href: "/interface-design" },
+    //   { title: "Business Intelligence", href: "/seo" },
+    //   { title: "Workflow Automations", href: "/interface-design" },
       { title: "Appsheet Development", href: "/web-dev" },
     ],
     Products: [
-      { title: "Docs to PDF", href: "https://www.docstopdf.pro" },
-      { title: "PDF to Docs", href: "https://www.pdftodocs.com" },
-      { title: "Docs to WP Pro", href: "https://www.docstowp.pro" },
-      { title: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
-      { title: "Bulk Converter Pro", href: "https://www.bulkconverter.pro" },
-      { title: "Docs to Markdown Pro", href: "https://www.docstomarkdown.pro" },
+        { title: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
+        { title: "Docs to PDF", href: "https://www.docstopdf.pro" },
+        { title: "Docs to Markdown Pro", href: "https://www.docstomarkdown.pro" },
+        { title: "Docs to WP Pro", href: "https://www.docstowp.pro" },
+        { title: "Bulk Converter Pro", href: "https://www.bulkconverter.pro" },
+        { title: "PDF to Docs", href: "https://www.pdftodocs.com" },
     ],
   };
 

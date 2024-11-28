@@ -130,7 +130,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-background ">
       <div className="relative isolate pt-14 pb-20 dark:bg-black">
       <AnimatedGradient />
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
@@ -138,7 +138,7 @@ function Hero() {
         style={{
           background: "radial-gradient(circle at 50% 50%, rgba(var(--black-rgb), 0.1) 0%, transparent 70%)"
         }}
-      />
+      /> */}
 
       <div className="container mx-auto px-4">
         <motion.div
@@ -168,9 +168,9 @@ function Hero() {
             variants={itemVariants}
             className=""
           >
-            <a href="#support">
+            <a href="#features">
                 <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg  hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
-                Get Started
+                Explore
               </button></a>
           </motion.div>
         </motion.div>
@@ -242,7 +242,7 @@ function Features () {
                 <Card className="group relative w-full max-w-sm bg-white bg-card border-black shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="p-3 bg-black rounded-full text-white group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="p-3 bg-black rounded-full text-white group-hover:bg-blue-600 group-hover:text-white dark:bg-white dark:text-black">
                         <feature.icon className="w-6 h-6" />
                       </div>
                       <h3 className="ml-4 text-xl font-semibold text-gray-800 dark:text-white">{feature.title}</h3>

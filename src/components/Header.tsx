@@ -63,7 +63,7 @@ const Header: React.FC = () => {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <li>
+                    {/* <li>
                       <NavigationMenuLink asChild>
                         <a href="/seo" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Business Intelligence
@@ -76,10 +76,10 @@ const Header: React.FC = () => {
                           Workflow Automations
                         </a>
                       </NavigationMenuLink>
-                    </li>
+                    </li> */}
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/services/appsheet-development" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="/web-dev" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Appsheet Development
                         </a>
                       </NavigationMenuLink>
@@ -94,6 +94,13 @@ const Header: React.FC = () => {
                   <ul className="grid gap-3 p-4 lg:w-[250px]">
                     <li>
                       <NavigationMenuLink asChild>
+                        <a href="https://www.mergedocs.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                          Merge Docs Pro
+                        </a>
+                      </NavigationMenuLink>
+                    </li>
+                    <li>
+                      <NavigationMenuLink asChild>
                         <a href="https://www.docstopdf.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Docs to PDF
                         </a>
@@ -101,8 +108,8 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.pdftodocs.com" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          PDF to Docs
+                        <a href="https://www.docstomarkdown.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                          Docs to Markdown Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -115,13 +122,6 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.mergedocs.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          Merge Docs Pro
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <li>
-                      <NavigationMenuLink asChild>
                         <a href="https://www.bulkconverter.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Bulk Converter Pro
                         </a>
@@ -129,8 +129,8 @@ const Header: React.FC = () => {
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.docstomarkdown.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          Docs to Markdown Pro
+                        <a href="https://www.pdftodocs.com" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                          PDF to Docs
                         </a>
                       </NavigationMenuLink>
                     </li>

@@ -58,7 +58,7 @@ const Footer = () => {
                 </a> */}
               </motion.div>
 
-              <div className="flex w-full flex-col gap- md:flex-row md:justify-between md:gap-0 lg:w-2/3 xl:w-9/12">
+              <div className="grid gap-8 w-full lg:flex lg:justify-between lg:gap-0 lg:w-2/3 xl:w-9/12 md:grid-cols-2">
                 <motion.div
                   variants={{
                     hidden: {
@@ -142,25 +142,7 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_pdf/302636103705"
-                        target="_blank"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Docs to PDF
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_wordpress_pro/346830534164"
-                        target="_blank"
-                        className="mb-3 inline-block hover:text-primary"
-                      >
-                        Docs to WP Pro
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://workspace.google.com/marketplace/app/merge_docs_pro/61337277026"
+                        href="https://www.mergedocs.pro"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
@@ -169,7 +151,34 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/bulk_converter_pro/327730061402"
+                        href="https://www.docstopdf.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to PDF
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.docstomarkdown.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to Markdown Pro 
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.docstowp.pro"
+                        target="_blank"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Docs to WP Pro
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="https://www.bulkconverter.pro"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
@@ -178,11 +187,11 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="https://workspace.google.com/marketplace/app/docs_to_markdown_pro/483386994804"
+                        href="https://www.pdftodocs.com"
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Docs to Markdown Pro 
+                        PDF to Docs
                       </a>
                     </li>
                   </ul>
@@ -212,23 +221,23 @@ const Footer = () => {
                   <ul>
                     <li>
                       <a
-                        href="#"
+                        href="/services/document-ai"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Document AI
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
                         href="#"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Workflow Automations
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <a
-                        href="#"
+                        href="/services/appsheet-development"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         AppSheet Development

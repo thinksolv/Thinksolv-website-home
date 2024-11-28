@@ -64,7 +64,7 @@ const UseCases = () => {
                 <Card className="group relative w-full max-w-sm bg-white bg-card border-black shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105">
                   <CardContent className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="p-3 bg-black rounded-full text-white group-hover:bg-blue-600 group-hover:text-white">
+                      <div className="p-3 bg-black rounded-xl text-white group-hover:bg-blue-600 group-hover:text-white dark:text-black dark:bg-white">
                         <useCase.icon className="w-6 h-6" />
                       </div>
                       <h3 className="ml-4 text-xl font-semibold text-gray-800 dark:text-white">{useCase.title}</h3>

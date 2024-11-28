@@ -25,11 +25,11 @@ const MainHero: React.FC = () => {
             </h1>
 
             <a
-              href="#about"
+              href="#products"
               className="inline-flex px-8 py-4 mt-8 text-lg"
             >
               <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
-                Learn More
+                Explore
               </button>
             </a>
           </div>
