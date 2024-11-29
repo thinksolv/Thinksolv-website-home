@@ -68,7 +68,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ expanded, setExpanded }) => {
               </Link>
             </div>
             <div className="py-2">
-            <a href="/support" className="">
+            <a href="/contact" className="">
               <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
                 Contact Us
               </button>

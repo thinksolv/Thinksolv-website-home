@@ -57,7 +57,7 @@ const Contact = () => {
               className="animate_top w-full rounded-lg bg-white p-7.5 shadow-solid-8 dark:border dark:border-strokedark dark:bg-black md:w-3/5 lg:w-3/4 xl:p-15"
             >
               <h2 className="mb-15 text-3xl font-semibold text-black dark:text-white xl:text-sectiontitle2">
-                Let's Talk
+                Let's Connect
               </h2>
 
               <form
@@ -177,9 +177,9 @@ const Contact = () => {
 
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">
-                  Our Loaction
+                  Our Location
                 </h3>
-                <p>Thinksolv Technologies Pvt Ltd, Forge Factory, KCT Tech Park, Coimbatore - 641 049</p>
+                <p>Thinksolv Technologies Pvt Ltd, Forge Factory, KCT Tech Park, Coimbatore - 641 049, India.</p>
               </div>
               <div className="5 mb-7">
                 <h3 className="mb-4 text-metatitle3 font-medium text-black dark:text-white">

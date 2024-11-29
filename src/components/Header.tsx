@@ -79,7 +79,7 @@ const Header: React.FC = () => {
                     </li> */}
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/web-dev" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="/services/appsheet-development" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Appsheet Development
                         </a>
                       </NavigationMenuLink>
@@ -151,7 +151,7 @@ const Header: React.FC = () => {
           {/* Right Section */}
           <div className="flex items-center space-x-4">
             <ThemeToggler />
-            <a href="/support" className="hidden md:block">
+            <a href="/contact" className="hidden md:block">
               <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
                 Contact Us
               </button>

@@ -54,7 +54,7 @@ const HeroSection =()=> {
             variants={itemVariants}
             className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto"
           >
-            Streamline workflows, boost productivity, and drive innovation with our professional AppSheet automation services.
+            Unlock insights, automate processes, and enhance decision-making with our professional Document AI services.
           </motion.p>
           
           <motion.div 
