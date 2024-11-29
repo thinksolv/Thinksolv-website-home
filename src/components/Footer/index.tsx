@@ -5,10 +5,10 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-black mt-15">
+      <footer className="border-t border-stroke bg-white dark:border-strokedark dark:bg-black mt-10">
         <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
           {/* <!-- Footer Top --> */}
-          <div className="py-20 lg:py-20">
+          <div className="py-15 lg:py-15">
             <div className="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
               <motion.div
                 variants={{
@@ -78,7 +78,7 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
-                    Quick Links
+                    Links
                   </h4>
 
                   <ul>
@@ -90,9 +90,9 @@ const Footer = () => {
                         Home
                       </a>
                     </li>
-                    <li>
+                    {/* <li>
                       <a
-                        href="#products"
+                        href="/products"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Products
@@ -100,18 +100,26 @@ const Footer = () => {
                     </li>
                     <li>
                       <a
-                        href="#services"
+                        href="/services"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Services
                       </a>
-                    </li>
+                    </li> */}
                     <li>
                       <a
                         href="/blog"
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/contact"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Contact
                       </a>
                     </li>
                   </ul>

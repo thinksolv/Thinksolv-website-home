@@ -29,13 +29,13 @@ const servicesData: Service[] = [
   //   image: "/cloud.jpg", // Your image path here
   //   url: "/services/cloud-integration",
   // },
-  // {
-  //   id: 5,
-  //   title: "Custom Software Solutions",
-  //   description: "Tailored software development to meet your business’s unique needs.",
-  //   image: "/images/custom-software.jpg", // Your image path here
-  //   url: "/services/custom-software",
-  // },
+  // // {
+  // //   id: 5,
+  // //   title: "Custom Software Solutions",
+  // //   description: "Tailored software development to meet your business’s unique needs.",
+  // //   image: "/images/custom-software.jpg", // Your image path here
+  // //   url: "/services/custom-software",
+  // // },
   // {
   //   id: 6,
   //   title: "Business Intelligence",
