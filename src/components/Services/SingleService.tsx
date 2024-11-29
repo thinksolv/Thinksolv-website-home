@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Service } from "@/types/service";
 
 const SingleService = ({ service }: { service: Service }) => {
   return (
-<motion.div
+<div
       className="group relative flex flex-col rounded-lg bg-white dark:bg-black shadow-md hover:shadow-lg transition-all max-w-xs mx-auto"
     >
       {/* Image Section */}
@@ -29,7 +29,7 @@ const SingleService = ({ service }: { service: Service }) => {
         </div>
 
         {/* Button Section */}
-        <div className="mt-6 opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+        <div className="mt-6 opacity-1">
           <a
             href={service.url}
             rel="noopener noreferrer"
@@ -43,8 +43,8 @@ const SingleService = ({ service }: { service: Service }) => {
       </div>
 
       {/* Hover Overlay */}
-      <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
-    </motion.div>
+      
+    </div>
   );
 };
 

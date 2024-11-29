@@ -78,7 +78,7 @@ const Footer = () => {
                   className="animate_top"
                 >
                   <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
-                    Quick Links
+                    Links
                   </h4>
 
                   <ul>
@@ -112,6 +112,14 @@ const Footer = () => {
                         className="mb-3 inline-block hover:text-primary"
                       >
                         Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href="/contact"
+                        className="mb-3 inline-block hover:text-primary"
+                      >
+                        Contact
                       </a>
                     </li>
                   </ul>
