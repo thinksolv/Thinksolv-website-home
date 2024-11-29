@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Service } from "@/types/service";
 
 const SingleService = ({ service }: { service: Service }) => {
@@ -12,11 +11,11 @@ const SingleService = ({ service }: { service: Service }) => {
     >
       {/* Image Section */}
       <Image
-        width={350} // Adjusted width for smaller cards
+        width={300} // Adjusted width for smaller cards
         height={350} // Adjusted height for smaller cards
         src={service.image}
         alt={service.title}
-        className="h-40 rounded-t-xl"
+        className="h-40 rounded-t-xl justify-center"
       />
 
       {/* Text Section */}
