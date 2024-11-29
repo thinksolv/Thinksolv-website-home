@@ -21,7 +21,15 @@ const MainHero: React.FC = () => {
           <div className="text-center lg:text-left ">
             <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200 ">
             Building Solutions {' '}
-            <span className="">Thoughtfully</span>
+            <span style={{
+              background: 'linear-gradient(to right, #2772ed, #E91C24)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              opacity:0.75
+            }}>
+              Thoughtfully
+            </span>
+
             </h1>
 
             <a
