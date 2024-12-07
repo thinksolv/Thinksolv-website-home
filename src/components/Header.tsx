@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import { Sun, Moon, MenuIcon, XIcon } from "lucide-react";
@@ -17,17 +17,42 @@ import MobileNav from "./MobileNav";
 
 const Header: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-  const ThemeToggler = () => (
-    <button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="p-2 text-gray-500 transition-colors duration-200 rounded-full hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:text-gray-400 dark:hover:bg-gray-800"
-      aria-label="Toggle dark mode"
-    >
-      {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-    </button>
-  );
+  useEffect(() => {
+    setMounted(true);
+
+    // Update dark mode state based on the system theme and current theme
+    const updateTheme = () => {
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const currentTheme = theme === "system" ? (systemDark ? "dark" : "light") : theme;
+      setIsDarkMode(currentTheme === "dark");
+    };
+
+    updateTheme();
+
+    // Add a listener to detect system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    mediaQuery.addEventListener("change", updateTheme);
+
+    return () => mediaQuery.removeEventListener("change", updateTheme);
+  }, [theme]);
+
+  const ThemeToggler = () => {
+    if (!mounted) return null;
+
+    return (
+      <button
+        onClick={() => setTheme(isDarkMode ? "light" : "dark")}
+        className="p-2 text-gray-500 transition-colors duration-200 rounded-full hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2 dark:text-gray-400 dark:hover:bg-gray-800"
+        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      >
+        {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+    );
+  };
 
   return (
     <header className="relative z-50 bg-white dark:bg-black py-3">
@@ -58,28 +83,20 @@ const Header: React.FC = () => {
                   <ul className="grid gap-3 p-4 w-[200px] lg:w-[250px]">
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/services/document-ai" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a
+                          href="/services/document-ai"
+                          className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition"
+                        >
                           Document AI
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    {/* <li>
-                      <NavigationMenuLink asChild>
-                        <a href="/seo" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          Business Intelligence
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="/interface-design" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          Workflow Automations
-                        </a>
-                      </NavigationMenuLink>
-                    </li> */}
-                    <li>
-                      <NavigationMenuLink asChild>
-                        <a href="/services/appsheet-development" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a
+                          href="/services/appsheet-development"
+                          className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition"
+                        >
                           Appsheet Development
                         </a>
                       </NavigationMenuLink>
@@ -92,44 +109,44 @@ const Header: React.FC = () => {
                 <NavigationMenuTrigger>Products</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 lg:w-[250px]">
-                    <li>
+                  <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.mergedocs.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.mergedocs.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Merge Docs Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.docstopdf.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.docstopdf.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Docs to PDF
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.docstomarkdown.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.docstomarkdown.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Docs to Markdown Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.docstowp.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.docstowp.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Docs to WP Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.bulkconverter.pro" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.bulkconverter.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           Bulk Converter Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
                     <li>
                       <NavigationMenuLink asChild>
-                        <a href="https://www.pdftodocs.com" target="_blank" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
+                        <a href="https://www.pdftodocs.com" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
                           PDF to Docs
                         </a>
                       </NavigationMenuLink>
