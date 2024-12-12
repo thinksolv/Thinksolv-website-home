@@ -10,10 +10,10 @@ const Services = () => {
         {/* Section Header */}
         <SectionHeader
           headerInfo={{
-            title: "Our Services",
-            subtitle: "Empowering Business with Cutting-Edge Solutions",
+            title: "Your Technology Partner",
+            subtitle: "A Partnership for Success",
             description:
-              "We provide a range of innovative services designed to streamline your business processes and enhance productivity.",
+              "As your trusted technology partner, we understand your needs and deliver bespoke solutions to drive growth and efficiency.",
           }}
         />
  

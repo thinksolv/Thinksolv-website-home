@@ -163,7 +163,7 @@ const Footer = () => {
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        Docs to PDF
+                        Docs to PDF Pro
                       </a>
                     </li>
                     <li>
@@ -199,7 +199,7 @@ const Footer = () => {
                         target="_blank"
                         className="mb-3 inline-block hover:text-primary"
                       >
-                        PDF to Docs
+                        PDF to Docs Pro
                       </a>
                     </li>
                   </ul>

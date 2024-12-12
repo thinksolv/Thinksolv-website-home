@@ -59,8 +59,7 @@ const FunFact = () => {
               Trusted by Global Companies.
             </h2>
             <p className="mx-auto lg:w-11/12">
-            We are proud to partner with leading global companies, delivering innovative solutions that drive success across industries. 
-            </p>
+            We provide tailored Google Workspace automation and integration solutions, helping businesses worldwide streamline workflows and boost productivity.            </p>
           </motion.div>
 
           <div className="flex flex-wrap justify-center gap-8 lg:gap-42.5">
@@ -83,7 +82,7 @@ const FunFact = () => {
               className="animate_top text-center"
             >
               <h3 className="mb-2.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                5K+
+                100+
               </h3>
               <p className="text-lg lg:text-para2">World Wide Clients</p>
             </motion.div>
@@ -106,9 +105,9 @@ const FunFact = () => {
               className="animate_top text-center"
             >
               <h3 className="mb-2.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                25K+
+                25K+ 
               </h3>
-              <p className="text-lg lg:text-para2">Downloads</p>
+              <p className="text-lg lg:text-para2">App Users</p>
             </motion.div>
             {/* <motion.div
               variants={{

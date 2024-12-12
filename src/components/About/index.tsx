@@ -34,7 +34,7 @@ const About = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
             >
-              A Perfect Agency for <br/>Business of All Size
+              A Perfect Agency for <br/>Businesses of All Sizes
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -42,9 +42,7 @@ const About = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-400"
             >
-              Empowering businesses with innovative solutions through AppSheet development,
-              workflow automation, and Document AI technologies.
-            </motion.p>
+Helping businesses with Google Workspace automation, AppSheet development, Document AI, and integrations with various business tools such as ClickUp, HubSpot, and more.            </motion.p>
           </div>
         </motion.div>
       </div>
@@ -72,7 +70,7 @@ const About = () => {
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-black dark:bg-white rounded-2xl p-6 shadow-xl">
-                <p className="text-3xl font-bold text-white dark:text-black">2000+</p>
+                <p className="text-3xl font-bold text-white dark:text-black">100+</p>
                 <p className="text-blue-300">Satisfied Clients</p>
               </div>
             </motion.div>
@@ -85,18 +83,17 @@ const About = () => {
               className="lg:pl-12"
             >
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
-                Reduce Work with Powerful Solutions
+              Reduce Work with Efficient Solutions
               </h2>
               <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
-                Our integrations are designed to simplify processes, enhance productivity,
-                and deliver tangible results for businesses of all sizes. With our expertise
-                and thoughtful approach, we help you build smarter systems that work for you.
+              Our integrations streamline processes, improve productivity, and deliver measurable results. We help you build efficient systems tailored to your business needs.
               </p>
               <div className="mt-8 space-y-4 ">
                 {[
-                  'Custom workflow automation',
+                  'Google Workspace integration with tools like ClickUp, HubSpot, and others',
+                  'Automated document workflows',
                   'Intelligent document processing',
-                  'Seamless integration with existing systems',
+                  'Custom workflow automations',
                 ].map((item, index) => (
                   <motion.div
                     key={item}

@@ -11,8 +11,8 @@ const Product = () => {
         <SectionHeader
           headerInfo={{
             title: "Our Products",
-            subtitle: "Streamlining Your Workflow with Powerful Solutions",
-            description: "A team of passionate professionals delivering cutting-edge products designed to elevate your business and streamline operations.",
+            subtitle: "Streamle Your Workflow with our ready to use products",
+            description: "Our thoughtfully crafted products are designed to automate tasks and optimize workflows, helping your business operate more efficiently.",
           }}
         />
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 ">
