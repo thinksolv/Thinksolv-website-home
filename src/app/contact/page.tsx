@@ -6,8 +6,8 @@ import Footer from "@/components/Footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Support Page - Solid SaaS Boilerplate",
-  description: "This is Support page for Solid Pro",
+  title: "Contact thinksolv",
+  description: "This is contact page for thinksolv",
   // other metadata
 };
 
@@ -19,9 +19,9 @@ const SupportPage = () => {
     <SectionHeader 
           headerInfo={{
             title: "Contact",
-            subtitle: "Start to Build a Healthy Network",
+            subtitle: "Contact Us",
             description:
-              "Discover our innovative services designed to streamline your business processes and boost productivity. Get in touch with us today!"
+              "Reach out to us today and discover how we can help your business automate tasks, streamline processes, boost productivity, and save valuable time."
           }}
         />
      </div>   
