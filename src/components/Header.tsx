@@ -119,7 +119,7 @@ const Header: React.FC = () => {
                     <li>
                       <NavigationMenuLink asChild>
                         <a href="https://www.docstopdf.pro" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          Docs to PDF
+                          Docs to PDF Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
@@ -147,7 +147,7 @@ const Header: React.FC = () => {
                     <li>
                       <NavigationMenuLink asChild>
                         <a href="https://www.pdftodocs.com" target="_blank" rel="noopener noreferrer" className="block p-3 rounded-md hover:bg-blue-200 dark:hover:bg-gray-800 transition">
-                          PDF to Docs
+                          PDF to Docs Pro
                         </a>
                       </NavigationMenuLink>
                     </li>
