@@ -119,7 +119,7 @@ export default function Page() {
       <Features />
       <Benefits />
       {/* <Process /> */}
-      <AnimatedTestimonialsDemo />
+     
       <Footer />
     </main>
   );

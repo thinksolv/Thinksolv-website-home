@@ -18,7 +18,7 @@ export default function Landing() {
       <HeroSection />
       <Working />
       <Benefits />
-      <AnimatedTestimonialsDemo />
+     
       <Contact />
       <Footer />
     </div>
