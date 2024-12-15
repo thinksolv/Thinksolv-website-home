@@ -25,7 +25,7 @@ const About = () => {
             >
               <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
                 <Sparkles className="h-4 w-4 mr-2" />
-                Official Google Workspace™ Build Partner
+                Official Google Cloud™ Build Partner
               </span>
             </motion.div>
             <motion.h1
