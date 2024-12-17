@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import confetti from "canvas-confetti";
 
+import Head from "next/head";
+
 import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -12,7 +14,7 @@ export default function Welcome() {
       origin: { y: 0.7 },
     };
 
-    function fire(particleRatio, opts) {
+    function fire(particleRatio: number, opts: object) {
       confetti(
         Object.assign({}, defaults, opts, {
           particleCount: Math.floor(count * particleRatio),
@@ -50,6 +52,12 @@ export default function Welcome() {
   }, []);
   return (
     <>
+      <Head>
+        <title>
+          How to Save a ChatGPT Conversation as a Word or PDF Document
+        </title>
+      </Head>
+
       <Header />
       <div className=" text-gray-800 font-sans">
         {/* Header */}
@@ -76,7 +84,11 @@ export default function Welcome() {
           <section className="flex flex-col items-center text-center mb-10">
             <span className="text-4xl text-black-600 font-bold mb-4">2</span>
             <h2 className="text-xl font-semibold leading-loose	">
-              Ask a question to ChatGPT. <p>Once, you have received the answer, Click  the Word or PDF button on the bottom right of the response.</p>
+              Ask a question to ChatGPT.{" "}
+              <p>
+                Once, you have received the answer, Click the Word or PDF button
+                on the bottom right of the response.
+              </p>
             </h2>
             <Image
               src="/chatgpt-to-word-pdf-2.png" // Replace with actual image path
@@ -87,10 +99,7 @@ export default function Welcome() {
             />
           </section>
 
-         
-
-   {/* Demo Video Section */}
-          
+          {/* Demo Video Section */}
         </main>
 
         {/* Features Section */}
