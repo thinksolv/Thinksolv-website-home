@@ -27,17 +27,13 @@ export default function Welcome() {
             can be used to identify you, such as your name, address, or
             location. Your email address will not be sold or shared with third
             parties.
+
+            
           </p>
+          <br/>
+          <p>We also do not collect the chatGPT responses while converting them to Word or PDF format.</p>
         </section>
-        <section class="mb-8">
-          <h2 class="text-xl font-semibold ">Links to Other Websites</h2>
-          <p class="mt-4">
-            Our Google Chrome Extensions may contain links to other websites not
-            operated by us. This Privacy Policy does not cover how those
-            websites process personal information. We encourage you to review
-            the Privacy Policy of every website that you visit.
-          </p>
-        </section>
+        
         <section class="mb-8">
           <h2 class="text-xl font-semibold ">Changes to this Privacy Policy</h2>
           <p class="mt-4">
