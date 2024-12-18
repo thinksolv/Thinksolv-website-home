@@ -62,6 +62,13 @@ export default function Welcome() {
       <div className=" text-gray-800 font-sans">
         {/* Header */}
         <header className="bg-white py-4 px-6 text-center">
+          <p className="text-lg font-semibold text-gray-700 mb-6">
+            Thank you for installing the{" "}
+            <span className="text-blue-600 font-bold">
+              ChatGPT to Word or PDF
+            </span>{" "}
+            extension.
+          </p>
           <h1 className="text-3xl font-bold">
             How to Save a ChatGPT Conversation as a Word or PDF Document
           </h1>
