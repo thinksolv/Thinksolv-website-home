@@ -75,10 +75,12 @@ export default function Welcome() {
         </header>
 
         <main className="max-w-4xl mx-auto mt-8 p-6 bg-white ">
-            
           <section className="flex flex-col items-center text-center mb-10">
             <span className="text-4xl text-black-600 font-bold mb-4">1</span>
-            <h2 className="text-xl font-semibold">Open chatpgpt.com. If its already open, refresh it after installing the add-on.</h2>
+            <h2 className="text-xl font-semibold">
+              Open chatpgpt.com. If its already open, refresh it after
+              installing the add-on.
+            </h2>
             <Image
               src="/chatgpt-to-word-pdf-1.png" // Replace with actual image path
               alt="Open ChatGPT"
@@ -141,9 +143,13 @@ export default function Welcome() {
         <section className="text-center my-8">
           <a
             href="#"
-            className="bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition duration-300"
+            className="inline-block" /* Ensures proper alignment for the image as a button */
           >
-            Download the Extension
+            <img
+              src="/chrome-badge.png"
+              alt="Download the Extension"
+              className="hover:opacity-90 transition duration-300"
+            />
           </a>
         </section>
       </div>
