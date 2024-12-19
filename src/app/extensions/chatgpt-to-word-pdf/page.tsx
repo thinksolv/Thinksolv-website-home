@@ -75,9 +75,10 @@ export default function Welcome() {
         </header>
 
         <main className="max-w-4xl mx-auto mt-8 p-6 bg-white ">
+            
           <section className="flex flex-col items-center text-center mb-10">
             <span className="text-4xl text-black-600 font-bold mb-4">1</span>
-            <h2 className="text-xl font-semibold">Open chatpgpt.com</h2>
+            <h2 className="text-xl font-semibold">Open chatpgpt.com. If its already open, refresh it after installing the add-on.</h2>
             <Image
               src="/chatgpt-to-word-pdf-1.png" // Replace with actual image path
               alt="Open ChatGPT"
