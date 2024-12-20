@@ -59,10 +59,10 @@ export default function Welcome() {
       </Head>
 
       <Header />
-      <div className=" text-gray-800 font-sans">
+      <div className=" text-gray-600 dark:text-white font-sans bg-white dark:border-strokedark dark:bg-black" >
         {/* Header */}
-        <header className="bg-white py-4 px-6 text-center">
-          <p className="text-lg font-semibold text-gray-700 mb-6">
+        <header className="py-4 px-6 text-center">
+          <p className="text-lg font-semibold mb-6">
             Thank you for installing the{" "}
             <span className="text-blue-600 font-bold">
               ChatGPT to Word or PDF
@@ -74,9 +74,9 @@ export default function Welcome() {
           </h1>
         </header>
 
-        <main className="max-w-4xl mx-auto mt-8 p-6 bg-white ">
+        <main className="max-w-4xl mx-auto mt-8 p-6 bg-white dark:border-strokedark dark:bg-black text-gray-600 dark:text-white ">
           <section className="flex flex-col items-center text-center mb-10">
-            <span className="text-4xl text-black-600 font-bold mb-4">1</span>
+            <span className="text-4xl font-bold mb-4">1</span>
             <h2 className="text-xl font-semibold">
               Open chatpgpt.com. If its already open, refresh it after
               installing the add-on.
@@ -92,7 +92,7 @@ export default function Welcome() {
 
           {/* Step 2 */}
           <section className="flex flex-col items-center text-center mb-10">
-            <span className="text-4xl text-black-600 font-bold mb-4">2</span>
+            <span className="text-4xl font-bold mb-4">2</span>
             <h2 className="text-xl font-semibold leading-loose	">
               Ask a question to ChatGPT.{" "}
               <p>
@@ -113,26 +113,26 @@ export default function Welcome() {
         </main>
 
         {/* Features Section */}
-        <section className="max-w-4xl mx-auto my-12 p-6 bg-white rounded-lg shadow-md">
+        <section className="max-w-4xl mx-auto my-12 p-6 bg-white dark:border-strokedark dark:bg-black text-gray-600 dark:text-white rounded-lg shadow-md">
           <h2 className="text-2xl font-bold text-center mb-8">
             Features of ChatGPT to Word or PDF Extension
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <h3 className="text-lg font-semibold">One-click Export</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm  mt-2">
                 Save your conversation as a Word or PDF file instantly.
               </p>
             </div>
             <div className="text-center">
               <h3 className="text-lg font-semibold">Supports Images</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm  mt-2">
                 Retain all images in the exported document.
               </p>
             </div>
             <div className="text-center">
               <h3 className="text-lg font-semibold">Preserves Formatting</h3>
-              <p className="text-sm text-gray-600 mt-2">
+              <p className="text-sm  mt-2">
                 Keep text, tables, and code blocks formatted perfectly.
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function Welcome() {
         </section>
 
         {/* Call to Action */}
-        <section className="text-center my-8">
+        <section className="text-center my-8 bg-white dark:border-strokedark dark:bg-black">
           <a
             href="#"
             className="inline-block" /* Ensures proper alignment for the image as a button */
