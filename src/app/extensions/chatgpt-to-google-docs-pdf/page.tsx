@@ -82,7 +82,7 @@ export default function Welcome() {
               installing the add-on.
             </h2>
             <Image
-              src="/chatgpt-to-word-pdf-1.png" // Replace with actual image path
+              src="/chatgpt-to-word-pdf-1.png" //use this word image itself because its a blank chatgpt screen
               alt="Open ChatGPT"
               width={800}
               height={520}
@@ -101,7 +101,7 @@ export default function Welcome() {
               </p>
             </h2>
             <Image
-              src="/chatgpt-to-word-pdf-2.png" // Replace with actual image path
+              src="/chatgpt-to-google-docs-pdf-2.png"
               alt="Select Conversation"
               width={800}
               height={520}
