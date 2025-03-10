@@ -59,7 +59,7 @@ export default function Welcome() {
       </Head>
 
       <Header />
-      <div className=" text-gray-600 dark:text-white font-sans bg-white dark:border-strokedark dark:bg-black" >
+      <div className=" text-gray-600 dark:text-white font-sans bg-white dark:border-strokedark dark:bg-black">
         {/* Header */}
         <header className="py-4 px-6 text-center">
           <p className="text-lg font-semibold mb-6">
@@ -92,12 +92,12 @@ export default function Welcome() {
 
           {/* Step 2 */}
           <section className="flex flex-col items-center text-center mb-10">
-            <span className="text-4xl font-bold mb-4">2</span>
+            <span className="text-4xl font-bold mb-4">3</span>
             <h2 className="text-xl font-semibold leading-loose	">
               Ask a question to ChatGPT.{" "}
               <p>
-                Once, you have received the answer, Click the Google Docs or PDF button
-                on the bottom right of the response.
+                Once, you have received the answer, Click the Google Docs or PDF
+                button on the bottom right of the response.
               </p>
             </h2>
             <Image
@@ -108,7 +108,48 @@ export default function Welcome() {
               className="mt-4 rounded-lg"
             />
           </section>
+          {/* Step 2 */}
+          <section className="flex flex-col items-center text-center mb-10">
+            <span className="text-4xl font-bold mb-4">3</span>
+            <h2 className="text-xl font-semibold leading-loose	">
+              First time, the authorization window will open.
+              <p>
+                The Chrome extension requests only the minimal permissions
+                needed to create files on your Google Drive. Authorize it and
+                click <b>Ok.</b>. This step is required only once. Once
+                authorized, the content will be created as a Google Doc, and the
+                document will open automatically.
+              </p>
+            </h2>
+            <Image
+              src="/google-auth.jpg"
+              alt="Select Conversation"
+              width={800}
+              height={520}
+              className="mt-4 rounded-lg"
+            />
+          </section>
 
+          <section className="flex flex-col items-center text-center mb-10">
+            <span className="text-4xl font-bold mb-4">4</span>
+            <h2 className="text-xl font-semibold leading-loose	">
+              Going forward, whenever you need a Google Doc, you can create it
+              with a single click.
+              <p>
+                Ask a question to ChatGPT, and once you receive the answer,
+                click the <b>Google Docs</b> button at the bottom right of the
+                response.
+              </p>
+              The document will be created automatically without authorization request.
+            </h2>
+            <Image
+              src="/chatgpt-to-google-docs-pdf-2.png"
+              alt="Select Conversation"
+              width={800}
+              height={520}
+              className="mt-4 rounded-lg"
+            />
+          </section>
           {/* Demo Video Section */}
         </main>
 
