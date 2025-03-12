@@ -8,7 +8,7 @@ export default function Welcome() {
         <header className="text-center mb-8">
           <h1 className="text-3xl font-bold ">Privacy Policy</h1>
           <p className="mt-2 text-lg ">
-            for Google Chrome Extension ChatGPT to Word or PDF
+            for Google Chrome Extension <b>ChatGPT to Word or PDF</b> and <b>ChatGPT to Google Docs or PDF</b>
           </p>
         </header>
         Effective Date: December 17, 2024
@@ -16,7 +16,7 @@ export default function Welcome() {
           <p className="mt-4">
             We respect and value your privacy. This Privacy Policy describes how
             we handle and protect your personal information in relation to your
-            use of our Google Chrome extension.
+            use of our Google Chrome extension(s).
           </p>
         </section>
         <section className="mb-8">
@@ -31,7 +31,7 @@ export default function Welcome() {
             
           </p>
           <br/>
-          <p>We also do not collect the chatGPT responses while converting them to Word or PDF format.</p>
+          <p>We also do not collect the chatGPT responses while converting them to Google Docs or Word or PDF format.</p>
         </section>
         
         <section className="mb-8">
