@@ -21,7 +21,7 @@ const SupportPage = () => {
             title: "Contact",
             subtitle: "Contact Us",
             description:
-              "Reach out to us today and discover how we can help your business automate tasks, streamline processes, boost productivity, and save valuable time."
+              "Reach out to us today to ask any questions about our products or discover how we can help your business automate tasks, streamline processes, boost productivity, and save valuable time."
           }}
         />
      </div>   
