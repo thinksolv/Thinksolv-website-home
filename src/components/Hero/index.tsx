@@ -46,7 +46,7 @@ const MainHero: React.FC = () => {
           <div className="flex flex-row items-center justify-center space-x-10">
             {/* First partner logo */}
             <NeonGradientCard
-              size={320} // Set circular size
+              size={250} // Set circular size
               className="flex items-center justify-center"
             >
               <Image
@@ -59,8 +59,8 @@ const MainHero: React.FC = () => {
             </NeonGradientCard>
 
             {/* Second partner logo */}
-            {/* <NeonGradientCard
-              size={220} // Set circular size
+            <NeonGradientCard
+              size={250} // Set circular size
               className="flex items-center justify-center"
             >
               <div className="flex items-center justify-center w-full h-full">
@@ -72,7 +72,7 @@ const MainHero: React.FC = () => {
                   alt="Shopify Partner"
                 />
               </div>
-            </NeonGradientCard> */}
+            </NeonGradientCard>
 
           </div>
         </div>
