@@ -1,36 +1,27 @@
 import React from "react";
 import Contact from "@/components/Contact";
 import SectionHeader from "@/components/Common/SectionHeader";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Metadata } from "next";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Contact thinksolv",
-  description: "This is contact page for thinksolv",
-  // other metadata
+  title: "Contact Thinksolv",
+  description: "This is the contact page for Thinksolv",
 };
 
-const SupportPage = () => {
+const ContactPage = () => {
+  const { header } = siteConfig.contact;
+
   return (
     <>
-    <Header />
-    <div className="pt-5">
-    <SectionHeader 
-          headerInfo={{
-            title: "Contact",
-            subtitle: "Contact Us",
-            description:
-              "Reach out to us today to ask any questions about our products or discover how we can help your business automate tasks, streamline processes, boost productivity, and save valuable time."
-          }}
-        />
-     </div>   
-    <div className="pb-10 pt-10">
-      <Contact />
-    </div>
-    <Footer />
-  </>  
+      <div className="pt-5">
+        <SectionHeader headerInfo={header} />
+      </div>
+      <div className="pb-10 pt-10">
+        <Contact />
+      </div>
+    </>
   );
 };
 
-export default SupportPage;
+export default ContactPage;
