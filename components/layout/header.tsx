@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import { cn } from "../../lib/utils";
 import { Sun, Moon, MenuIcon, XIcon } from "lucide-react";
 import {
   NavigationMenu,
@@ -12,15 +13,25 @@ import {
   NavigationMenuLink,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "../components/ui/navigation-menu";
-import MobileNav from "./MobileNav";
-import { siteConfig } from "../config/site";
+} from "../../components/ui/navigation-menu";
+import MobileNav from "../MobileNav";
+import { siteConfig } from "../../config/site";
 
 const Header: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     setMounted(true);
@@ -49,7 +60,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="relative z-50 bg-white dark:bg-black py-3">
+    <header className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-100",
+        scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent",
+      )}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
           {/* Logo and Brand */}

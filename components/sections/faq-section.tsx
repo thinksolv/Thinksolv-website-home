@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { siteConfig } from '../config/site';
+import { siteConfig } from '../../config/site';
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);

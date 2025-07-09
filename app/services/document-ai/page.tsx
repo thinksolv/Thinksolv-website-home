@@ -3,7 +3,7 @@ import React from 'react';
 import HeroSection from './HeroSection';
 import { motion } from "framer-motion";
 import Working from './Use cases';
-import Contact from '../../../components/Contact';
+import Contact from '../../../components/sections/contact-section';
 import {CheckCircle2} from "lucide-react";
 
 

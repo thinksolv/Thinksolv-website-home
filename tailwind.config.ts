@@ -228,6 +228,10 @@ const config = {
 				  opacity: "0",
 				},
 			},
+			slide: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
   		},
   		animation: {
 			line1: "line 3s linear infinite",
@@ -237,6 +241,7 @@ const config = {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
 			shimmer: "shimmer 2s linear infinite",
+			slide: 'slide 30s linear infinite',
 			"meteor-effect": "meteor 5s linear infinite",
   			'background-position-spin': 'background-position-spin 3000ms infinite alternate'
   		}

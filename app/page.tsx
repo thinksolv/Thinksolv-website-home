@@ -1,15 +1,14 @@
 import React from "react";
-import MainHero from "../components/hero-section";
+import MainHero from "../components/sections/hero-section";
 // import Features from "../components/Features";
-import Services from "../components/Services";
-import Product from "../components/Products";
-import About from "../components/About";
-import FunFact from "../components/FunFact";
+import Services from "../components/sections/services-section";
+import Product from "../components/sections/products-section";
+import Contact from "../components/sections/contact-section";
+// import BrandsSection from "../components/sections/brands-section";
+import About from "../components/sections/about-section";
+import FunFact from "../components/sections/statistics-section";
+import FAQ from "../components/sections/faq-section";
 // import Map from "../components/Map";
-import AnimatedTestimonialsDemo from "../components/Testimonials";
-import FAQ from "../components/FAQ";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 // import BrandsSection from '../components/Brands';
 
 export default function Home() {

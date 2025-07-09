@@ -2,9 +2,9 @@ import './globals.css'
 import Script from 'next/script'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import { ThemeProvider } from '../components/ThemeProvider'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+import { ThemeProvider } from '../components/theme-provider'
+import  Header from '../components/layout/header'
+import Footer from '../components/layout/footer'
 import { siteConfig } from '../config/site'
 
 // Local fonts
