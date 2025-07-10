@@ -5,7 +5,7 @@ import { Metadata } from "next"
 import { getPostBySlug, getAllPosts } from "../../lib/posts"
 import { Button } from "../../components/ui/button"
 import { ArrowLeft} from "lucide-react"
-import ShareButton from "../../components/share" 
+import ShareButton from "../../components/ui/share" 
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 

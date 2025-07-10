@@ -1,73 +1,50 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { siteConfig } from "../../config/site";
-import { NeonGradientCard } from "../../components/ui/neon-gradient-card";
+import { Button } from "@/components/ui/button";
+import { CreditCard } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import SpiderWebBuilder from "@/components/sections/spider-chart";
 
-const MainHero: React.FC = () => {
+export default function HeroSection() {
   const { hero } = siteConfig;
 
   return (
-    <section className="relative py-12 sm:py-16 lg:pb-40 bg-white dark:bg-black transition-colors duration-200">
-      {/* Background pattern */}
-      <div className="absolute bottom-0 right-0 overflow-hidden">
-        <img
-          className="w-full h-auto origin-bottom-right transform scale-150 lg:w-auto lg:mx-auto lg:object-cover lg:scale-75 opacity-50 dark:opacity-10 transition-opacity duration-200"
-          src={hero.backgroundPattern}
-          alt="Background pattern"
-        />
-      </div>
-
-      <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-y-12 lg:items-center lg:grid-cols-2 xl:grid-cols-2 mt-20">
-          {/* Hero text */}
-          <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl sm:leading-tight lg:text-6xl lg:leading-tight font-pj transition-colors duration-200">
+    <div
+      className="w-full flex py-30 items-center justify-center bg-cover bg-center"
+      style={{ backgroundImage: `url(${hero.backgroundPattern})` }}
+    >
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-12 py-12 sm:py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Left Content */}
+        <div className="space-y-8 text-center lg:text-left">
+          <div className="space-y-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               {hero.title}{" "}
               <span
-                style={{
-                  background: hero.gradient,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  opacity: 0.75,
-                }}
+                className="bg-clip-text text-transparent"
+                style={{ backgroundImage: hero.gradient }}
               >
                 {hero.highlighted}
               </span>
             </h1>
-
-            <a href={hero.buttonHref} className="inline-flex px-8 py-4 mt-8 text-lg">
-              <button className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
-                {hero.buttonText}
-              </button>
-            </a>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
+              Chatbase is the complete platform for building & deploying AI support agents for your business.
+            </p>
           </div>
-
-          {/* Hero logos */}
-          <div className="flex flex-row items-center justify-center space-x-10">
-            {hero.partners.map((partner, idx) => (
-              <NeonGradientCard
-                key={idx}
-                size={250}
-                className="flex items-center justify-center"
-              >
-                <div className="flex items-center justify-center w-full h-full">
-                  <Image
-                    className="object-cover rounded-full"
-                    src={partner.src}
-                    width={partner.width}
-                    height={partner.height}
-                    alt={partner.alt}
-                  />
-                </div>
-              </NeonGradientCard>
-            ))}
+          <div className="space-y-4">
+            <Button
+              className="bg-black hover:bg-gray-800 text-white px-8 py-3 text-lg font-medium rounded-lg"
+              asChild
+            >
+              <a href={hero.buttonHref}>{hero.buttonText}</a>
+            </Button>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
 
-export default MainHero;
+        {/* Right Side: Spider Animation */}
+        <div className="relative w-full h-[500px] rounded-2xl shadow-2xl">
+          <SpiderWebBuilder />
+        </div>
+      </div>
+    </div>
+  );
+}

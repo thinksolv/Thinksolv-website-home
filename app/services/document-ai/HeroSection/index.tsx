@@ -1,11 +1,12 @@
 import { FileSearch, Brain, Zap, Cpu, Database, BarChartIcon as ChartBar, } from 'lucide-react';
 import { Container } from '../../../../components/ui/container';
 import AnimatedGradient from './AnimatedGradient';
+import { Variants } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { FeatureCard } from './FeatureCard';
 
 const HeroSection =()=> {
-  const containerVariants = {
+  const containerVariants : Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -16,7 +17,7 @@ const HeroSection =()=> {
     }
   };
   
-  const itemVariants = {
+  const itemVariants : Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,

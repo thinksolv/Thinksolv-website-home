@@ -5,8 +5,8 @@ import confetti from "canvas-confetti";
 import Head from "next/head";
 
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "../../../components/layout/header";
+import Footer from "../../../components/layout/footer";
 export default function Welcome() {
   useEffect(() => {
     const count = 200;

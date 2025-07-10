@@ -43,42 +43,9 @@ export const siteConfig = {
     "Tech Innovation",
   ],
 
-
- menuBarItems: [
-    {
-      icon: Home,
-      label: "Home",
-      href: "/",
-      gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
-      iconColor: "text-blue-500",
-    },
-    {
-      icon: Package,
-      label: "Products",
-      href: "/#products",
-      gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
-      iconColor: "text-orange-500",
-    },
-    {
-      icon: Wrench,
-      label: "Services",
-      href: "/#services",
-      gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
-      iconColor: "text-green-500",
-    },
-    {
-      icon: Book,
-      label: "Blog",
-      href: "/blog",
-      gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-      iconColor: "text-red-500",
-    },
-  ],
-
   nav: {
     services: [
       { label: "Document AI", href: "/services/document-ai" },
-      { label: "Appsheet Development", href: "/services/appsheet-development" },
     ],
     products: [
       { label: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
@@ -370,7 +337,6 @@ export const siteConfig = {
     ],
     services: [
       { label: "Document AI", href: "/services/document-ai" },
-      { label: "AppSheet Development", href: "/services/appsheet-development" },
     ],
     social: [
       {

@@ -3,12 +3,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import type { Transition } from "framer-motion";
 
-const transition = {
+const transition: Transition = {
   type: "spring",
-  mass: 0.5,
-  damping: 11.5,
-  stiffness: 100,
+  mass: 1,
+  damping: 20,
+  stiffness: 300,
   restDelta: 0.001,
   restSpeed: 0.001,
 };

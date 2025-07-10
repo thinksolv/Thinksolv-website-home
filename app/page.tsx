@@ -1,6 +1,5 @@
 import React from "react";
-import MainHero from "../components/sections/hero-section";
-// import Features from "../components/Features";
+import HeroSection from "../components/sections/hero-section";
 import Services from "../components/sections/services-section";
 import Product from "../components/sections/products-section";
 import Contact from "../components/sections/contact-section";
@@ -14,11 +13,10 @@ import FAQ from "../components/sections/faq-section";
 export default function Home() {
   return (
     <>
-      <MainHero />
+      <HeroSection />
       {/* <BrandsSection /> */}
       <About />
       <Product />
-      {/* <Features /> */}
       <Services />
       <FunFact />
       {/* <Map /> */}

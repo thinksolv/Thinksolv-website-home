@@ -496,3 +496,65 @@ export const slideInRight: Variants = {
     }
   }
 };
+
+export const temVariants : Variants ={
+  initial: { rotateX: 0, opacity: 1 },
+  hover: {
+    rotateX: -90,
+    opacity: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+}
+
+export const backVariants: Variants = {
+  initial: { rotateX: 90, opacity: 0 },
+  hover: {
+    rotateX: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+}
+
+export const glowVariants: Variants = {
+  initial: { opacity: 0, scale: 0.8 },
+  hover: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      opacity: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+      scale: { duration: 0.8, type: "spring", stiffness: 200, damping: 20 },
+    },
+  },
+}
+
+export const dropdownVariants : Variants = {
+  initial: {
+    opacity: 0,
+    y: -20,
+    scale: 0.9,
+    rotateX: -15,
+  },
+  hover: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: {
+      duration: 0.2,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+}
+
+export const sharedTransition : Transition = {
+  type: "spring",
+  stiffness: 200,
+  damping: 25,
+  duration: 0.6,
+}

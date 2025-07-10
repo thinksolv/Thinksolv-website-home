@@ -14,8 +14,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ expanded, setExpanded }) => {
     Services: [
       { title: "Document AI", href: "/services/document-ai" },
     //   { title: "Business Intelligence", href: "/seo" },
-    //   { title: "Workflow Automations", href: "/interface-design" },
-      { title: "Appsheet Development", href: "/web-dev" },
+    //   { title: "Workflow Automations", href: "/interface-desi
     ],
     Products: [
         { title: "Merge Docs Pro", href: "https://www.mergedocs.pro" },

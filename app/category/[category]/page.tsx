@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Metadata } from "next";
-import { getPostsByCategory, getAllCategories } from "@/lib/posts";
-import { Button } from "@/components/ui/button";
+import { getPostsByCategory, getAllCategories } from "../../../lib/posts";
+import { Button } from "../../../components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata: Metadata = {

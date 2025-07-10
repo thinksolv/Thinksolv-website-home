@@ -20,6 +20,9 @@ const config = {
   	},
 	scrollBehavior: ['responsive'],
   	extend: {
+		fontFamily: {
+      cursive: ['"Pacifico"', 'cursive'], // or 'Satisfy', 'Dancing Script'
+    },
 		backgroundImage: {
 			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			'gradient-conic':
@@ -180,6 +183,12 @@ const config = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
+
+			twinkle: {
+      '0%, 100%': { opacity: '0.2' },
+      '50%': { opacity: '0.6' },
+    },
+			
 			move: {
 				"0%": { transform: "translateX(-200px)" },
 				"100%": { transform: "translateX(200px)" },
@@ -234,6 +243,7 @@ const config = {
         },
   		},
   		animation: {
+			 twinkle: 'twinkle 6s ease-in-out infinite',
 			line1: "line 3s linear infinite",
 			line2: "line 6s linear infinite",
 			line3: "line 9s linear infinite",
