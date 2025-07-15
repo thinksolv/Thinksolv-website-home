@@ -11,7 +11,7 @@ const Product = () => {
         <SectionHeader
           headerInfo={{
             title: "Our Products",
-            subtitle: "Streamle Your Workflow with our ready to use products",
+            subtitle: "Streamline your workflow with our products",
             description: "Our thoughtfully crafted products are designed to automate tasks and optimize workflows, helping your business operate more efficiently.",
           }}
         />
