@@ -1,12 +1,14 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import { siteConfig } from '../../config/site';
+import React, { useState, useEffect, useRef } from "react";
+import { siteConfig } from "../../config/site";
+import SectionGradient from "../ui/section-gradient";
+import { Plus } from "lucide-react";
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const { title, items: faqs } = siteConfig.faq;
+  const { title, description, items: faqs } = siteConfig.faq;
 
   const handleClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -17,7 +19,7 @@ const FAQ = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('opacity-100', 'translate-y-0');
+            entry.target.classList.add("opacity-100", "translate-y-0");
             observer.unobserve(entry.target);
           }
         });
@@ -33,45 +35,60 @@ const FAQ = () => {
   }, []);
 
   return (
-    <section className="bg-white dark:bg-gray-900 py-16 px-4">
-      <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-        {title}
-      </h2>
+    <section className=" py-20 px-6 dar:bg-black">
+      {/* Section Heading with Gradient */}
+<div className="relative max-w-7xl mx-auto text-center mb-12">
+  <SectionGradient />
+  <h2 className="text-5xl font-bold text-gray-900 dark:text-white relative z-10">
+    {title}
+  </h2>
+  <p className="mt-4 text-lg font-bold text-gray-600 dark:text-gray-300 relative z-10">
+    {description}
+  </p>
+</div>
 
-      <div className="max-w-3xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <div
-            key={index}
-            onClick={() => handleClick(index)}
-            ref={(el) => {
-              itemRefs.current[index] = el;
-            }}
-            className={`rounded-lg transition-all duration-300 cursor-pointer overflow-hidden shadow-sm dark:shadow-md bg-white dark:bg-black px-6 py-5 transform opacity-0 translate-y-6`}
-          >
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                {faq.question}
-              </h3>
-              <span
-                className={`transform transition-transform text-xl text-blue-600 ${activeIndex === index ? 'rotate-90' : ''
-                  }`}
-              >
-                ▶
-              </span>
-            </div>
 
+      <div className="max-w-3xl mx-auto space-y-6">
+        {faqs.map((faq, index) => {
+          const isActive = activeIndex === index;
+
+          return (
             <div
-              className={`transition-all duration-300 ease-in-out text-gray-700 dark:text-gray-200 ${activeIndex === index
-                  ? 'max-h-[300px] opacity-100 mt-4'
-                  : 'max-h-0 opacity-0'
-                } overflow-hidden`}
+              key={index}
+              onClick={() => handleClick(index)}
+              ref={(el) => {
+                itemRefs.current[index] = el;
+              }}
+              className="transition-all duration-300 transform opacity-0 translate-y-6 bg-white dark:bg-black border border-primary/50 dark:border-primary/50 rounded-xl shadow-md hover:shadow-lg cursor-pointer overflow-hidden"
             >
-              <p className="border-l-4 border-blue-600 pl-4 text-base leading-relaxed">
-                {faq.answer}
-              </p>
+              {/* Header */}
+              <div className="flex justify-between items-center px-6 py-5">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {faq.question}
+                </h3>
+
+                {/* Morphing + to X by rotation */}
+                <span
+                  className={`transform transition-transform duration-300 text-primary`}
+                  style={{ transform: isActive ? "rotate(45deg)" : "rotate(0deg)" }}
+                >
+                  <Plus className="w-6 h-6" />
+                </span>
+              </div>
+
+              {/* Answer */}
+              <div
+                className={`transition-all duration-300 ease-in-out px-6 pt-0 pb-5 text-gray-700 dark:text-gray-300 ${
+                  isActive ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
+                } overflow-hidden`}
+              >
+                <p className="text-base border-l-4 border-primary pl-4 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

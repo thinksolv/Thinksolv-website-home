@@ -1,76 +1,85 @@
-'use client';
+"use client";
 
-import React from "react";
+import { siteConfig } from "@/config/site";
+import { useState } from "react";
+import { CheckCircle } from "lucide-react";
+import SectionGradient from "@/components/ui/section-gradient";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import SectionHeader from "../Common/SectionHeader";
-import { siteConfig } from "../../config/site";
 
-const Services = () => {
-  const { title, subtitle, description, items } = siteConfig.services;
+export default function Services() {
+  const { title, description, items } = siteConfig.services;
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const activeService = items[activeIndex];
 
   return (
-    <section id="services" className="py-16 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeader
-          headerInfo={{
-            title,
-            subtitle,
-            description,
-          }}
-        />
+    <section className="max-w-7xl mx-auto py-20 px-4 sm:px-6">
+      {/* Section Header */}
+      <div className="relative text-center mb-16">
+        <SectionGradient />
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black dark:text-white relative z-10">
+          {title}
+        </h2>
+        <p className="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-medium relative z-10 max-w-2xl mx-auto">
+          {description}
+        </p>
+      </div>
 
-        <div className="container px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 justify-center">
-            {items.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group relative flex flex-col rounded-lg bg-white dark:bg-black shadow-md hover:shadow-lg transition-all max-w-xs mx-auto"
-              >
-                {/* Image */}
-                <Image
-                  width={300}
-                  height={350}
-                  src={service.image}
-                  alt={service.title}
-                  className="h-40 rounded-t-xl object-cover w-full"
-                />
+      {/* Tabs Header */}
+      <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10 px-2">
+        {items.map((service, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`px-4 sm:px-6 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 border ${
+              activeIndex === index
+                ? "bg-black text-white dark:bg-white dark:text-black border-black dark:border-white"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-700 border-transparent"
+            }`}
+          >
+            {service.title}
+          </button>
+        ))}
+      </div>
 
-                {/* Text */}
-                <div className="p-4 justify-between flex-grow dark:bg-hoverdark rounded-lg">
-                  <div>
-                    <h3 className="text-xl font-semibold text-black dark:text-white">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-black dark:text-white">
-                      {service.description}
-                    </p>
-                  </div>
+      {/* Responsive Card */}
+      <div className="w-full max-w-[850px] mx-auto rounded-2xl shadow-md border border-primary/50 dark:border-primary/50 bg-white dark:bg-[#111] overflow-hidden transition-all duration-300 flex flex-col sm:flex-col">
+        {/* Image Section */}
+        <div className="h-[200px] sm:h-[220px] flex items-center justify-center bg-gray-50 dark:bg-black p-4">
+          <Image
+            src={activeService.image}
+            alt={activeService.title}
+            width={250}
+            height={250}
+            className="rounded-md object-contain max-h-[160px] sm:max-h-[180px] w-full"
+          />
+        </div>
 
-                  {/* Button */}
-                  <div className="mt-6">
-                    <a
-                      href={service.url}
-                      rel="noopener noreferrer"
-                      className="inline-block"
-                    >
-                      <button className="text-center px-4 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200">
-                        Explore
-                      </button>
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+        {/* Text Section */}
+        <div className="p-4 sm:p-6">
+          <div className="overflow-y-auto flex flex-col gap-y-4 max-h-[300px] sm:max-h-[280px] pr-1">
+            <h3 className="text-xl sm:text-2xl font-semibold text-black dark:text-white">
+              {activeService.title}
+            </h3>
+
+            <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+              {activeService.description}
+            </p>
+
+            <ul className="space-y-2">
+              {activeService.features.map((feature, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm"
+                >
+                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Services;
+}

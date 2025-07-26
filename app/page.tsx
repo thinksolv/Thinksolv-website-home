@@ -13,9 +13,10 @@ import FAQ from "../components/sections/faq-section";
 export default function Home() {
   return (
     <>
+    <div  className="bg-red dark:bg-black">
       <HeroSection />
       {/* <BrandsSection /> */}
-      <About />
+      {/* <About /> */}
       <Product />
       <Services />
       <FunFact />
@@ -23,6 +24,7 @@ export default function Home() {
       {/*<AnimatedTestimonialsDemo />*/}
       <FAQ />
       <Contact />
+   </div>   
     </>
   );
 }

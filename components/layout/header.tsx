@@ -1,51 +1,23 @@
 "use client"
 
-import type React from "react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { useTheme } from "next-themes"
-import {
-  MenuIcon,
-  XIcon,
-  ChevronDown,
-  Settings,
-  Package,
-  BookOpen,
-  Phone,
-  Sun,
-  Moon,
-} from "lucide-react"
-
+import { MenuIcon, XIcon, ChevronDown, Settings, Package, BookOpen, Mail } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle" // ✅ <-- use your reusable toggle
 import MobileNav from "../../components/MobileNav"
 import { siteConfig } from "../../config/site"
-import {
-  temVariants,
-  backVariants,
-  glowVariants,
-  dropdownVariants,
-  sharedTransition,
-} from "../../lib/framer-animations"
+import { dropdownVariants, sharedTransition } from "../../lib/framer-animations"
 import { cn } from "../../lib/utils"
 
-const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme()
-
-  return (
-    <motion.button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-      aria-label="Toggle Theme"
-      className="p-2 rounded-md border dark:border-white border-black hover:bg-accent/30 transition"
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      {theme === "dark" ? (
-        <Sun className="h-5 w-5 text-white" />
-      ) : (
-        <Moon className="h-5 w-5 text-black" />
-      )}
-    </motion.button>
-  )
+interface AnimatedMenuItemProps {
+  children: React.ReactNode
+  icon?: React.ReactNode
+  href?: string
+  hasDropdown?: boolean
+  dropdownItems?: Array<{ label: string; href: string }>
+  iconColor?: string
+  dropdownKey?: string
 }
 
 const AnimatedMenuItem = ({
@@ -55,21 +27,12 @@ const AnimatedMenuItem = ({
   hasDropdown = false,
   dropdownItems = [],
   iconColor,
-  gradient,
   dropdownKey,
-}: {
-  children: React.ReactNode
-  icon?: React.ReactNode
-  href?: string
-  hasDropdown?: boolean
-  dropdownItems?: Array<{ label: string; href: string }>
-  iconColor?: string
-  gradient?: string,
-  dropdownKey?: string
-}) => {
+}: AnimatedMenuItemProps) => {
   const [isHovered, setIsHovered] = useState(false)
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
+const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+
 
   const handleMouseEnter = () => {
     if (timeoutId) {
@@ -89,11 +52,7 @@ const AnimatedMenuItem = ({
   }
 
   return (
-    <motion.div
-      className="relative group"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
+    <motion.div className="relative group" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <motion.a
         href={href}
         className={cn(
@@ -103,21 +62,13 @@ const AnimatedMenuItem = ({
         whileHover={{ scale: 1.05 }}
       >
         {icon && (
-          <span
-            className={cn(
-              "transition-colors duration-300",
-              isHovered && iconColor ? iconColor : "text-foreground/60"
-            )}
-          >
+          <span className={cn("transition-colors duration-300", isHovered && iconColor ? iconColor : "text-foreground/60")}>
             {icon}
           </span>
         )}
         <span className="font-medium transition">{children}</span>
         {hasDropdown && (
-          <motion.div
-            animate={{ rotate: isHovered ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
+          <motion.div animate={{ rotate: isHovered ? 180 : 0 }} transition={{ duration: 0.3 }}>
             <ChevronDown className="h-4 w-4" />
           </motion.div>
         )}
@@ -149,26 +100,20 @@ const AnimatedMenuItem = ({
               >
                 <div className="flex items-center gap-2">
                   <motion.div className="w-2 h-2 rounded-full bg-current opacity-0 group-hover:opacity-100 transition duration-200" />
-                  <span className="text-sm font-medium group-hover:font-semibold transition">
-                    {item.label}
-                  </span>
+                  <span className="text-sm font-medium group-hover:font-semibold transition">{item.label}</span>
                 </div>
                 {dropdownKey === "products" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M14 3h7m0 0v7m0-7L10 14"
-                    />
-                  </svg>
-                )}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7m0 0v7m0-7L10 14" />
+  </svg>
+)}
               </motion.a>
             ))}
           </div>
@@ -178,119 +123,127 @@ const AnimatedMenuItem = ({
   )
 }
 
-
-const Header = () => {
+const Header = ({ showHeader = true, showLogo = true }) => {
   const [expanded, setExpanded] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 0)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 0)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
-    <header
+    <motion.header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-100",
-        scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent border-b",
+        scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent border-b"
       )}
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between py-4">
-          <motion.div
-            className="flex items-center space-x-3"
-            whileHover={{ scale: 1.02 }}
-            transition={{ duration: 0.2 }}
-          >
-            <a href="/" title={siteConfig.name} className="flex items-center">
-              <Image
-                src={siteConfig.logo.src || "/placeholder.svg"}
-                alt={siteConfig.logo.alt}
-                width={siteConfig.logo.width}
-                height={siteConfig.logo.height}
-                className="rounded px-2"
-              />
-              <span className="text-2xl font-bold text-black dark:text-white mt-1">
-                {siteConfig.brandText.main}
-                <span className="text-red-500">{siteConfig.brandText.highlight}</span>
-              </span>
-            </a>
-          </motion.div>
+      <div className="container mx-auto px-0 ">
+        <div className="flex items-center py-4 w-full">
+  {/* Logo on the far left */}
+  <motion.div
+    className="flex items-center space-x-3"
+    whileHover={{ scale: 1.02 }}
+    transition={{ duration: 0.2 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: showLogo ? 1 : 0 }}
+  >
+    <a href="/" title={siteConfig.name} className="flex items-center">
+      <div id="header-logo-container" className="relative">
+        <Image
+          src={siteConfig.logo.src || "/thinksolv-logo.png"}
+          alt={siteConfig.logo.alt}
+          width={siteConfig.logo.width}
+          height={siteConfig.logo.height}
+          className="rounded px-2"
+        />
+      </div>
+      <span className="text-2xl font-bold text-black dark:text-white mt-1">
+        {siteConfig.brandText.main}
+        <span className="text-red-500">{siteConfig.brandText.highlight}</span>
+      </span>
+    </a>
+  </motion.div>
 
-          <motion.nav
-            className="hidden md:flex items-center gap-4 p-3 rounded-3xl bg-gradient-to-r from-background/60 via-background/40 to-background/60 backdrop-blur-xl border border-border/30 shadow-xl"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <AnimatedMenuItem
-              icon={<Settings className="h-5 w-5" />}
-              hasDropdown
-              dropdownItems={siteConfig.nav.services}
-              gradient="radial-gradient(circle, rgba(34,197,94,0.2) 0%, rgba(22,163,74,0.1) 50%, rgba(21,128,61,0) 100%)"
-              iconColor="text-green-500"
-              dropdownKey="services"
-            >
-              Services
-            </AnimatedMenuItem>
+  {/* Spacer pushes everything else to far right */}
+  <div className="flex-grow" />
+  {/* <motion.div
+      className="flex px-5 items-center space-x-6"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: showHeader ? 1 : 0, x: showHeader ? 0 : 20 }}
+      transition={{ duration: 0.6, delay: 0.15 }}
+    >
+      <ThemeToggle />
+    </motion.div>   */}
+  {/* Right-aligned Menu + ThemeToggle + Mobile Nav Button */}
+  <div className="flex items-center gap-4">
+    {/* Menu Bar */}
+    <motion.nav
+      className="hidden md:flex items-center gap-4 p-3 rounded-3xl bg-gradient-to-r from-background/60 via-background/40 to-background/60 backdrop-blur-xl border border-border/30 dark:border-white shadow-xl"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
+      transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+    >
+      <AnimatedMenuItem
+        icon={<Settings className="h-5 w-5" />}
+        hasDropdown
+        dropdownItems={siteConfig.nav.services}
+        iconColor="text-red-500"
+        dropdownKey="services"
+      >
+        Services
+      </AnimatedMenuItem>
 
-            <AnimatedMenuItem
-              icon={<Package className="h-5 w-5" />}
-              hasDropdown
-              dropdownItems={siteConfig.nav.products}
-              gradient="radial-gradient(circle, rgba(249,115,22,0.2) 0%, rgba(234,88,12,0.1) 50%, rgba(194,65,12,0) 100%)"
-              iconColor="text-orange-500"
-              dropdownKey="products"
-            >
-              Products
-            </AnimatedMenuItem>
+      <AnimatedMenuItem
+        icon={<Package className="h-5 w-5" />}
+        hasDropdown
+        dropdownItems={siteConfig.nav.products}
+        iconColor="text-red-500"
+        dropdownKey="products"
+      >
+        Products
+      </AnimatedMenuItem>
 
-            <AnimatedMenuItem
-              icon={<BookOpen className="h-5 w-5" />}
-              href={siteConfig.nav.blog.href}
-              gradient="radial-gradient(circle, rgba(239,68,68,0.2) 0%, rgba(220,38,38,0.1) 50%, rgba(185,28,28,0) 100%)"
-              iconColor="text-red-500"
-            >
-              {siteConfig.nav.blog.label}
-            </AnimatedMenuItem>
-            <AnimatedMenuItem
-              icon={<Phone className="h-5 w-5" />}
-              href={siteConfig.nav.contact.href}
-              gradient="radial-gradient(circle, rgba(239,68,68,0.2) 0%, rgba(220,38,38,0.1) 50%, rgba(185,28,28,0) 100%)"
-              iconColor="text-blue-500"
-            >
-              {siteConfig.nav.contact.label}
-            </AnimatedMenuItem>
-          </motion.nav>
+      <AnimatedMenuItem
+        icon={<BookOpen className="h-5 w-5" />}
+        href={siteConfig.nav.blog.href}
+        iconColor="text-red-500"
+      >
+        {siteConfig.nav.blog.label}
+      </AnimatedMenuItem>
 
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            {/* <a href={siteConfig.nav.contact.href} className="hidden md:block">
-              <motion.button
-                className="text-center px-6 py-2 font-bold rounded-md border dark:bg-black dark:border-white dark:text-white border-black bg-white text-black text-lg hover:shadow-[5px_5px_0px_0px_rgba(0,0,0)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255)] transition duration-200"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {siteConfig.nav.contact.label}
-              </motion.button>
-            </a> */}
-            <motion.button
-              onClick={() => setExpanded(!expanded)}
-              className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
-              aria-label="Toggle mobile menu"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {expanded ? <XIcon className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
-            </motion.button>
-          </div>
-        </div>
+      <AnimatedMenuItem
+        icon={<Mail className="h-5 w-5" />}
+        href={siteConfig.nav.contact.href}
+        iconColor="text-red-500"
+      >
+        {siteConfig.nav.contact.label}
+      </AnimatedMenuItem>
+    </motion.nav>
+
+    {/* Theme toggle and mobile menu icon */}
+    
+      <motion.button
+        onClick={() => setExpanded(!expanded)}
+        className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
+        aria-label="Toggle mobile menu"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        {expanded ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+      </motion.button>
+  </div>
+</div>
+
+
         <MobileNav expanded={expanded} setExpanded={setExpanded} />
       </div>
-    </header>
+    </motion.header>
   )
 }
 

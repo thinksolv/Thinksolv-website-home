@@ -1,176 +1,112 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import * as PIXI from "pixi.js";
+import { useEffect, useRef } from 'react';
+import * as PIXI from 'pixi.js';
 
-const SpiderWebBuilder = () => {
+export default function SpiderWeb() {
   const canvasRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    let app: PIXI.Application;
-    let animationFrame: number;
+    if (!canvasRef.current) return;
 
-    const setup = async () => {
-      if (!canvasRef.current) return;
+    const app = new PIXI.Application({
+      resizeTo: window,
+      backgroundAlpha: 0,
+      antialias: true,
+    });
 
-      const width = 600;
-      const height = 500;
+    canvasRef.current.appendChild(app.view as HTMLCanvasElement);
 
-      app = new PIXI.Application({
-        width,
-        height,
-        backgroundAlpha: 0,
-        antialias: true,
-      });
+    const spacing = 80;
+    const cols = Math.ceil(window.innerWidth / spacing) + 2;
+    const rows = Math.ceil(window.innerHeight / spacing) + 2;
+    const points: PIXI.Point[][] = [];
 
-      canvasRef.current.appendChild(app.view as unknown as Node);
-
-      const center = { x: width / 2, y: height / 2 };
-      const numSpokes = 12;
-      const numRings = 6;
-      const maxRadius = 160;
-      const spiralOffset = 20;
-      const frameDelay = 6; // slower animation
-
-      const spokeAngles = Array.from({ length: numSpokes }, (_, i) =>
-        (i * 2 * Math.PI) / numSpokes
-      );
-
-      // Ring points: [ring][pointIndex]
-      const rings: { x: number; y: number }[][] = [];
-      for (let r = 1; r <= numRings; r++) {
-        const radius = (r / numRings) * maxRadius;
-        const ringPoints = spokeAngles.map((angle) => ({
-          x: center.x + radius * Math.cos(angle),
-          y: center.y + radius * Math.sin(angle),
-        }));
-        rings.push(ringPoints);
+    for (let i = 0; i < cols; i++) {
+      points[i] = [];
+      for (let j = 0; j < rows; j++) {
+        points[i][j] = new PIXI.Point(i * spacing, j * spacing);
       }
+    }
 
-      const webGraphics = new PIXI.Graphics();
-      app.stage.addChild(webGraphics);
+    const grid = new PIXI.Graphics();
+    grid.lineStyle(1, 0xeeeeee, 0.2);
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        if (i < cols - 1)
+          grid.moveTo(points[i][j].x, points[i][j].y).lineTo(points[i + 1][j].x, points[i + 1][j].y);
+        if (j < rows - 1)
+          grid.moveTo(points[i][j].x, points[i][j].y).lineTo(points[i][j + 1].x, points[i][j + 1].y);
+      }
+    }
+    app.stage.addChild(grid);
 
-      const threadGraphics = new PIXI.Graphics();
-      app.stage.addChild(threadGraphics);
+    const spider = PIXI.Sprite.from('/spider.png');
+    spider.anchor.set(0.5);
+    spider.width = 30;
+    spider.height = 30;
+    app.stage.addChild(spider);
 
-      const spiderTexture = await PIXI.Assets.load("/spider.png");
-      const spider = new PIXI.Sprite(spiderTexture);
-      spider.anchor.set(0.5);
-      spider.width = 32;
-      spider.height = 32;
-      spider.position.set(center.x, -40); // start above
-      app.stage.addChild(spider);
+    const web = new PIXI.Graphics();
+    web.lineStyle(2, 0x333333, 0.6);
+    app.stage.addChild(web);
 
-      let step = 0;
-      let frameCount = 0;
-      const totalRadial = numSpokes;
-      const totalSpiral = numRings;
-      const totalSteps = totalRadial + totalSpiral;
+    let current: PIXI.Point = points[0][0];
 
-      const spiderDropFrames = 40;
+    // Faster spider movement
+    const moveSpider = (from: PIXI.Point, to: PIXI.Point, onComplete: () => void) => {
+      let progress = 0;
+      const duration = 10 + Math.random() * 10; // very fast: ~10–20 ticks
 
-      const animate = () => {
-        frameCount++;
+      app.ticker.add(function animate(delta) {
+        progress += delta;
+        const t = Math.min(progress / duration, 1);
+        spider.x = from.x + (to.x - from.x) * t;
+        spider.y = from.y + (to.y - from.y) * t;
 
-        webGraphics.clear();
-        webGraphics.lineStyle(1, 0xcccccc, 0.8);
-
-        threadGraphics.clear();
-        threadGraphics.lineStyle(1, 0xffffff, 0.4);
-        threadGraphics.moveTo(center.x, 0);
-        threadGraphics.lineTo(spider.x, spider.y - 10);
-
-        if (frameCount < spiderDropFrames) {
-          spider.y = -40 + (frameCount / spiderDropFrames) * (center.y - 100);
-          animationFrame = requestAnimationFrame(animate);
-          return;
+        if (t === 1) {
+          web.moveTo(from.x, from.y);
+          web.lineTo(to.x, to.y);
+          current = to;
+          app.ticker.remove(animate);
+          setTimeout(onComplete, 5 + Math.random() * 10); // very short delay
         }
-
-        if ((frameCount - spiderDropFrames) % frameDelay !== 0) {
-          animationFrame = requestAnimationFrame(animate);
-          return;
-        }
-
-        // Draw radial lines (longer than spiral)
-        for (let i = 0; i < Math.min(step + 1, totalRadial); i++) {
-          const angle = spokeAngles[i];
-          const x = center.x + (maxRadius + spiralOffset) * Math.cos(angle);
-          const y = center.y + (maxRadius + spiralOffset) * Math.sin(angle);
-          webGraphics.moveTo(center.x, center.y);
-          webGraphics.lineTo(x, y);
-        }
-
-        // Draw spiral curves (concave arcs)
-        if (step >= totalRadial) {
-          const spiralStep = step - totalRadial;
-          for (let r = 0; r <= spiralStep && r < rings.length; r++) {
-            const points = rings[r];
-            if (!points || points.length === 0) continue;
-
-            for (let i = 0; i < points.length; i++) {
-              const p1 = points[i];
-              const p2 = points[(i + 1) % points.length];
-              const cx = (p1.x + p2.x) / 2;
-              const cy = (p1.y + p2.y) / 2;
-
-              const offsetX = (center.x - cx) * 0.15; // concave inward
-              const offsetY = (center.y - cy) * 0.15;
-
-              const controlX = cx + offsetX;
-              const controlY = cy + offsetY;
-
-              webGraphics.moveTo(p1.x, p1.y);
-              webGraphics.quadraticCurveTo(controlX, controlY, p2.x, p2.y);
-            }
-          }
-        }
-
-        // Move spider to active point
-        let target;
-        if (step < totalRadial) {
-          const angle = spokeAngles[step];
-          target = {
-            x: center.x + maxRadius * Math.cos(angle),
-            y: center.y + maxRadius * Math.sin(angle),
-          };
-        } else if (step < totalSteps) {
-          const ringIndex = step - totalRadial;
-          target = rings[ringIndex]?.[0];
-        }
-
-        if (target) {
-          spider.x = target.x;
-          spider.y = target.y;
-        }
-
-        step++;
-        if (step <= totalSteps) {
-          animationFrame = requestAnimationFrame(animate);
-        }
-      };
-
-      animate();
-      setLoading(false);
+      });
     };
 
-    setup();
+    const getRandomNeighbor = (pt: PIXI.Point): PIXI.Point => {
+      const i = Math.round(pt.x / spacing);
+      const j = Math.round(pt.y / spacing);
+
+      const neighbors: PIXI.Point[] = [];
+
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          const ni = i + dx;
+          const nj = j + dy;
+          if (dx === 0 && dy === 0) continue;
+          if (ni >= 0 && ni < cols && nj >= 0 && nj < rows) {
+            neighbors.push(points[ni][nj]);
+          }
+        }
+      }
+
+      return neighbors[Math.floor(Math.random() * neighbors.length)];
+    };
+
+    const buildWeb = () => {
+      const next = getRandomNeighbor(current);
+      moveSpider(current, next, buildWeb);
+    };
+
+    spider.x = current.x;
+    spider.y = current.y;
+    buildWeb();
 
     return () => {
-      cancelAnimationFrame(animationFrame);
-      app?.destroy(true, true);
+      app.destroy(true, true);
     };
   }, []);
 
-  return (
-    <div ref={canvasRef} className="w-full h-[500px] relative bg-white">
-      {loading && (
-        <div className="absolute inset-0 items-center justify-center">
-          <div className="animate-pulse text-gray-400">Loading animation...</div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default SpiderWebBuilder;
+  return <div ref={canvasRef} className="absolute inset-0 z-0 pointer-events-none" />;
+}

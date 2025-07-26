@@ -5,7 +5,6 @@ import confetti from "canvas-confetti";
 import Head from "next/head";
 
 import Image from "next/image";
-import Header from "../../../components/layout/header";
 import Footer from "../../../components/layout/footer";
 export default function Welcome() {
   useEffect(() => {
@@ -58,7 +57,6 @@ export default function Welcome() {
         </title>
       </Head>
 
-      <Header />
       <div className=" text-gray-600 dark:text-white font-sans bg-white dark:border-strokedark dark:bg-black">
         {/* Header */}
         <header className="py-4 px-6 text-center">
@@ -194,7 +192,6 @@ export default function Welcome() {
           </a>
         </section>
       </div>
-      <Footer />
     </>
   );
 }

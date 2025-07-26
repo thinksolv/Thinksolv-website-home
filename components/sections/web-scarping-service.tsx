@@ -7,6 +7,7 @@ import {
   Globe,
   Database,
   Zap,
+  CodeXml,
   Shield,
   Clock,
   CheckCircle,
@@ -23,7 +24,6 @@ import {
 } from "lucide-react"
 import { Button } from "../../components/ui/button"
 import { Card, CardContent } from "../../components/ui/card"
-import SpiderChart from "../../components/sections/spider-chart"
 import HeroSpiderChart from "../../components/sections/hero-spider-chart"
 
 const fadeInUp = {
@@ -47,16 +47,16 @@ const scaleIn = {
 }
 
 const features = [
-  {
-    icon: <Globe className="h-6 w-6" />,
-    title: "Global Data Access",
-    description: "Extract data from any website worldwide with our advanced scraping technology.",
-  },
-  {
-    icon: <Zap className="h-6 w-6" />,
-    title: "Lightning Fast",
-    description: "High-performance scraping with concurrent processing for maximum efficiency.",
-  },
+  // {
+  //   icon: <Globe className="h-6 w-6" />,
+  //   title: "Global Data Access",
+  //   description: "Extract data from any website worldwide with our advanced scraping technology.",
+  // },
+  // {
+  //   icon: <Zap className="h-6 w-6" />,
+  //   title: "Lightning Fast",
+  //   description: "High-performance scraping with concurrent processing for maximum efficiency.",
+  // },
   {
     icon: <Shield className="h-6 w-6" />,
     title: "100% Legal & Ethical",
@@ -69,7 +69,7 @@ const features = [
   },
   {
     icon: <Clock className="h-6 w-6" />,
-    title: "Real-time Updates",
+    title: "Live Monitoring",
     description: "Continuous monitoring and data updates to keep your information current.",
   },
   {
@@ -107,71 +107,71 @@ const processSteps = [
   },
 ]
 
-const testimonials = [
-  {
-    name: "Sarah Johnson",
-    company: "TechCorp Inc.",
-    role: "Data Analyst",
-    content:
-      "Their web scraping service transformed our market research capabilities. We now have access to real-time competitor data.",
-    rating: 5,
-  },
-  {
-    name: "Michael Chen",
-    company: "E-commerce Solutions",
-    role: "CTO",
-    content:
-      "Exceptional service quality and reliability. The data accuracy is outstanding and delivery is always on time.",
-    rating: 5,
-  },
-  {
-    name: "Emily Rodriguez",
-    company: "Market Insights",
-    role: "Research Director",
-    content:
-      "Professional team with deep technical expertise. They handled our complex scraping requirements flawlessly.",
-    rating: 5,
-  },
-]
+// const testimonials = [
+//   {
+//     name: "Sarah Johnson",
+//     company: "TechCorp Inc.",
+//     role: "Data Analyst",
+//     content:
+//       "Their web scraping service transformed our market research capabilities. We now have access to real-time competitor data.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Michael Chen",
+//     company: "E-commerce Solutions",
+//     role: "CTO",
+//     content:
+//       "Exceptional service quality and reliability. The data accuracy is outstanding and delivery is always on time.",
+//     rating: 5,
+//   },
+//   {
+//     name: "Emily Rodriguez",
+//     company: "Market Insights",
+//     role: "Research Director",
+//     content:
+//       "Professional team with deep technical expertise. They handled our complex scraping requirements flawlessly.",
+//     rating: 5,
+//   },
+// ]
 
-const pricingPlans = [
-  {
-    name: "Starter",
-    price: "$99",
-    period: "/month",
-    description: "Perfect for small businesses and startups",
-    features: ["Up to 10,000 pages/month", "5 websites", "Basic data formats", "Email support", "Weekly updates"],
-  },
-  {
-    name: "Professional",
-    price: "$299",
-    period: "/month",
-    description: "Ideal for growing businesses",
-    features: [
-      "Up to 100,000 pages/month",
-      "25 websites",
-      "All data formats",
-      "Priority support",
-      "Daily updates",
-      "API access",
-    ],
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    description: "For large-scale operations",
-    features: [
-      "Unlimited pages",
-      "Unlimited websites",
-      "Custom integrations",
-      "24/7 dedicated support",
-      "Real-time updates",
-      "SLA guarantee",
-    ],
-  },
-]
+// const pricingPlans = [
+//   {
+//     name: "Starter",
+//     price: "$99",
+//     period: "/month",
+//     description: "Perfect for small businesses and startups",
+//     features: ["Up to 10,000 pages/month", "5 websites", "Basic data formats", "Email support", "Weekly updates"],
+//   },
+//   {
+//     name: "Professional",
+//     price: "$299",
+//     period: "/month",
+//     description: "Ideal for growing businesses",
+//     features: [
+//       "Up to 100,000 pages/month",
+//       "25 websites",
+//       "All data formats",
+//       "Priority support",
+//       "Daily updates",
+//       "API access",
+//     ],
+//     popular: true,
+//   },
+//   {
+//     name: "Enterprise",
+//     price: "Custom",
+//     period: "",
+//     description: "For large-scale operations",
+//     features: [
+//       "Unlimited pages",
+//       "Unlimited websites",
+//       "Custom integrations",
+//       "24/7 dedicated support",
+//       "Real-time updates",
+//       "SLA guarantee",
+//     ],
+//   },
+// ]
 
 export default function WebScrapingService() {
   const [activeStep, setActiveStep] = useState(0)
@@ -196,34 +196,34 @@ export default function WebScrapingService() {
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section ref={heroRef} className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-950/20 dark:to-purple-950/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white dark:from-red-950/20 dark:to-purple-950/20" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <motion.div initial="initial" animate={heroInView ? "animate" : "initial"} variants={staggerContainer}>
               <motion.div
-                className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6"
+                className="inline-flex items-center gap-2 bg-white dark:bg-red-900/30 text-red-700 dark:text-red-300 px-4 py-2 rounded-full text-sm font-medium mb-6"
                 variants={fadeInUp}
               >
                 <Zap className="h-4 w-4" />
-                Professional Web Scraping Service
+                Data as a Service
               </motion.div>
 
               <motion.h1
-                className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+                className="text-4xl md:text-5---xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
                 variants={fadeInUp}
               >
-                Extract Data at
-                <span className="block text-blue-600 dark:text-blue-400">Web Scale</span>
+                Turn Any Website Into Usable Data
+                <span className="block text-red-600 dark:text-red-400">- Instantly</span>
               </motion.h1>
 
               <motion.p className="text-xl text-muted-foreground mb-8 leading-relaxed" variants={fadeInUp}>
-                Transform any website into a structured data source with our enterprise-grade web scraping solutions.
-                Fast, reliable, and completely automated.
+                Transform any website into clean, structured data with our enterprise-grade web scraping solutions.
+              
               </motion.p>
 
               <motion.div className="flex flex-col sm:flex-row gap-4 mb-8" variants={fadeInUp}>
-                <Button size="lg" className="px-8 py-3 text-lg">
+                <Button size="lg" className="px-8 py-3 bg-gradient-to-r from-green-600 to-blue-400 text-lg">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -232,7 +232,7 @@ export default function WebScrapingService() {
                 </Button>
               </motion.div>
 
-              <motion.div className="flex items-center gap-8 text-sm text-muted-foreground" variants={fadeInUp}>
+              {/* <motion.div className="flex items-center gap-8 text-sm text-muted-foreground" variants={fadeInUp}>
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   99.9% Uptime
@@ -245,7 +245,7 @@ export default function WebScrapingService() {
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   24/7 Support
                 </div>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             {/* Right Content - Hero Spider Chart */}
@@ -262,7 +262,7 @@ export default function WebScrapingService() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-8 bg-muted/30">
         <div className="container mx-auto px-4">
           <motion.div
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -272,13 +272,13 @@ export default function WebScrapingService() {
             variants={staggerContainer}
           >
             {[
-              { number: "10M+", label: "Pages Scraped", icon: <Globe className="h-6 w-6" /> },
-              { number: "500+", label: "Happy Clients", icon: <Users className="h-6 w-6" /> },
-              { number: "99.9%", label: "Success Rate", icon: <TrendingUp className="h-6 w-6" /> },
+              { number: "112+", label: "Websites Supported", icon: <Globe className="h-6 w-6" /> },
+              { number: "100%", label: "No Code Setup", icon: <CodeXml className="h-6 w-6" /> },
+              { number: "99.8%", label: "Success Rate", icon: <TrendingUp className="h-6 w-6" /> },
               { number: "24/7", label: "Support", icon: <Clock className="h-6 w-6" /> },
             ].map((stat, index) => (
               <motion.div key={index} className="text-center" variants={scaleIn}>
-                <div className="flex justify-center mb-2 text-blue-600 dark:text-blue-400">{stat.icon}</div>
+                <div className="flex justify-center mb-2 text-red-600 dark:text-red-400">{stat.icon}</div>
                 <div className="text-3xl font-bold mb-1">{stat.number}</div>
                 <div className="text-sm text-muted-foreground">{stat.label}</div>
               </motion.div>
@@ -286,7 +286,6 @@ export default function WebScrapingService() {
           </motion.div>
         </div>
       </section>
-
       {/* Features Section */}
       <section ref={featuresRef} className="py-20">
         <div className="container mx-auto px-4">
@@ -313,7 +312,7 @@ export default function WebScrapingService() {
                 <Card className="h-full hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600 dark:text-blue-400">
+                      <div className="p-2 bg-red-100 dark:bg-red-900/30 rounded-lg text-red-600 dark:text-red-400">
                         {feature.icon}
                       </div>
                       <h3 className="text-xl font-semibold">{feature.title}</h3>
@@ -343,10 +342,6 @@ export default function WebScrapingService() {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Spider Chart */}
-            <motion.div initial="initial" animate={processInView ? "animate" : "initial"} variants={scaleIn}>
-              <SpiderChart />
-            </motion.div>
 
             {/* Process Steps */}
             <motion.div
@@ -360,14 +355,14 @@ export default function WebScrapingService() {
                   key={index}
                   className={`flex gap-4 p-4 rounded-lg transition-all duration-500 ${
                     activeStep === index
-                      ? "bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500"
+                      ? "bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500"
                       : "hover:bg-muted/50"
                   }`}
                   variants={fadeInUp}
                 >
                   <div
                     className={`p-2 rounded-lg transition-colors duration-300 ${
-                      activeStep === index ? "bg-blue-500 text-white" : "bg-muted text-muted-foreground"
+                      activeStep === index ? "bg-red-500 text-white" : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {step.icon}
@@ -384,7 +379,7 @@ export default function WebScrapingService() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -431,7 +426,7 @@ export default function WebScrapingService() {
       </section>
 
       {/* Pricing */}
-      <section ref={pricingRef} className="py-20 bg-muted/30">
+      {/* <section ref={pricingRef} className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -451,10 +446,10 @@ export default function WebScrapingService() {
           >
             {pricingPlans.map((plan, index) => (
               <motion.div key={index} variants={scaleIn}>
-                <Card className={`h-full relative ${plan.popular ? "ring-2 ring-blue-500" : ""}`}>
+                <Card className={`h-full relative ${plan.popular ? "ring-2 ring-red-500" : ""}`}>
                   {plan.popular && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                      <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-red-500 text-white px-4 py-1 rounded-full text-sm font-medium">
                         Most Popular
                       </span>
                     </div>
@@ -476,7 +471,7 @@ export default function WebScrapingService() {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full" variant={plan.popular ? "default" : "outline"}>
+                    <Button className="w-full " variant={plan.popular ? "default" : "outline"}>
                       Get Started
                     </Button>
                   </CardContent>
@@ -485,7 +480,7 @@ export default function WebScrapingService() {
             ))}
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-20">
@@ -497,17 +492,17 @@ export default function WebScrapingService() {
             viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Start Scraping?</h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Join thousands of businesses that trust our web scraping service for their data needs.
+            <h2 className="text-4xl font-bold mb-6">Start your scraping with us</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+          We handle projects of any size with full compliance. Need something custom? Contact us 
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="px-8 py-3 text-lg">
+              <Button size="lg" className="px-8 bg-primary/70 py-3 text-lg">
                 Start Free Trial
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="lg" className="px-8 py-3 text-lg bg-transparent">
-                Contact Sales
+                Talk to Sales
               </Button>
             </div>
           </motion.div>

@@ -14,10 +14,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <div className="pt-5">
-        <SectionHeader headerInfo={header} />
-      </div>
-      <div className="pb-10 pt-10">
+      <div className="pb-10">
         <Contact />
       </div>
     </>

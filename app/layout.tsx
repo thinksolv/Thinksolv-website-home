@@ -2,10 +2,10 @@ import './globals.css'
 import Script from 'next/script'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
-import { ThemeProvider } from '../components/theme-provider'
-import  Header from '../components/layout/header'
-import Footer from '../components/layout/footer'
-import { siteConfig } from '../config/site'
+import { ThemeProvider } from '@/components/theme-provider'
+import  Header from '@/components/layout/header'
+import Footer from '@/components/layout/footer'
+import { siteConfig } from '@//config/site'
 
 // Local fonts
 const geistSans = localFont({
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: '/public/favicon.ico',
+    icon: '/favicon.ico',
     shortcut: '/public/favicon-16x16.png',
     apple: '/public/apple-touch-icon.png',
   },
@@ -110,9 +110,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider>
           <div className="relative flex min-h-screen flex-col">
             <Header />

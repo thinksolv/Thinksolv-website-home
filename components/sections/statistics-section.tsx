@@ -1,74 +1,68 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+
 import { motion } from "framer-motion";
-import { siteConfig } from "../../config/site";
+import { siteConfig } from "@/config/site";
+import SectionGradient from "@/components/ui/section-gradient";
 
 const FunFact = () => {
   const { title, description, stats } = siteConfig.funFact;
 
   return (
-    <section className="px-4 py-20 md:px-8 lg:py-22.5 2xl:px-0">
-      <div className="relative z-1 mx-auto max-w-c-1390 rounded-lg bg-gradient-to-t from-[#F8F9FF] to-[#DEE7FF] py-22.5 dark:bg-blacksection dark:bg-gradient-to-t dark:from-transparent dark:to-transparent xl:py-27.5">
-        {/* Background Shapes */}
-        <Image
-          width={335}
-          height={384}
-          src="/shape/shape-04.png"
-          alt="Man"
-          className="absolute -left-15 -top-25 -z-1 lg:left-0"
-        />
-        <Image
-          width={132}
-          height={132}
-          src="/shape/shape-05.png"
-          alt="Doodle"
-          className="absolute bottom-0 right-0 -z-1"
-        />
-        <Image
-          fill
-          src="/shape/shape-dotted-light-02.svg"
-          alt="Dotted"
-          className="absolute left-0 top-0 -z-1 dark:hidden"
-        />
-        <Image
-          fill
-          src="/shape/shape-dotted-dark-02.svg"
-          alt="Dotted"
-          className="absolute left-0 top-0 -z-1 hidden dark:block"
-        />
+    <section className="relative overflow-hidden bg-white dark:bg-black px-6 py-20">
+      {/* Grid overlay background */}
+      <div
+        className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none"
+        
+      />
 
-        {/* Section Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.1 }}
-          viewport={{ once: true }}
-          className="mx-auto mb-12.5 px-4 text-center md:w-4/5 md:px-0 lg:mb-17.5 lg:w-2/3 xl:w-1/2"
-        >
-          <h2 className="mb-4 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-            {title}
-          </h2>
-          <p className="mx-auto lg:w-11/12 dark:text-white">{description}</p>
-        </motion.div>
+      <div className="relative z-10 container mx-auto max-w-7xl">
+        {/* Two-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Section Header */}
+          <div className="relative text-center lg:text-left">
+          <SectionGradient className="-left-1/3 -top-16 md:left-15"/>
 
-        {/* Stats */}
-        <div className="flex flex-wrap justify-center gap-8 lg:gap-42.5">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
+            <motion.h2
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 + index * 0.2 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="relative z-10 text-4xl lg:text-5xl font-bold text-black dark:text-white leading-tight"
             >
-              <h3 className="mb-2.5 text-3xl font-bold text-black dark:text-white xl:text-sectiontitle3">
-                {stat.value}
-              </h3>
-              <p className="text-lg lg:text-para2 dark:text-white">{stat.label}</p>
-            </motion.div>
-          ))}
+              {title}
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="relative z-10 text-gray-700 dark:text-gray-300 text-lg leading-relaxed max-w-xl mt-4"
+            >
+              {description}
+            </motion.p>
+          </div>
+
+          {/* Right: Stat Cards Grid */}
+          <div className="grid sm:grid-cols-2 gap-6 max-w-[500px] mx-auto lg:mx-0">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.2 + index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-[#1a1a1a] border border-primary/50 dark:border-primary/50 rounded-2xl p-6 shadow-md"
+              >
+                <div className="text-4xl lg:text-5xl font-bold text-black dark:text-white mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-600 dark:text-gray-400 text-lg">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

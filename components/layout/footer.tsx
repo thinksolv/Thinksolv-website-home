@@ -11,7 +11,7 @@ const Footer = () => {
 
   useEffect(() => {
     setYear(new Date().getFullYear());
-    setIsClient(true); // Mark client render
+    setIsClient(true);
   }, []);
 
   const socialIcons: Record<string, JSX.Element> = {
@@ -46,7 +46,7 @@ const Footer = () => {
       <div className="mx-auto max-w-c-1390 px-4 md:px-8 2xl:px-0">
         <div className="py-15">
           <div className="flex flex-wrap gap-8 lg:justify-between lg:gap-0">
-            {/* Logo Section */}
+            {/* Logo Section with Tagline and Social Icons */}
             {isClient && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
@@ -68,7 +68,25 @@ const Footer = () => {
                     </span>
                   </a>
                 </div>
-                <p className="mb-10 mt-5">{siteConfig.tagline}</p>
+
+                {/* Tagline */}
+                <p className="mb-4 mt-5">{siteConfig.tagline}</p>
+
+                {/* Social Icons Below Tagline */}
+                <ul className="flex items-center gap-4 mt-6 text-hover">
+                  {siteConfig.footer.social.map((social) => (
+                    <li key={social.href}>
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                      >
+                        {socialIcons[social.icon]}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             )}
 
@@ -77,13 +95,13 @@ const Footer = () => {
               <FooterList title="Links" items={siteConfig.footer.links} isClient={isClient} />
               <FooterList title="Products" items={siteConfig.footer.products} isClient={isClient} />
               <FooterList title="Services" items={siteConfig.footer.services} isClient={isClient} />
+
               {/* Address */}
               {isClient && (
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
-                  className="animate_top"
                 >
                   <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
                     Address
@@ -97,28 +115,11 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom */}
+        {/* Bottom Section Without Social Icons */}
         <div className="flex flex-col items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between">
           <p>
-            &copy; {year ?? "____"} Owned and Maintained By {siteConfig.name} Ltd. All rights
-            reserved.
+            &copy; {year ?? "____"} Owned and Maintained By {siteConfig.name} Ltd. All rights reserved.
           </p>
-
-          {/* Social Icons */}
-          <ul className="flex items-center gap-5">
-            {siteConfig.footer.social.map((social) => (
-              <li key={social.href}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                >
-                  {socialIcons[social.icon]}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </footer>
@@ -127,7 +128,7 @@ const Footer = () => {
 
 export default Footer;
 
-// Modified to accept `isClient` and render motion only when true
+// FooterList Component
 const FooterList = ({
   title,
   items,
@@ -144,7 +145,6 @@ const FooterList = ({
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.1 }}
-      className="animate_top"
     >
       <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
         {title}
@@ -156,7 +156,7 @@ const FooterList = ({
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="mb-3 inline-block hover:text-primary"
+              className="mb-3 inline-block hover:text-red-600"
             >
               {item.label}
             </a>

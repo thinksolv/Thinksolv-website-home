@@ -241,7 +241,7 @@ export default function HeroSpiderChart() {
       </svg>
 
       {/* Floating process indicators */}
-      <motion.div
+      {/* <motion.div
         className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm rounded-lg p-3 border shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -260,7 +260,7 @@ export default function HeroSpiderChart() {
             />
           ))}
         </div>
-      </motion.div>
+      </motion.div> */}
     </div>
   )
 }

@@ -58,7 +58,7 @@ export default function Welcome() {
         </title>
       </Head>
 
-      <Header />
+
       <div className=" text-gray-600 dark:text-white font-sans bg-white dark:border-strokedark dark:bg-black">
         {/* Header */}
         <header className="py-4 px-6 text-center">
@@ -232,7 +232,6 @@ export default function Welcome() {
           </a>
         </section>
       </div>
-      <Footer />
     </>
   );
 }

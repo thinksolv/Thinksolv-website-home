@@ -11,7 +11,7 @@ const About = () => {
     <div>
       {/* Hero Section */}
       <section id="about">
-        <div className="relative overflow-hidden bg-gray-50 dark:bg-black py-10 sm:py-10">
+        <div className="relative overflow-hidden bg-white dark:bg-black py-10 sm:py-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ const About = () => {
       </section>
 
       {/* Solutions Section */}
-      <div className="relative bg-gray-50 dark:bg-black py-20 sm:py-20">
+      <div className="relative bg-white dark:bg-black py-20 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left */}

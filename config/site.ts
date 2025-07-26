@@ -1,18 +1,16 @@
 import {
   FaFilePdf,
-  FaFileWord,
-  FaSyncAlt,
   FaMarkdown,
   FaWordpress,
 } from "react-icons/fa";
 import { BiMerge } from "react-icons/bi";
-import  {Wrench, Home, Package, Book } from "lucide-react"
+import { Mail } from "lucide-react"
 
 export const siteConfig = {
   name: "Thinksolv Technologies",
   tagline: "Building Solutions Thoughtfully",
   logo: {
-    src: "/favicon.ico",
+    src: "/favicon-64x64.png",
     alt: "Thinksolv Logo",
     width: 60,
     height: 55,
@@ -46,14 +44,13 @@ export const siteConfig = {
   nav: {
     services: [
       { label: "Document AI", href: "/services/document-ai" },
+      { label: "Web Scraping", href: "/services/web-scraping" },
     ],
     products: [
       { label: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
-      { label: "Docs to PDF Pro", href: "https://www.docstopdf.pro" },
+      { label: "PDF to Docs Pro", href: "https://www.pdftodocs.com" },
       { label: "Docs to Markdown Pro", href: "https://www.docstomarkdown.pro" },
       { label: "Docs to WP Pro", href: "https://www.docstowp.pro" },
-      { label: "Bulk Converter Pro", href: "https://www.bulkconverter.pro" },
-      { label: "PDF to Docs Pro", href: "https://www.pdftodocs.com" },
     ],
     blog: { label: "Blog", href: "/blog" },
     contact: { label: "Contact Us", href: "/contact" },
@@ -62,23 +59,9 @@ export const siteConfig = {
   hero: {
     title: "Building Solutions",
     highlighted: "Thoughtfully",
-    gradient: "linear-gradient(to right, #2772ed, #E91C24)",
+    gradient: "linear-gradient(to right, #E91C24, #E91C24)",
     buttonText: "Explore",
     buttonHref: "#products",
-    partners: [
-      {
-        src: "/Google_Cloud_Partner_vr.png",
-        alt: "Google Cloud Partner",
-        width: 300,
-        height: 200,
-      },
-      {
-        src: "/Shopify-Partner-Logo.webp",
-        alt: "Shopify Partner",
-        width: 200,
-        height: 150,
-      },
-    ],
     backgroundPattern: "https://cdn.rareblocks.xyz/collection/clarity/images/hero/1/background-pattern.png",
   },
 
@@ -122,6 +105,19 @@ export const siteConfig = {
     subtitle: "Streamline Your Workflow with Our Ready-to-Use Products",
     description:
       "Our thoughtfully crafted products are designed to automate tasks and optimize workflows, helping your business operate more efficiently.",
+      buttontext:"Explore",
+    actions: [
+      {
+        _id: "view_all",
+        label: "View All Products",
+        href: "/products", // Adjust as per your routing
+      },
+      {
+        _id: "contact_sales",
+        label: "Contact Sales",
+        href: "/contact",
+      },
+    ],
     items: [
       {
         id: 1,
@@ -130,13 +126,13 @@ export const siteConfig = {
         description: "Converts Google Docs to high-quality PDFs.",
         url: "https://www.docstopdf.pro",
       },
-      {
-        id: 2,
-        icon: FaFileWord,
-        title: "PDF to Docs Pro",
-        description: "Converts PDF documents into editable Google Docs.",
-        url: "https://www.pdftodocs.com",
-      },
+      // {
+      //   id: 2,
+      //   icon: FaFileWord,
+      //   title: "PDF to Docs Pro",
+      //   description: "Converts PDF documents into editable Google Docs.",
+      //   url: "https://www.pdftodocs.com",
+      // },
       {
         id: 3,
         icon: BiMerge,
@@ -145,13 +141,13 @@ export const siteConfig = {
           "Combines multiple Google Docs into one single document and optionally exports the output as PDF.",
         url: "https://www.mergedocs.pro",
       },
-      {
-        id: 4,
-        icon: FaSyncAlt,
-        title: "Bulk Converter Pro",
-        description: "Converts files from one format to another.",
-        url: "https://www.bulkconverter.pro",
-      },
+      // {
+      //   id: 4,
+      //   icon: FaSyncAlt,
+      //   title: "Bulk Converter Pro",
+      //   description: "Converts files from one format to another.",
+      //   url: "https://www.bulkconverter.pro",
+      // },
       {
         id: 5,
         icon: FaMarkdown,
@@ -172,55 +168,43 @@ export const siteConfig = {
   },
 
   services: {
-    title: "Your Technology Partner",
-    subtitle: "A Partnership for Success",
-    description:
-      "As your trusted technology partner, we understand your needs and deliver bespoke solutions to drive growth and efficiency.",
+    title: "Our Services",
+    description: "Explore the intelligent capabilities we offer for your digital transformation.",
     items: [
       {
-        id: 1,
-        title: "Document AI",
-        description: "Use AI-powered tools to extract, organize, and analyze document data.",
-        image: "/document-ai.png",
-        url: "/services/document-ai",
+        id: "web-scraping",
+        label: "Web Scraping",
+        image: "/web-scraping.jpg", // Replace with your actual image path
+        title: "Web Scraping",
+        description:
+          "Efficiently collect, clean, and structure data from websites at scale with our robust scraping pipelines.",
+        features: [
+          "Real-time web crawling",
+          "Anti-bot and proxy rotation",
+          "Data export in CSV, JSON, Sheets",
+          "Scheduled scraping and automation",
+          "Customizable headers and user-agents",
+        ],
       },
       {
-        id: 2,
-        title: "AppSheet Development",
-        description: "Create custom apps without coding using Google’s AppSheet platform.",
-        image: "/appsheet.png",
-        url: "/services/appsheet-development",
+        id: "document-ai",
+        label: "Document AI",
+        image: "/document-ai.png", // Replace with your actual image path
+        title: "Document AI",
+        description:
+          "Automate data extraction, classification, and analysis from documents using intelligent AI models tailored for enterprise workflows.",
+        features: [
+          "OCR and structured extraction",
+          "Intelligent document categorization",
+          "Custom ML model integration",
+          "Automated workflow triggers",
+          "Seamless API connectivity",
+        ],
       },
-      // {
-      //   id: 3,
-      //   title: "Workflow Automation",
-      //   description: "Automate business processes and save time with smart workflows.",
-      //   image: "/workflow.png",
-      //   url: "/services/workflow-automation",
-      // },
-      // {
-      //   id: 4,
-      //   title: "Cloud Integration",
-      //   description: "Seamlessly integrate your systems with cloud services for enhanced collaboration.",
-      //   image: "/cloud.jpg",
-      //   url: "/services/cloud-integration",
-      // },
-      // {
-      //   id: 5,
-      //   title: "Custom Software Solutions",
-      //   description: "Tailored software development to meet your business’s unique needs.",
-      //   image: "/custom-software.jpg",
-      //   url: "/services/custom-software",
-      // },
-      // {
-      //   id: 6,
-      //   title: "Business Intelligence",
-      //   description: "Leverage data analytics to make informed decisions and optimize operations.",
-      //   image: "/business.jpg",
-      //   url: "/services/business-intelligence",
-      // }
     ],
   },
+
+
 
   funFact: {
     title: "Trusted by Global Companies.",
@@ -245,6 +229,7 @@ export const siteConfig = {
 
   faq: {
     title: "Frequently Asked Questions",
+    description: "Everything you need to know, in one place",
     items: [
       {
         question: "What services do you offer?",
@@ -291,10 +276,10 @@ export const siteConfig = {
 
   contact: {
     header: {
-      title: "Contact",
+      title: "Get In Touch",
       subtitle: "Contact Us",
       description:
-        "Reach out to us today to ask any questions about our products or discover how we can help your business automate tasks, streamline processes, boost productivity, and save valuable time.",
+        "Feel free to reach out",
     },
     form: {
       subject: "General Inquiry",
@@ -303,12 +288,8 @@ export const siteConfig = {
       heading: "Find us",
       sections: [
         {
-          title: "Our Location",
-          content:
-            "Thinksolv Technologies Pvt Ltd, Forge Factory, KCT Tech Park, Coimbatore - 641 049, India.",
-        },
-        {
           title: "Email Address",
+          icon: Mail,
           content: "vikram@thinksolv.com",
           link: "mailto:vikram@thinksolv.com",
         },
@@ -318,7 +299,7 @@ export const siteConfig = {
 
   footer: {
     logo: {
-      src: "/favicon.ico",
+      src: "/favicon-64x64.png",
       alt: "Thinksolv Logo",
     },
     address: `Thinksolv Technologies Pvt Ltd,\nForge Factory, KCT Tech Park,\nCoimbatore - 641 049, India.`,
@@ -329,14 +310,13 @@ export const siteConfig = {
     ],
     products: [
       { label: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
-      { label: "Docs to PDF Pro", href: "https://www.docstopdf.pro" },
+      { label: "PDF to Docs Pro", href: "https://www.pdftodocs.com" },
       { label: "Docs to Markdown Pro", href: "https://www.docstomarkdown.pro" },
       { label: "Docs to WP Pro", href: "https://www.docstowp.pro" },
-      { label: "Bulk Converter Pro", href: "https://www.bulkconverter.pro" },
-      { label: "PDF to Docs Pro", href: "https://www.pdftodocs.com" },
     ],
     services: [
       { label: "Document AI", href: "/services/document-ai" },
+      { label: "Web Scraping", href: "/services/web-scraping" },
     ],
     social: [
       {

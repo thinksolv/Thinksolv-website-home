@@ -1,9 +1,8 @@
-import Header from "../../../components/layout/header";
-import Footer from "../../../components/layout/footer";
+
 export default function Welcome() {
   return (
     <>
-      <Header />
+
       <div className="max-w-4xl mx-auto p-6 text-gray-600 dark:text-white">
         <header className="text-center mb-8">
           <h1 className="text-3xl font-bold ">Privacy Policy</h1>
@@ -64,7 +63,6 @@ export default function Welcome() {
         </section>
       </div>
 
-      <Footer />
     </>
   );
 }
