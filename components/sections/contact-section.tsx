@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import DotBadge from "../ui/dotbadge";
 import { Mail } from "lucide-react";
 import { siteConfig } from "../../config/site";
-import SectionGradient from "../ui/section-gradient";
+import ShinyButton from "../ui/shiny-button";
+import GradientText from "../ui/gradient-text";
 
 const Contact = () => {
   const [hasMounted, setHasMounted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ success: boolean; message: string } | null>(null);
+  const [selectedOption, setSelectedOption] = useState<"contact" | "calendly">("contact");
 
   const [formState, setFormState] = useState({
     name: "",
@@ -17,6 +20,18 @@ const Contact = () => {
     inquiry: "",
     message: "",
   });
+
+  const calendlyRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (selectedOption === "calendly" && calendlyRef.current) {
+      // @ts-ignore
+      window.Calendly?.initInlineWidget({
+        url: "https://calendly.com/sam-thinksolv/30min?hide_event_type_details=1&hide_gdpr_banner=1&primary_color=007bbf",
+        parentElement: calendlyRef.current,
+      });
+    }
+  }, [selectedOption]);
 
   useEffect(() => setHasMounted(true), []);
   if (!hasMounted) return null;
@@ -30,7 +45,6 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -62,57 +76,81 @@ const Contact = () => {
 
   return (
     <section id="contact" className="bg-white dark:bg-black text-black dark:text-white py-20">
-      <div className="max-w-7xl mx-auto px-6 space-y-12">
-        <div className="relative text-center mb-16">
-          <SectionGradient />
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold">
-            {header.title}
-          </h2>
-          <p className="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-medium max-w-2xl mx-auto">
-            {header.description}
-          </p>
-        </div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div className="relative text-center mb-10">
+        <DotBadge label="Contact" textSize="text-md" className="mb-7 justify-center" />
+        <h1 className="text-4xl lg:text-5xl font-medium font-geist text-gray-900 dark:text-white mb-6 leading-tight">
+                {header.title}
+                <GradientText className="ml-3">{header.span}</GradientText>
+              </h1>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold mb-6">{findUs.heading}</h3>
-            <div className="space-y-6 text-sm">
-              {findUs.sections.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3">
-                  <Mail size={20} />
-                  <div>
-                    <p className="font-bold">{item.title}</p>
-                    <p className="mt-2">
-                      {item.link ? (
-                        <a href={item.link} className="hover:text-primary">
-                          {item.content}
-                        </a>
-                      ) : (
-                        item.content
-                      )}
-                    </p>
-                  </div>
+      <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+        {/* Left - Contact Info + Toggle Buttons */}
+        <div className="space-y-6 lg:ml-15">
+          <h3 className="text-xl sm:text-2xl font-bold">{findUs.heading}</h3>
+          <div className="space-y-6 text-sm">
+            {findUs.sections.map((item, idx) => (
+              <div key={idx} className="flex items-start gap-3">
+                <Mail size={20} />
+                <div>
+                  <p className="font-bold">{item.title}</p>
+                  <p className="mt-2">
+                    {item.link ? (
+                      <a href={item.link} className="hover:text-primary break-words">
+                        {item.content}
+                      </a>
+                    ) : (
+                      item.content
+                    )}
+                  </p>
                 </div>
-              ))}
-              <div className="mt-6">
-                <iframe
-                  title="Google Map"
-                  src="https://www.google.com/maps?q=KCT+Tech+Park,+Coimbatore,+India&output=embed"
-                  width="100%"
-                  height="250"
-                  className="rounded-lg border-none"
-                  loading="lazy"
-                />
               </div>
-            </div>
+            ))}
           </div>
 
+          <p className="text-base sm:text-lg font-medium">Want to schedule a meeting?</p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => setSelectedOption("contact")}
+              className={`px-5 py-2 rounded-lg border font-medium transition-colors ${
+                selectedOption === "contact"
+                  ? "border-bordercolor bg-black text-white"
+                  : "border-gray-300 dark:border-gray-600 bg-muted text-foreground hover:text-primary"
+              }`}
+            >
+              Talk to Us
+            </button>
+            <button
+              onClick={() => setSelectedOption("calendly")}
+              className={`px-5 py-2 rounded-lg border font-medium transition-colors ${
+                selectedOption === "calendly"
+                  ? "border-bordercolor bg-black text-white"
+                  : "border-gray-300 dark:border-gray-600 bg-muted text-foreground hover:text-primary"
+              }`}
+            >
+              Schedule Meeting
+            </button>
+          </div>
+        </div>
+
+        {/* Right - Contact Form or Calendly */}
+        {selectedOption === "calendly" ? (
+          <div className="shadow-xl bg-gray-100 dark:bg-[#111] p-4 rounded-xl border border-primary/30">
+            <div
+              ref={calendlyRef}
+              className="w-full"
+              style={{ minWidth: "320px", height: "700px" }}
+            />
+          </div>
+        ) : (
           <motion.form
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-gray-100 dark:bg-[#111] p-8 rounded-xl border border-primary dark:border-primary/50"
+            className="shadow-xl bg-gray-100 dark:bg-[#111] p-6 sm:p-8 rounded-xl border border-primary/30"
           >
             <div className="space-y-6">
               <input
@@ -124,7 +162,6 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 bg-transparent border rounded focus:outline-none"
               />
-
               <input
                 type="email"
                 name="email"
@@ -134,7 +171,6 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 bg-transparent border rounded focus:outline-none"
               />
-
               <textarea
                 name="message"
                 value={formState.message}
@@ -144,25 +180,24 @@ const Contact = () => {
                 required
                 className="w-full px-4 py-2 bg-transparent border rounded focus:outline-none"
               ></textarea>
-
-              <button
+              <ShinyButton
                 type="submit"
-                className="w-full bg-black dark:bg-white text-white dark:text-black font-semibold py-2 rounded hover:opacity-90 transition disabled:opacity-50"
+                className="w-full bg-primary dark:bg-white text-white font-semibold py-2 rounded hover:opacity-90 transition disabled:opacity-50"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
-
+              </ShinyButton>
               {submitStatus && (
-                <p className={`text-sm mt-4 ${submitStatus.success ? "text-green-600" : "text-red-600"}`}>
+                <p className={`text-md mt-4 ${submitStatus.success ? "text-green-600" : "text-red-600"}`}>
                   {submitStatus.message}
                 </p>
               )}
             </div>
           </motion.form>
-        </div>
+        )}
       </div>
-    </section>
+    </div>
+  </section>
   );
 };
 

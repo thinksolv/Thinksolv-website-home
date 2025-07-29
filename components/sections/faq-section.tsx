@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { siteConfig } from "../../config/site";
-import SectionGradient from "../ui/section-gradient";
+import DotBadge from "../ui/dotbadge";
 import { Plus } from "lucide-react";
+import GradientText from "../ui/gradient-text";
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const { title, description, items: faqs } = siteConfig.faq;
+  const { title, span, description, items: faqs } = siteConfig.faq;
 
   const handleClick = (index: number) => {
     setActiveIndex(index === activeIndex ? null : index);
@@ -36,19 +37,20 @@ const FAQ = () => {
 
   return (
     <section className=" py-20 px-6 dar:bg-black">
-      {/* Section Heading with Gradient */}
-<div className="relative max-w-7xl mx-auto text-center mb-12">
-  <SectionGradient />
-  <h2 className="text-5xl font-bold text-gray-900 dark:text-white relative z-10">
-    {title}
-  </h2>
-  <p className="mt-4 text-lg font-bold text-gray-600 dark:text-gray-300 relative z-10">
+      
+<div className="relative max-w-5xl mx-auto text-center mb-5 flex flex-col items-center gap-4">
+  <DotBadge label="FAQs" textSize="text-md" className="mb-5"/>
+  <h1 className="text-4xl lg:text-5xl font-medium font-geist text-gray-900 dark:text-white mb-2 leading-tight">
+            {title}
+            <GradientText className="ml-4">{span}</GradientText>
+          </h1>
+  <p className="mt-2 text-lg font-semibold text-gray-600 dark:text-gray-300 relative z-10">
     {description}
   </p>
 </div>
 
 
-      <div className="max-w-3xl mx-auto space-y-6">
+      <div className="max-w-3xl mx-auto space-y-5">
         {faqs.map((faq, index) => {
           const isActive = activeIndex === index;
 
@@ -59,7 +61,7 @@ const FAQ = () => {
               ref={(el) => {
                 itemRefs.current[index] = el;
               }}
-              className="transition-all duration-300 transform opacity-0 translate-y-6 bg-white dark:bg-black border border-primary/50 dark:border-primary/50 rounded-xl shadow-md hover:shadow-lg cursor-pointer overflow-hidden"
+              className="transition-all duration-300 transform opacity-0 translate-y-6 bg-white dark:bg-black border border-bordercolor dark:border-bordercolor rounded-xl shadow-md hover:shadow-lg cursor-pointer overflow-hidden"
             >
               {/* Header */}
               <div className="flex justify-between items-center px-6 py-5">

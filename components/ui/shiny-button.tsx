@@ -8,6 +8,7 @@ interface ShinyButtonProps {
   onClick?: () => void;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
 }
 
 export default function ShinyButton({
@@ -20,7 +21,7 @@ export default function ShinyButton({
     <button
       type={type}
       onClick={onClick}
-      className={`relative group inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold bg-[#007bbf] text-white transition-all duration-500 hover:scale-105 transform-gpu ${className}`}
+      className={`relative group inline-flex items-center justify-center px-5 py-3 rounded-xl font-medium font-geist bg-[#007bbf] text-white transition-all duration-500 hover:scale-105 transform-gpu ${className}`}
     >
       {/* Main content */}
       <span className="relative z-10 flex items-center gap-3 transition-all duration-300">
@@ -31,7 +32,7 @@ export default function ShinyButton({
       <div className="absolute inset-0 rounded-xl overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
       </div>
-      
+
     </button>
   );
 }

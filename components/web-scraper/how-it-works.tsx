@@ -1,261 +1,196 @@
-"use client"
+'use client'
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '../ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { howItWorks } from '@/config/page';
-import { Settings, Cpu, Download, PlayCircle, CheckCircle } from 'lucide-react';
-import { LucideIcon, Target, BrainCircuit, TrendingUp, ArrowRight } from 'lucide-react';
+import {
+  Play,
+  Pause,
+  Search,
+  Code,
+  FileText
+} from 'lucide-react';
 
-const iconMap: Record<string, LucideIcon> = {
-  target: Target,
-  'brain-circuit': BrainCircuit,
-  'trending-up': TrendingUp
-};
+import DotBadge from '@/components/ui/dotbadge'; // Adjust path as needed
+import GradientText from '@/components/ui/gradient-text'; // Adjust path as needed
 
+interface Tab {
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  videoUrl: string;
+  description: string;
+}
 
-export default function HowItWorks () {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeStep, setActiveStep] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
+const tabs: Tab[] = [
+  {
+    id: 'identify',
+    label: 'Identify Data',
+    icon: <Search className="w-4 h-4" />,
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    description: 'Pinpoint the exact data on websites that you want to capture — whether it’s product listings, articles, tables, or any structured content.'
+  },
+  {
+    id: 'extract',
+    label: 'Extract Content',
+    icon: <Code className="w-4 h-4" />,
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    description: 'Automatically pull the selected data from the web page using smart scraping logic, minimizing noise and maximizing accuracy.'
+  },
+  {
+    id: 'parse',
+    label: 'Parse & Structure',
+    icon: <FileText className="w-4 h-4" />,
+    videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    description: 'Clean, format, and structure the extracted data into usable outputs like CSV, JSON, or direct database entries for seamless use.'
+  }
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.2 }
-    );
+export default function TabNavigation() {
+  const [activeTab, setActiveTab] = useState('identify');
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+  const togglePlayPause = () => {
+    const currentVideo = videoRefs.current[activeTab];
+    if (currentVideo) {
+      if (isPlaying) {
+        currentVideo.pause();
+      } else {
+        currentVideo.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setInterval(() => {
-        setActiveStep(prev => (prev + 1) % howItWorks.steps.length);
-      }, 4000);
-
-      return () => clearInterval(timer);
-    }
-  }, [isVisible]);
-
-  const iconMap = {
-    settings: Settings,
-    cpu: Cpu,
-    download: Download,
-    'play-circle': PlayCircle
   };
 
+  const getCurrentTabIndex = () => {
+    return tabs.findIndex(tab => tab.id === activeTab);
+  };
+
+  const switchToNextTab = () => {
+    const currentIndex = getCurrentTabIndex();
+    const nextIndex = (currentIndex + 1) % tabs.length;
+    setActiveTab(tabs[nextIndex].id);
+  };
+
+  const handleVideoEnd = (tabId: string) => {
+    if (tabId === activeTab) {
+      switchToNextTab();
+    }
+  };
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    const setupTimeout = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => {
+        switchToNextTab();
+      }, 30000);
+    };
+
+    setupTimeout();
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [activeTab]);
+
+  useEffect(() => {
+    Object.keys(videoRefs.current).forEach(tabId => {
+      const video = videoRefs.current[tabId];
+      if (video) {
+        if (tabId === activeTab) {
+          video.play().catch(console.error);
+          setIsPlaying(true);
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }, [activeTab]);
+
   return (
-    <section ref={sectionRef} id="how-it-works" className="py-20 bg-white dark:bg-black">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <Badge variant="outline" className="mb-4">Scraping Process</Badge>
-          <h2 className={`text-4xl lg:text-5xl font-bold text-foreground mb-6 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            {howItWorks.title}
-          </h2>
-          <p className={`text-xl text-muted-foreground transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`} style={{ transitionDelay: '200ms' }}>
-            {howItWorks.subtitle}
-          </p>
+    <div className="w-full bg-white dark:bg-black">
+      <div className="pt-8 px-8">
+        {/* Heading & Badge */}
+        <div className="text-center mb-5">
+          <DotBadge label="How It Works" className='mb-7' />
+          <h1 className="text-4xl lg:text-5xl font-medium font-geist text-gray-900 dark:text-white mb-6 leading-tight">
+            Magic Behind Our <GradientText gradient='from-red-600 via-red-500 to-red-600'>Smart Scraping</GradientText>
+          </h1>
         </div>
 
-        {/* Steps */}
-        <div className="max-w-6xl mx-auto">
-          {/* Step Indicators */}
-          <div className="flex justify-center mb-12">
-            <div className="flex items-center space-x-4">
-              {howItWorks.steps.map((step, index) => (
-                <React.Fragment key={step.id}>
-                  <div 
-                    className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-500 cursor-pointer ${
-                      index <= activeStep 
-                        ? 'bg-primary text-primary-foreground shadow-glow' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}
-                    onClick={() => setActiveStep(index)}
-                  >
-                    {index < activeStep ? (
-                      <CheckCircle className="w-6 h-6" />
-                    ) : (
-                      step.number
-                    )}
-                  </div>
-                  {index < howItWorks.steps.length - 1 && (
-                    <div 
-                      className={`w-16 h-1 transition-all duration-500 ${
-                        index < activeStep ? 'bg-primary' : 'bg-muted'
-                      }`}
-                    />
-                  )}
-                </React.Fragment>
-              ))}
-            </div>
+        {/* Tab Navigation */}
+        <nav className="flex items-center justify-center space-x-8 mb-8 ">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => handleTabClick(tab.id)}
+              className={`flex items-center space-x-2 px-6 py-4 transition-all duration-200 relative border-b-2
+                ${activeTab === tab.id
+                  ? 'text-primary border-secondary dark:border-bordercolor'
+                  : 'text-gray-600 border-transparent hover:text-gray-900 hover:border-gray-300'
+                }`}
+            >
+              {tab.icon}
+              <span className="text-md font-geist font-medium">{tab.label}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Video Section */}
+        <div className="bg-white dark:bg-black border border-bordercolor rounded-lg shadow-lg p-6 mx-auto max-w-6xl">
+          <div className="mb-6">
+            <h2 className="text-2xl font-geist font-medium text-gray-900 dark:text-white mb-2">
+              {tabs.find(tab => tab.id === activeTab)?.label}
+            </h2>
+            <p className="text-gray-500">
+              {tabs.find(tab => tab.id === activeTab)?.description}
+            </p>
           </div>
 
-          {/* Active Step Content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Step Details */}
-            <div className={`space-y-6 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}>
-              {howItWorks.steps.map((step, index) => {
-                const IconComponent = iconMap[step.icon as keyof typeof iconMap];
-                const isActive = index === activeStep;
-                
-                return (
-                  <Card 
-                    key={step.id}
-                    className={`transition-all duration-500 cursor-pointer ${
-                      isActive 
-                        ? 'border-primary shadow-lg scale-105 bg-gradient-card' 
-                        : 'border-border hover:border-primary/50 hover:shadow-md'
-                    }`}
-                    onClick={() => setActiveStep(index)}
-                  >
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center transition-colors ${
-                          isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
-                        }`}>
-                          <IconComponent className="w-6 h-6" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className={`text-xl font-bold mb-2 transition-colors ${
-                            isActive ? 'text-primary' : 'text-foreground'
-                          }`}>
-                            {step.title}
-                          </h3>
-                          <p className="text-muted-foreground mb-4">
-                            {step.description}
-                          </p>
-                          {isActive && (
-                            <ul className="space-y-2 animate-fade-in">
-                              {step.details.map((detail, detailIndex) => (
-                                <li key={detailIndex} className="flex items-center text-sm text-muted-foreground">
-                                  <CheckCircle className="w-4 h-4 text-success mr-2 flex-shrink-0" />
-                                  {detail}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
+          <div className="relative bg-black rounded-lg overflow-hidden group" style={{ aspectRatio: '16/9' }}>
+            {tabs.map((tab) => (
+              <video
+                key={tab.id}
+                ref={(el) => {
+                  videoRefs.current[tab.id] = el;
+                }}
+                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${activeTab === tab.id ? 'opacity-100' : 'opacity-0'
+                  }`}
+                onEnded={() => handleVideoEnd(tab.id)}
+                preload="metadata"
+                muted
+                autoPlay
+                playsInline
+              >
+                <source src={tab.videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ))}
 
-            {/* Right: Visual Demo */}
-            <div className={`transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-            }`}>
-              <div className="relative bg-gradient-card rounded-2xl p-8 border shadow-xl">
-                {/* Code Example */}
-                <div className="bg-slate-900 rounded-lg p-6 text-green-400 font-mono text-sm overflow-x-auto">
-                  <div className="mb-4">
-                    <span className="text-blue-400">// Step {activeStep + 1}: {howItWorks.steps[activeStep].title}</span>
-                  </div>
-                  {activeStep === 0 && (
-                    <div className="space-y-2">
-                      <div><span className="text-purple-400">const</span> response = <span className="text-yellow-400">await</span> fetch(<span className="text-green-300">'https://api.scrapemaster.pro/scrape'</span>, {`{`}</div>
-                      <div className="ml-4">method: <span className="text-green-300">'POST'</span>,</div>
-                      <div className="ml-4">headers: {`{`} <span className="text-green-300">'Authorization'</span>: <span className="text-green-300">'Bearer YOUR_API_KEY'</span> {`}`},</div>
-                      <div className="ml-4">body: JSON.stringify({`{`}</div>
-                      <div className="ml-8">url: <span className="text-green-300">'https://example.com'</span>,</div>
-                      <div className="ml-8">format: <span className="text-green-300">'json'</span></div>
-                      <div className="ml-4">{`})`}</div>
-                      <div>{`});`}</div>
-                    </div>
-                  )}
-                  {activeStep === 1 && (
-                    <div className="space-y-2">
-                      <div><span className="text-blue-400">// AI Processing in action...</span></div>
-                      <div>✓ Detecting bot protection</div>
-                      <div>✓ Randomizing fingerprint</div>
-                      <div>✓ Rendering JavaScript</div>
-                      <div>✓ Extracting content</div>
-                      <div><span className="text-green-400 animate-pulse">⟳ Processing...</span></div>
-                    </div>
-                  )}
-                  {activeStep === 2 && (
-                    <div className="space-y-2">
-                      <div><span className="text-green-400">{`{`}</span></div>
-                      <div className="ml-4"><span className="text-blue-400">"status"</span>: <span className="text-green-300">"success"</span>,</div>
-                      <div className="ml-4"><span className="text-blue-400">"data"</span>: {`{`}</div>
-                      <div className="ml-8"><span className="text-blue-400">"title"</span>: <span className="text-green-300">"Extracted Title"</span>,</div>
-                      <div className="ml-8"><span className="text-blue-400">"price"</span>: <span className="text-green-300">"$99.99"</span>,</div>
-                      <div className="ml-8"><span className="text-blue-400">"availability"</span>: <span className="text-green-300">"In Stock"</span></div>
-                      <div className="ml-4">{`},`}</div>
-                      <div className="ml-4"><span className="text-blue-400">"confidence"</span>: <span className="text-yellow-400">0.98</span></div>
-                      <div><span className="text-green-400">{`}`}</span></div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Status Indicators */}
-                <div className="flex items-center justify-between mt-6 p-4 bg-success/10 rounded-lg border border-success/20">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium">Status: {activeStep === 1 ? 'Processing' : 'Ready'}</span>
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    Response time: 1.{Math.floor(Math.random() * 9)}s
-                  </div>
-                </div>
-              </div>
+            <div className="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-2 flex items-center text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+              <button
+                onClick={togglePlayPause}
+                className="hover:text-secondary transition-colors duration-200"
+              >
+                {isPlaying ? (
+                  <Pause className="w-4 h-4" />
+                ) : (
+                  <Play className="w-4 h-4" />
+                )}
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div className="mt-20">
-            <div className="bg-white dark:bg-black  p-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  See It in Action
-                </h3>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Watch our interactive demo to see how easy it is to set up your first scraper 
-                  and start extracting data in minutes.
-                </p>
-                
-                {/* Demo Placeholder */}
-                <div className="bg-background rounded-lg border border-border p-8 mb-6 max-w-3xl mx-auto">
-                  <div className="aspect-video bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                        <Target className="h-10 w-10 text-primary" />
-                      </div>
-                      <p className="text-lg font-semibold text-primary">Interactive Demo</p>
-                      <p className="text-sm text-muted-foreground">Click to explore the platform</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="btn-hero">
-                    Try Live Demo
-                  </Button>
-                  <Button variant="outline" className="btn-secondary">
-                    Schedule Walkthrough
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-    </section>
+    </div>
   );
-};
+}

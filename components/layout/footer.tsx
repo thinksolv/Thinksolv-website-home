@@ -17,7 +17,7 @@ const Footer = () => {
   const socialIcons: Record<string, JSX.Element> = {
     linkedin: (
       <svg
-        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-secondary"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -29,14 +29,14 @@ const Footer = () => {
     ),
     twitter: (
       <svg
-        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
+        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-secondary"
         width="24"
         height="24"
-        viewBox="0 0 24 24"
+        viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M22.16 5.66C21.4 6 20.59 6.22 19.76 6.31C20.63 5.79 21.29 4.97 21.6 4C20.78 4.49 19.88 4.83 18.94 5.01C18.31 4.34 17.48 3.89 16.57 3.74C15.66 3.59 14.73 3.75 13.92 4.18C13.1 4.62 12.46 5.31 12.08 6.15C11.7 6.99 11.61 7.93 11.82 8.83C10.16 8.75 8.53 8.31 7.04 7.56C5.56 6.81 4.25 5.75 3.2 4.46C2.83 5.1 2.63 5.82 2.63 6.56C2.63 8.01 3.37 9.29 4.49 10.04C3.83 10.02 3.18 9.84 2.6 9.52V9.57C2.6 10.54 2.93 11.47 3.54 12.22C4.16 12.97 5.01 13.48 5.95 13.67C5.34 13.84 4.69 13.86 4.06 13.74C4.33 14.58 4.85 15.3 5.55 15.82C6.25 16.35 7.1 16.63 7.97 16.65C7.1 17.33 6.11 17.83 5.05 18.13C3.98 18.43 2.87 18.51 1.78 18.38C3.69 19.61 5.92 20.26 8.19 20.26C15.88 20.26 20.09 13.89 20.09 8.36C20.09 8.18 20.08 8 20.08 7.82C20.89 7.23 21.6 6.5 22.16 5.66Z" />
+        <path d="M 6.9199219 6 L 21.136719 26.726562 L 6.2285156 44 L 9.40625 44 L 22.544922 28.777344 L 32.986328 44 L 43 44 L 28.123047 22.3125 L 42.203125 6 L 39.027344 6 L 26.716797 20.261719 L 16.933594 6 L 6.9199219 6 z" />
       </svg>
     ),
   };
@@ -156,7 +156,7 @@ const FooterList = ({
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="mb-3 inline-block hover:text-red-600"
+              className="mb-3 inline-block hover:text-secondary"
             >
               {item.label}
             </a>

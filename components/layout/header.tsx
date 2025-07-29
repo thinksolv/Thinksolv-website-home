@@ -1,14 +1,54 @@
 "use client"
-
 import { useState, useEffect } from "react"
+import type React from "react"
+import { GiSpiderWeb } from "react-icons/gi";
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { MenuIcon, XIcon, ChevronDown, Settings, Package, BookOpen, Mail } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle" // ✅ <-- use your reusable toggle
+import { MenuIcon, XIcon, ChevronDown, Settings, Package, BookOpen, Mail, FileText } from "lucide-react"
 import MobileNav from "../../components/MobileNav"
 import { siteConfig } from "../../config/site"
 import { dropdownVariants, sharedTransition } from "../../lib/framer-animations"
 import { cn } from "../../lib/utils"
+
+// Custom Spider Net SVG Component
+const SpiderNetIcon = ({ className }: { className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    {/* Outer web structure */}
+    <circle cx="12" cy="12" r="10" opacity="0.3" />
+    <circle cx="12" cy="12" r="7" opacity="0.4" />
+    <circle cx="12" cy="12" r="4" opacity="0.5" />
+    <circle cx="12" cy="12" r="1" />
+
+    {/* Radial lines */}
+    <line x1="12" y1="2" x2="12" y2="22" opacity="0.6" />
+    <line x1="2" y1="12" x2="22" y2="12" opacity="0.6" />
+    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" opacity="0.5" />
+    <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" opacity="0.5" />
+
+    <path d="m13.5 7.5-1 1m3-1 1 1m-3 3 1-1m1 1 1 1" strokeWidth="1" opacity="0.8" />
+  </svg>
+)
+
+// Function to get icon for service items
+const getServiceIcon = (label: string) => {
+  switch (label) {
+    case "Document AI":
+      return <FileText className="h-5 w-5" />
+    case "Web Scraping":
+      return <GiSpiderWeb className="h-5 w-5" />
+    default:
+      return null
+  }
+}
 
 interface AnimatedMenuItemProps {
   children: React.ReactNode
@@ -30,9 +70,8 @@ const AnimatedMenuItem = ({
   dropdownKey,
 }: AnimatedMenuItemProps) => {
   const [isHovered, setIsHovered] = useState(false)
-const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
-const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
-
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
   const handleMouseEnter = () => {
     if (timeoutId) {
@@ -57,12 +96,14 @@ const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
         href={href}
         className={cn(
           "flex items-center gap-3 px-5 py-2 rounded-xl transition-all duration-300",
-          isHovered && iconColor ? `${iconColor} text-foreground` : "text-foreground/80"
+          isHovered && iconColor ? `${iconColor} text-foreground` : "text-foreground/80",
         )}
         whileHover={{ scale: 1.05 }}
       >
         {icon && (
-          <span className={cn("transition-colors duration-300", isHovered && iconColor ? iconColor : "text-foreground/60")}>
+          <span
+            className={cn("transition-colors duration-300", isHovered && iconColor ? iconColor : "text-foreground/60")}
+          >
             {icon}
           </span>
         )}
@@ -73,7 +114,6 @@ const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
           </motion.div>
         )}
       </motion.a>
-
       {hasDropdown && activeDropdown === dropdownKey && (
         <motion.div
           className="absolute top-full left-0 mt-3 w-72 bg-background/95 backdrop-blur-xl border border-border/50 rounded-2xl shadow-2xl z-50 overflow-hidden"
@@ -85,37 +125,51 @@ const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
           onMouseLeave={handleMouseLeave}
         >
           <div className="divide-y divide-border/40">
-            {dropdownItems.map((item, index) => (
-              <motion.a
-                key={index}
-                href={item.href}
-                className="flex items-center justify-between px-4 py-3 gap-2 text-muted-foreground hover:text-foreground group transition-colors duration-300"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.3 }}
-                whileHover={{
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                  x: 5,
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <motion.div className="w-2 h-2 rounded-full bg-current opacity-0 group-hover:opacity-100 transition duration-200" />
-                  <span className="text-sm font-medium group-hover:font-semibold transition">{item.label}</span>
-                </div>
-                {dropdownKey === "products" && (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7m0 0v7m0-7L10 14" />
-  </svg>
-)}
-              </motion.a>
-            ))}
+            {dropdownItems.map((item, index) => {
+              const serviceIcon = dropdownKey === "services" ? getServiceIcon(item.label) : null
+
+              return (
+                <motion.a
+                  key={index}
+                  href={item.href}
+                  className="flex items-center justify-between px-4 py-3 gap-2 text-muted-foreground hover:text-foreground group transition-colors duration-300"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
+                  whileHover={{
+                    backgroundColor: "rgba(255, 255, 255, 0.05)",
+                    x: 5,
+                  }}
+                >
+                  <div className="flex items-center gap-3">
+                    {serviceIcon && (
+                      <motion.div
+                        className="text-primary opacity-70 group-hover:opacity-100 transition-opacity duration-200"
+                        whileHover={{ scale: 1.1 }}
+                      >
+                        {serviceIcon}
+                      </motion.div>
+                    )}
+                    {!serviceIcon && (
+                      <motion.div className="w-2 h-2 rounded-full bg-current opacity-0 group-hover:opacity-100 transition duration-200" />
+                    )}
+                    <span className="text-sm font-medium group-hover:font-semibold transition">{item.label}</span>
+                  </div>
+                  {dropdownKey === "products" && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7m0 0v7m0-7L10 14" />
+                    </svg>
+                  )}
+                </motion.a>
+              )
+            })}
           </div>
         </motion.div>
       )}
@@ -137,110 +191,97 @@ const Header = ({ showHeader = true, showLogo = true }) => {
     <motion.header
       className={cn(
         "sticky top-0 z-50 w-full transition-all duration-100",
-        scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent border-b"
+        scrolled ? "bg-background/80 backdrop-blur-md border-b" : "bg-transparent border-b",
       )}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-0 ">
+      <div className="container mx-auto px-0">
         <div className="flex items-center py-4 w-full">
-  {/* Logo on the far left */}
-  <motion.div
-    className="flex items-center space-x-3"
-    whileHover={{ scale: 1.02 }}
-    transition={{ duration: 0.2 }}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: showLogo ? 1 : 0 }}
-  >
-    <a href="/" title={siteConfig.name} className="flex items-center">
-      <div id="header-logo-container" className="relative">
-        <Image
-          src={siteConfig.logo.src || "/thinksolv-logo.png"}
-          alt={siteConfig.logo.alt}
-          width={siteConfig.logo.width}
-          height={siteConfig.logo.height}
-          className="rounded px-2"
-        />
-      </div>
-      <span className="text-2xl font-bold text-black dark:text-white mt-1">
-        {siteConfig.brandText.main}
-        <span className="text-red-500">{siteConfig.brandText.highlight}</span>
-      </span>
-    </a>
-  </motion.div>
+          {/* Logo on the far left */}
+          <motion.div
+            className="flex items-center space-x-3"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showLogo ? 1 : 0 }}
+          >
+            <a href="/" title={siteConfig.name} className="flex items-center">
+              <div id="header-logo-container" className="relative">
+                <Image
+                  src={siteConfig.logo.src || "/thinksolv-logo.png"}
+                  alt={siteConfig.logo.alt}
+                  width={siteConfig.logo.width}
+                  height={siteConfig.logo.height}
+                  className="rounded px-2"
+                />
+              </div>
+              <span className="text-2xl font-bold text-black dark:text-white mt-1">
+                {siteConfig.brandText.main}
+                <span className="text-red-600">{siteConfig.brandText.highlight}</span>
+              </span>
+            </a>
+          </motion.div>
 
-  {/* Spacer pushes everything else to far right */}
-  <div className="flex-grow" />
-  {/* <motion.div
-      className="flex px-5 items-center space-x-6"
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: showHeader ? 1 : 0, x: showHeader ? 0 : 20 }}
-      transition={{ duration: 0.6, delay: 0.15 }}
-    >
-      <ThemeToggle />
-    </motion.div>   */}
-  {/* Right-aligned Menu + ThemeToggle + Mobile Nav Button */}
-  <div className="flex items-center gap-4">
-    {/* Menu Bar */}
-    <motion.nav
-      className="hidden md:flex items-center gap-4 p-3 rounded-3xl bg-gradient-to-r from-background/60 via-background/40 to-background/60 backdrop-blur-xl border border-border/30 dark:border-white shadow-xl"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-    >
-      <AnimatedMenuItem
-        icon={<Settings className="h-5 w-5" />}
-        hasDropdown
-        dropdownItems={siteConfig.nav.services}
-        iconColor="text-red-500"
-        dropdownKey="services"
-      >
-        Services
-      </AnimatedMenuItem>
+          {/* Spacer pushes everything else to far right */}
+          <div className="flex-grow" />
 
-      <AnimatedMenuItem
-        icon={<Package className="h-5 w-5" />}
-        hasDropdown
-        dropdownItems={siteConfig.nav.products}
-        iconColor="text-red-500"
-        dropdownKey="products"
-      >
-        Products
-      </AnimatedMenuItem>
+          {/* Right-aligned Menu + ThemeToggle + Mobile Nav Button */}
+          <div className="flex items-center gap-4">
+            {/* Menu Bar */}
+            <motion.nav
+              className="hidden md:flex items-center gap-4 p-3 rounded-3xl bg-gradient-to-r from-background/60 via-background/40 to-background/60 backdrop-blur-xl border border-border/30 dark:border-white shadow-xl"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: showHeader ? 1 : 0, y: showHeader ? 0 : -20 }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            >
+              <AnimatedMenuItem
+                icon={<Settings className="h-5 w-5" />}
+                hasDropdown
+                dropdownItems={siteConfig.nav.services}
+                iconColor="text-red-600"
+                dropdownKey="services"
+              >
+                Services
+              </AnimatedMenuItem>
+              <AnimatedMenuItem
+                icon={<Package className="h-5 w-5" />}
+                hasDropdown
+                dropdownItems={siteConfig.nav.products}
+                iconColor="text-red-600"
+                dropdownKey="products"
+              >
+                Products
+              </AnimatedMenuItem>
+              <AnimatedMenuItem
+                icon={<BookOpen className="h-5 w-5" />}
+                href={siteConfig.nav.blog.href}
+                iconColor="text-red-600"
+              >
+                {siteConfig.nav.blog.label}
+              </AnimatedMenuItem>
+              <AnimatedMenuItem
+                icon={<Mail className="h-5 w-5" />}
+                href={siteConfig.nav.contact.href}
+                iconColor="text-red-600"
+              >
+                {siteConfig.nav.contact.label}
+              </AnimatedMenuItem>
+            </motion.nav>
 
-      <AnimatedMenuItem
-        icon={<BookOpen className="h-5 w-5" />}
-        href={siteConfig.nav.blog.href}
-        iconColor="text-red-500"
-      >
-        {siteConfig.nav.blog.label}
-      </AnimatedMenuItem>
-
-      <AnimatedMenuItem
-        icon={<Mail className="h-5 w-5" />}
-        href={siteConfig.nav.contact.href}
-        iconColor="text-red-500"
-      >
-        {siteConfig.nav.contact.label}
-      </AnimatedMenuItem>
-    </motion.nav>
-
-    {/* Theme toggle and mobile menu icon */}
-    
-      <motion.button
-        onClick={() => setExpanded(!expanded)}
-        className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
-        aria-label="Toggle mobile menu"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        {expanded ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
-      </motion.button>
-  </div>
-</div>
-
-
+            {/* Theme toggle and mobile menu icon */}
+            <motion.button
+              onClick={() => setExpanded(!expanded)}
+              className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
+              aria-label="Toggle mobile menu"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {expanded ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+            </motion.button>
+          </div>
+        </div>
         <MobileNav expanded={expanded} setExpanded={setExpanded} />
       </div>
     </motion.header>

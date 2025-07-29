@@ -3,7 +3,7 @@ import Script from 'next/script'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import { ThemeProvider } from '@/components/theme-provider'
-import  Header from '@/components/layout/header'
+import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { siteConfig } from '@//config/site'
 
@@ -108,6 +108,14 @@ export default function RootLayout({
               y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
             })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
           `}
+        </Script>
+
+        {/* Calendly Component */}
+        <Script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        >
         </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>

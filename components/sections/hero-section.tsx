@@ -3,6 +3,7 @@
 import { siteConfig } from "@/config/site";
 import ShinyButton from '@/components/ui/shiny-button';
 import SpiderWebBuilder from "@/components/sections/spider-chart";
+import GradientText from "../ui/gradient-text";
 
 export default function HeroSection() {
   const { hero } = siteConfig;
@@ -13,15 +14,11 @@ export default function HeroSection() {
         {/* Left Content */}
         <div className="space-y-8 text-center lg:text-left">
           <div className="space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-4xl lg:text-6xl font-medium font-geist text-gray-900 dark:text-white leading-tight">
               {hero.title}{" "}
-              <span
-                className="bg-clip-text text-red-600"
-
-              >
-                {hero.highlighted}
-              </span>
+              <GradientText gradient="from-red-600 via-red-600 to-red-600" className="mt-2">{hero.highlighted}</GradientText>
             </h1>
+            
             <p className="text-base sm:text-lg md:text-xl text-gray-500 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Empowering businesses with intelligent data &  workflows.
             </p>

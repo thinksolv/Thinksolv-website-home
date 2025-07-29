@@ -21,17 +21,16 @@ const config = {
 		scrollBehavior: ['responsive'],
 		extend: {
 			fontFamily: {
-				cursive: ['"Pacifico"', 'cursive'], // or 'Satisfy', 'Dancing Script'
+				geist: 'var(--font-geist-sans)',
+				mono: 'var(--font-geist-mono)',
 			},
 			backgroundImage: {
-				'primary': 'linear-gradient(45deg, #6A7EFC 0%, #8C9EFF 30%, #C6D0FF 50%, #8C9EFF 70%, #5269F6 100%)',
+				'primary': 'linear-gradient(to right, #007bbf 0%, #007bbf 100%)',
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'gradient-conic':
 					'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
 			},
 			colors: {
-				brand: '#007bbf',
-				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
@@ -40,10 +39,10 @@ const config = {
 				// 	DEFAULT: 'hsl(var(--primary))',
 				// 	foreground: 'hsl(var(--primary-foreground))'
 				// },
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
-				},
+				// secondary: {
+				// 	DEFAULT: 'hsl(var(--secondary))',
+				// 	foreground: 'hsl(var(--secondary-foreground))'
+				// },
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))'
@@ -56,33 +55,19 @@ const config = {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
-				popover: {
-					DEFAULT: 'hsl(var(--popover))',
-					foreground: 'hsl(var(--popover-foreground))'
-				},
-				card: {
-					DEFAULT: 'hsl(var(--card))',
-					foreground: 'hsl(var(--card-foreground))'
-				},
+				// popover: {
+				// 	DEFAULT: 'hsl(var(--popover))',
+				// 	foreground: 'hsl(var(--popover-foreground))'
+				// },
+				// card: {
+				// 	DEFAULT: 'hsl(var(--card))',
+				// 	foreground: 'hsl(var(--card-foreground))'
+				// },
 				current: "currentColor",
-				transparent: "transparent",
-				stroke: "#EEEEEE",
-				strokedark: "#2D2F40",
-				hoverdark: "#252A42",
-				titlebg: "#FFD1D1",
-				titlebg1: '#B0E0E6',
-				titlebg2: "#FFEAC2",
-				titlebgdark: "#46496A",
-				btndark: "#292E45",
-				blackho: "#2C3149",
-				blacksection: "#1C2136",
-				primary: "linear-gradient(to right, #007bbf 0%, #007bbf 100%)",
-				primaryho: "#E91C24",
+				primary: "#007bbf",
+				bordercolor: "#d4d0d0ff",
+				secondary: '#e91c24',
 				meta: "#20C5A8",
-				waterloo: "#757693",
-				manatee: "#999AA1",
-				alabaster: "#FBFBFB",
-				zumthor: "#EDF5FF",
 				socialicon: "#D1D8E0",
 				// gradientStart: '#ff0000', // Start color of gradient
 				// gradientEnd: '#ff0000', // End color of gradient

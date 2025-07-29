@@ -16,7 +16,7 @@ export default function Home() {
     <div  className="bg-red dark:bg-black">
       <HeroSection />
       {/* <BrandsSection /> */}
-      {/* <About /> */}
+      <About />
       <Product />
       <Services />
       <FunFact />

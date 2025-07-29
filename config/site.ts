@@ -43,8 +43,8 @@ export const siteConfig = {
 
   nav: {
     services: [
-      { label: "Document AI", href: "/services/document-ai" },
       { label: "Web Scraping", href: "/services/web-scraping" },
+      { label: "Document AI", href: "/services/document-ai" },
     ],
     products: [
       { label: "Merge Docs Pro", href: "https://www.mergedocs.pro" },
@@ -101,8 +101,9 @@ export const siteConfig = {
   },
 
   products: {
-    title: "Our Products",
-    subtitle: "Streamline Your Workflow with Our Ready-to-Use Products",
+    title: "Smart Tools for Smart",
+    span:"People",
+    //subtitle: "Streamline Your Workflow with Our Ready-to-Use Products",
     description:
       "Our thoughtfully crafted products are designed to automate tasks and optimize workflows, helping your business operate more efficiently.",
       buttontext:"Explore",
@@ -168,11 +169,12 @@ export const siteConfig = {
   },
 
   services: {
-    title: "Our Services",
+    title: "Where Innovation Meets Execution",
     description: "Explore the intelligent capabilities we offer for your digital transformation.",
     items: [
       {
         id: "web-scraping",
+        icon:"web-scraping",
         label: "Web Scraping",
         image: "/web-scraping.jpg", // Replace with your actual image path
         title: "Web Scraping",
@@ -189,6 +191,7 @@ export const siteConfig = {
       {
         id: "document-ai",
         label: "Document AI",
+         icon:"document-ai",
         image: "/document-ai.png", // Replace with your actual image path
         title: "Document AI",
         description:
@@ -207,7 +210,8 @@ export const siteConfig = {
 
 
   funFact: {
-    title: "Trusted by Global Companies.",
+    title: "Trusted by Global",
+    span: "Companies",
     description:
       "We provide tailored Google Workspace automation and integration solutions, helping businesses worldwide streamline workflows and boost productivity.",
     stats: [
@@ -228,7 +232,8 @@ export const siteConfig = {
   },
 
   faq: {
-    title: "Frequently Asked Questions",
+    title: "Frequently Asked",
+    span:"Questions",
     description: "Everything you need to know, in one place",
     items: [
       {
@@ -276,7 +281,8 @@ export const siteConfig = {
 
   contact: {
     header: {
-      title: "Get In Touch",
+      title: "Get In",
+      span:"Touch",
       subtitle: "Contact Us",
       description:
         "Feel free to reach out",

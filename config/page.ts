@@ -646,28 +646,53 @@ export const securityFeatures = {
 }
 
 // FAQ
-export const faqItems: FaqItem[] = [
-  {
-    question: "How do you handle websites that frequently change their structure?",
-    answer: "Our AI-powered system automatically detects layout changes and adapts extraction patterns in real-time. When changes are detected, the system learns new patterns within minutes, maintaining high success rates without manual intervention."
-  },
-  {
-    question: "What compliance and legal protections do you provide?",
-    answer: "We're SOC 2 Type II certified and GDPR compliant. Our platform includes built-in rate limiting, robots.txt respect, and legal compliance tools. We also provide detailed audit logs and can assist with compliance documentation."
-  },
-  {
-    question: "How does pricing work for large-scale scraping?",
-    answer: "Our enterprise pricing is based on your specific needs including request volume, data retention, and support requirements. We offer volume discounts and can provide custom SLAs for high-volume customers."
-  },
-  {
-    question: "Can I integrate ScrapeStudio with my existing data pipeline?",
-    answer: "Yes! We offer REST APIs, webhooks, and SDKs for 8+ programming languages. We also support direct integration with popular databases, data warehouses, and BI tools like Snowflake, BigQuery, and Tableau."
-  },
-  {
-    question: "What kind of support do you provide?",
-    answer: "We offer 24/7 technical support for Enterprise customers, priority support for Pro users, and community support for Starter plans. All plans include comprehensive documentation, tutorials, and code examples."
-  }
-];
+export const faq = {
+  title: "Frequently Asked",
+  span: "Questions",
+  description: "Everything you need to know about our web scraping solution.",
+  items: [
+    {
+      question: "What is your web scraper used for?",
+      answer:
+        "Our web scraper automates the extraction of structured data from websites, helping businesses gather market insights, product details, pricing intelligence, and more.",
+    },
+    {
+      question: "Is web scraping legal?",
+      answer:
+        "Web scraping is legal when done responsibly. We ensure compliance with public data policies, and we encourage users to respect website terms of service and applicable laws.",
+    },
+    {
+      question: "What data formats do you support for exports?",
+      answer:
+        "You can export scraped data in formats such as JSON, CSV, or directly to Google Sheets, APIs, or databases depending on your integration needs.",
+    },
+    {
+      question: "Can I schedule scraping tasks?",
+      answer:
+        "Yes, our platform supports task scheduling so you can run scrapers at regular intervals—hourly, daily, or weekly—without manual intervention.",
+    },
+    {
+      question: "Can I scrape dynamic websites with JavaScript content?",
+      answer:
+        "Absolutely. Our scraper can handle JavaScript-heavy sites by rendering pages with headless browser technology to capture dynamic content.",
+    },
+    {
+      question: "Do you offer ready-made scraping templates?",
+      answer:
+        "Yes, we provide pre-built scraping templates for common use cases such as e-commerce sites, job boards, and real estate listings, so you can get started quickly.",
+    },
+    {
+      question: "Can I customize the scraping logic for my needs?",
+      answer:
+        "Yes, we support custom scraping configurations and offer visual tools or scripting options to define exactly what and how you want to extract data.",
+    },
+    {
+      question: "How do you handle anti-bot measures?",
+      answer:
+        "We use techniques such as rotating proxies, user-agent spoofing, and CAPTCHA bypass mechanisms to reduce the chance of being blocked by target websites.",
+    },
+  ],
+}
 
 // CTA Content
 export const ctaContent = {
