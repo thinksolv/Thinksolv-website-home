@@ -19,10 +19,10 @@ const DotBadge: React.FC<DotBadgeProps> = ({
 }) => {
   return (
     <div
-      className={`inline-flex items-center ${padding} border rounded-full bg-white text-black dark:bg-black dark:text-white font-medium gap-2 ${textSize} ${className}`}
+      className={`inline-flex items-center ${padding} border rounded-full bg-white text-black dark:bg-black dark:text-white font-medium font-geist gap-2 ${textSize} ${className}`}
     >
       <span
-        className={`w-[10px] h-[10px] rounded-full shrink-0 ${gradient}`}
+        className={`w-[10px] h-[10px] rounded-full shrink-0 bg-gradient-to-r ${gradient}`}
       />
       {label}
     </div>

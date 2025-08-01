@@ -4,39 +4,11 @@ import type React from "react"
 import { GiSpiderWeb } from "react-icons/gi";
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { MenuIcon, XIcon, ChevronDown, Settings, Package, BookOpen, Mail, FileText } from "lucide-react"
+import { ChevronDown, Settings, Package, BookOpen, Mail, FileText } from "lucide-react"
 import MobileNav from "../../components/MobileNav"
 import { siteConfig } from "../../config/site"
 import { dropdownVariants, sharedTransition } from "../../lib/framer-animations"
 import { cn } from "../../lib/utils"
-
-// Custom Spider Net SVG Component
-const SpiderNetIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className={className}
-  >
-    {/* Outer web structure */}
-    <circle cx="12" cy="12" r="10" opacity="0.3" />
-    <circle cx="12" cy="12" r="7" opacity="0.4" />
-    <circle cx="12" cy="12" r="4" opacity="0.5" />
-    <circle cx="12" cy="12" r="1" />
-
-    {/* Radial lines */}
-    <line x1="12" y1="2" x2="12" y2="22" opacity="0.6" />
-    <line x1="2" y1="12" x2="22" y2="12" opacity="0.6" />
-    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" opacity="0.5" />
-    <line x1="4.93" y1="19.07" x2="19.07" y2="4.93" opacity="0.5" />
-
-    <path d="m13.5 7.5-1 1m3-1 1 1m-3 3 1-1m1 1 1 1" strokeWidth="1" opacity="0.8" />
-  </svg>
-)
 
 // Function to get icon for service items
 const getServiceIcon = (label: string) => {
@@ -273,12 +245,23 @@ const Header = ({ showHeader = true, showLogo = true }) => {
             {/* Theme toggle and mobile menu icon */}
             <motion.button
               onClick={() => setExpanded(!expanded)}
-              className="md:hidden text-gray-500 dark:text-gray-400 focus:outline-none"
+              className="md:hidden relative w-8 h-8 flex flex-col justify-center mr-5 items-center focus:outline-none"
               aria-label="Toggle mobile menu"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >
-              {expanded ? <XIcon className="w-8 h-8" /> : <MenuIcon className="w-8 h-8" />}
+              <span
+                className={cn(
+                  "absolute w-6 h-0.5 bg-current transition-all duration-300",
+                  expanded ? "rotate-45 translate-y-0" : "-translate-y-1.5"
+                )}
+              />
+              <span
+                className={cn(
+                  "absolute w-6 h-0.5 bg-current transition-all duration-300",
+                  expanded ? "-rotate-45 translate-y-0" : "translate-y-1.5"
+                )}
+              />
             </motion.button>
           </div>
         </div>

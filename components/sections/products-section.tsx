@@ -59,7 +59,7 @@ const Product = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="flex flex-col sm:flex-row gap-6 border border-bordercolor dark:border-bordercolor hover:border-primary hover:border-l-[6px] rounded-2xl bg-white dark:bg-[#111] p-6 w-full shadow-md hover:shadow-lg transition-all"
+                  className="flex flex-col sm:flex-row gap-6 border border-bordercolor dark:border-bordercolor hover:border-secondary/50 hover:border-l-[6px] rounded-2xl bg-white dark:bg-[#111] p-6 w-full shadow-md hover:shadow-lg transition-all"
                 >
                   {/* Icon */}
                   <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 shrink-0">

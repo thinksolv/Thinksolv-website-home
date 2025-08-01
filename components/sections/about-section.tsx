@@ -12,7 +12,7 @@ export default function AboutOption4() {
     {
       id: 1,
       badge: "Our Products",
-      title: "Innovative solutions that drive results",
+      title: "Advanced solutions focused on performance",
       description:
         "We create cutting-edge products that solve real-world problems. From custom software applications to scalable platforms, our products are designed with user experience and business impact in mind.",
       features: [
@@ -21,7 +21,7 @@ export default function AboutOption4() {
         "User-Centric Design",
         "Enterprise-Grade Security",
       ],
-      image: "/placeholder.svg?height=500&width=600",
+      image: "/saas.jpg",
       stats: { number: "200+", label: "Products Delivered" },
       imageLeft: true,
     },
@@ -37,7 +37,7 @@ export default function AboutOption4() {
         "24/7 Technical Support",
         "Training & Documentation",
       ],
-      image: "/placeholder.svg?height=500&width=600",
+      image: "/saas.jpg",
       stats: { number: "99.9%", label: "Uptime Guarantee" },
       imageLeft: false,
     },
@@ -98,15 +98,13 @@ export default function AboutOption4() {
             <motion.div
               key={section.id}
               variants={itemVariants}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${
-                section.imageLeft ? "lg:grid-flow-col" : "lg:grid-flow-col-dense"
-              }`}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${section.imageLeft ? "lg:grid-flow-col" : "lg:grid-flow-col-dense"
+                }`}
             >
               {/* Content */}
               <div
-                className={`flex flex-col items-center lg:items-start text-center lg:text-left ${
-                  section.imageLeft ? "lg:order-2" : "lg:order-1"
-                }`}
+                className={`flex flex-col items-center lg:items-start text-center lg:text-left ${section.imageLeft ? "lg:order-2" : "lg:order-1"
+                  }`}
               >
                 <motion.div
                   initial={{ opacity: 0, x: section.imageLeft ? 50 : -50 }}
@@ -149,20 +147,18 @@ export default function AboutOption4() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  className="relative w-full max-w-xl sm:max-w-2xl lg:max-w-full" // Adjusted max-w for responsive sizing
+                  className="relative w-full max-w-xl sm:max-w-2xl lg:max-w-full"
                 >
                   <div className="relative rounded-3xl overflow-hidden shadow-2xl group aspect-[4/3] md:aspect-video">
-                    {" "}
-                    {/* Added aspect ratio */}
                     <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
                       <Image
                         src={section.image || "/placeholder.svg"}
                         alt={`${section.badge} illustration`}
-                        fill // Use fill to make it cover the parent div
-                        className="object-cover" // object-cover will ensure it fills the container
+                        fill
+                        className="object-cover"
                       />
                     </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                 </motion.div>
               </div>

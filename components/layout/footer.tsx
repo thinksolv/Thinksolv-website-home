@@ -17,7 +17,7 @@ const Footer = () => {
   const socialIcons: Record<string, JSX.Element> = {
     linkedin: (
       <svg
-        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-secondary"
+        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
         width="24"
         height="24"
         viewBox="0 0 24 24"
@@ -29,7 +29,7 @@ const Footer = () => {
     ),
     twitter: (
       <svg
-        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-secondary"
+        className="fill-[#D1D8E0] transition-all duration-300 hover:fill-primary"
         width="24"
         height="24"
         viewBox="0 0 48 48"
@@ -70,10 +70,10 @@ const Footer = () => {
                 </div>
 
                 {/* Tagline */}
-                <p className="mb-4 mt-5">{siteConfig.tagline}</p>
+                <p className="mb-4 font-medium font-geist mt-5">{siteConfig.tagline}</p>
 
                 {/* Social Icons Below Tagline */}
-                <ul className="flex items-center gap-4 mt-6 text-hover">
+                <ul className="flex items-center gap-4 mt-6 hover:text-primary">
                   {siteConfig.footer.social.map((social) => (
                     <li key={social.href}>
                       <a
@@ -95,6 +95,7 @@ const Footer = () => {
               <FooterList title="Links" items={siteConfig.footer.links} isClient={isClient} />
               <FooterList title="Products" items={siteConfig.footer.products} isClient={isClient} />
               <FooterList title="Services" items={siteConfig.footer.services} isClient={isClient} />
+              <FooterList title="Legal" items={siteConfig.footer.legal} isClient={isClient} />
 
               {/* Address */}
               {isClient && (
@@ -103,10 +104,10 @@ const Footer = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 1, delay: 0.2 }}
                 >
-                  <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
+                  <h4 className="mt-7 mb-4 font-geist text-itemtitle2 font-medium text-black dark:text-white">
                     Address
                   </h4>
-                  <p className="mb-4 whitespace-pre-line w-[100%]">
+                  <p className="mb-4 font-geist whitespace-pre-line w-[100%]">
                     {siteConfig.footer.address}
                   </p>
                 </motion.div>
@@ -116,7 +117,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section Without Social Icons */}
-        <div className="flex flex-col items-center justify-center gap-5 border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between">
+        <div className="flex flex-col items-center justify-center gap-5 font-geist border-t border-stroke py-7 dark:border-strokedark lg:flex-row lg:justify-between">
           <p>
             &copy; {year ?? "____"} Owned and Maintained By {siteConfig.name} Ltd. All rights reserved.
           </p>
@@ -146,7 +147,7 @@ const FooterList = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.1 }}
     >
-      <h4 className="mt-7 mb-4 text-itemtitle2 font-medium text-black dark:text-white">
+      <h4 className="mt-7 mb-4 text-itemtitle2 font-medium font-geist text-black dark:text-white">
         {title}
       </h4>
       <ul>
@@ -156,7 +157,7 @@ const FooterList = ({
               href={item.href}
               target={item.href.startsWith("http") ? "_blank" : undefined}
               rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="mb-3 inline-block hover:text-secondary"
+              className="mb-3 font-geist inline-block hover:text-primary"
             >
               {item.label}
             </a>

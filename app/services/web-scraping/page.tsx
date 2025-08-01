@@ -1,19 +1,21 @@
-import  HeroSection  from "@/components/web-scraper/hero-section"
-import { Features } from "@/components/web-scraper/features"
-import { UseCases } from "@/components/web-scraper/use-cases"
-import HowItWorks  from "@/components/web-scraper/how-it-works"
-import  FAQ  from "@/components/web-scraper/faq"
+import  HeroSection  from "@/pages/web-scraper/hero-section"
+import FeaturesGrid  from "@/pages/web-scraper/features"
+import UseCases  from "@/pages/web-scraper/use-cases"
+import HowItWorks  from "@/pages/web-scraper/how-it-works"
+import  FAQ  from "@/pages/web-scraper/faq"
+import Contact from "@/pages/web-scraper/contact"
 // import { PricingSection } from "@/components/web-scraper/pricing-section"
 
 export default function WebScrapingPage() {
   return(
     <>
       <HeroSection />
-      <Features />
+      <FeaturesGrid />  
       <UseCases />
       <HowItWorks />
       {/* <PricingSection /> */}
       <FAQ />
+      <Contact />
     </>
   )
 };

@@ -1,10 +1,12 @@
 import {
   FaFilePdf,
+  FaFileAlt,
   FaMarkdown,
   FaWordpress,
 } from "react-icons/fa";
+import { GiSpiderWeb } from "react-icons/gi";
 import { BiMerge } from "react-icons/bi";
-import { Mail } from "lucide-react"
+import { FileText, Mail } from "lucide-react"
 
 export const siteConfig = {
   name: "Thinksolv Technologies",
@@ -22,7 +24,8 @@ export const siteConfig = {
   description: "Building thoughtful software products and browser extensions to enhance productivity and simplify workflows.",
   metaDescription: "Thinksolv is a software company focused on crafting AI-powered tools, Chrome extensions, and scalable digital solutions for modern businesses and individuals.",
   url: "https://thinksolv.com",
-  ogImage: "https://thinksolv.com/og.jpg", // Replace with actual path or CDN URL if hosted elsewhere
+  ogImage: "https://thinksolv.com/og.jpg",
+  supportmail:"vikram@thinksolv.com", // Replace with actual path or CDN URL if hosted elsewhere
   links: {
     twitter: "https://twitter.com/thinksolv",
     youtube: "https://www.youtube.com/@thinksolv", // Update with correct handle if different
@@ -169,43 +172,45 @@ export const siteConfig = {
   },
 
   services: {
-    title: "Where Innovation Meets Execution",
-    description: "Explore the intelligent capabilities we offer for your digital transformation.",
-    items: [
-      {
-        id: "web-scraping",
-        icon:"web-scraping",
-        label: "Web Scraping",
-        image: "/web-scraping.jpg", // Replace with your actual image path
-        title: "Web Scraping",
-        description:
-          "Efficiently collect, clean, and structure data from websites at scale with our robust scraping pipelines.",
-        features: [
-          "Real-time web crawling",
-          "Anti-bot and proxy rotation",
-          "Data export in CSV, JSON, Sheets",
-          "Scheduled scraping and automation",
-          "Customizable headers and user-agents",
-        ],
-      },
-      {
-        id: "document-ai",
-        label: "Document AI",
-         icon:"document-ai",
-        image: "/document-ai.png", // Replace with your actual image path
-        title: "Document AI",
-        description:
-          "Automate data extraction, classification, and analysis from documents using intelligent AI models tailored for enterprise workflows.",
-        features: [
-          "OCR and structured extraction",
-          "Intelligent document categorization",
-          "Custom ML model integration",
-          "Automated workflow triggers",
-          "Seamless API connectivity",
-        ],
-      },
-    ],
-  },
+  title: "Engineered Solutions for",
+  span: "Success",
+  description: "Explore the intelligent capabilities we offer for your digital transformation.",
+  items: [
+    {
+      id: "web-scraping",
+      label: "Web Scraping",
+      icon: GiSpiderWeb, // ✅ Using FaGlobe from react-icons
+      title: "Web Scraping",
+      url:"services/web-scraping",
+      description:
+        "Efficiently collect, clean, and structure data from websites at scale with our robust scraping pipelines.",
+      features: [
+        "Real-time web crawling",
+        "Anti-bot and proxy rotation",
+        "Data export in CSV, JSON, Sheets",
+        "Scheduled scraping and automation",
+        "Customizable headers and user-agents",
+      ],
+    },
+    {
+      id: "document-ai",
+      label: "Document AI",
+      icon: FileText, // ✅ Using FaFileAlt from react-icons
+      title: "Document AI",
+      url:"services/document-ai",
+      description:
+        "Automate data extraction, classification, and analysis from documents using intelligent AI models tailored for enterprise workflows.",
+      features: [
+        "OCR and structured extraction",
+        "Intelligent document categorization",
+        "Custom ML model integration",
+        "Automated workflow triggers",
+        "Seamless API connectivity",
+      ],
+    },
+  ],
+},
+
 
 
 
@@ -323,6 +328,10 @@ export const siteConfig = {
     services: [
       { label: "Document AI", href: "/services/document-ai" },
       { label: "Web Scraping", href: "/services/web-scraping" },
+    ],
+    legal: [
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-of-service" },
     ],
     social: [
       {
